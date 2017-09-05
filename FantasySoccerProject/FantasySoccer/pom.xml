@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>revature.17aug7.project2</groupId>
+  <groupId>revature.project2.soccer</groupId>
   <artifactId>FantasySoccer</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>FantasySoccer Maven Webapp</name>
   <url>http://maven.apache.org</url>
-
   <build>
+    <finalName>FantasySoccer</finalName>
     <plugins>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
@@ -49,11 +49,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-  <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>4.3.11.Final</version>
-  </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -66,7 +61,4 @@
       <version>2.8.1</version>
     </dependency>
   </dependencies>
-  <build>
-    <finalName>FantasySoccer</finalName>
-  </build>
 </project>
