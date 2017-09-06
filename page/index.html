@@ -9,36 +9,31 @@
 	</head>
 	<body>
 		<div ng-app="main">
-			<img src="img/title.png"/ height="65" width="200" style="position: absolute; left: 2px; top: 2px;"><a id="logout" href="/logout">Logout</a>
-			<table id="menu">
+			<img src="img/title2.png"/ height="65" width="200" style="position: absolute; left: 2px; top: 2px;"><a id="logout" href="/logout">Logout</a>
+			<table id="menu" ng-controller="menu">
 				<tr>
-					<th ng-controller="home" id="home" class="menu-item">Home</th>
-					<th ng-controller="league" id="league" class="menu-item">League</th>
-					<th ng-controller="teams" id="teams" class="menu-item">My Teams</th>
-					<th ng-controller="schedule" id="schedule" class="menu-item">Schedule</th>
+					<th ng-click="route('/home')" id="home" class="menu-item">Home</th>
+					<th ng-click="route('/league')" id="league" class="menu-item">League</th>
+					<th ng-click="route('/teams')" id="teams" class="menu-item">My Teams</th>
+					<th ng-click="route('/schedule')" id="schedule" class="menu-item">Schedule</th>
 				</tr>
 			</table>
 			<div ng-view>
-				<div class="floating-box login">
-					<div class="floating-box head"><div class="floating-box highlight"></div><h3>Login</h3></div>
-				    <form id="login" action="/login" method="POST">
-				        <p>Username: <input type="text" name="username"/></p>
-				        <p>Password: <input type="password" name="password"/></p>
-				        <input value="LOGIN" type="submit" style="margin-bottom: 5%; position: relative; left: 65%;"/>
-				    </form>
-			    </div>
 		    </div>
 	    </div>
 
 	    <script>
-			angular.module('main', [])
-			.controller("teams", function($scope, $http) {
-					console.log("hi");
-					$http.get('/teams');
-					console.log("HI");
-				})
-			.config(function($routeProvider) {
+			var app = angular.module('main', ["ngRoute"]);
+			app.controller("menu", ['$scope', '$location', function($scope, $location) {
+					$scope.route = function ( path ) {
+					  $location.path( path );
+					};
+				}]);
+			app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
 			    $routeProvider
+			    .when("/", {
+			        templateUrl : "login.html"
+			    })
 			    .when("/home", {
 			        templateUrl : "home.html"
 			    })
@@ -51,26 +46,7 @@
 			    .when("/schedule", {
 			        templateUrl : "schedule.html"
 			    });
-			});
-	    	// document.querySelector("#home")
-	    	// 	.addEventListener("click", function(evt){
-	    	// 		document.getElementById("bod").innerHTML = "";
-	    	// 	});
-	    	// document.querySelector("#league")
-	    	// 	.addEventListener("click", function(evt){
-	    	// 		$http.get()
-	    	// 		// document.getElementById("bod").innerHTML = "";
-	    	// 	});
-	    	// document.querySelector("#teams")
-	    	// 	.addEventListener("click", function(evt){
-	    	// 		$http.get('/team.html', function(response) {
-		    // 			document.getElementById("bod").innerHTML = response.data;
-		    // 		});
-	    	// 	});
-	    	// document.querySelector("#schedule")
-	    	// 	.addEventListener("click", function(evt){
-	    	// 		document.getElementById("bod").innerHTML = "";
-	    	// 	});
+			}]);
 	    </script>
 	</body>
 </html>

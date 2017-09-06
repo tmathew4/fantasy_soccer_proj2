@@ -1,5 +1,5 @@
-<div class="floating-box" ng-app="reimbursements" ng-controller="reimbursementList">
-	<div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="teamData">Welcome, {{name}}</h2></div>
+<div class="floating-box">
+	<div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="teamData">{{name}}</h2></div>
 	<table id="team">
 		<tr>
 			<th class="team-header">#</th>
@@ -14,7 +14,7 @@
 		</tr>
 		<tr ng-repeat="x in players">
 			<td>{{x.number}}</td>
-			<td>${{x.name}}</td>
+			<td>{{x.name}}</td>
 			<td>{{x.position}}</td>
 			<td>{{x.sog}}</td>
 			<td>{{x.assists}}</td>
@@ -24,5 +24,5 @@
 			<td>{{}}</td>
 		</tr>
 	</table>
-	<p>Total: {}</p>
+	<p>Team Score: {{}}</p>
 </div>
