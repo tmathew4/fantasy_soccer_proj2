@@ -4,6 +4,7 @@ tables\Owner.class
 tables\Game_Points.class
 tables\Position.class
 tables\Trade.class
+Util\SessionFactoryUtil.class
 Services\Position_Types.class
 tables\League.class
 tables\Team.class
