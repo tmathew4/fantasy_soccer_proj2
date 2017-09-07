@@ -1,0 +1,114 @@
+body {
+  background-color: #888888; }
+
+.floating-box {
+  background-color: #444444;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px #111111; }
+
+.floating-box p, h5, h4, h3, h2, h1 {
+  color: #00AA22;
+  font-weight: bold;
+  text-shadow: 2px 1px #111111;
+  margin-bottom: 1%;
+  margin-left: 2%; }
+
+.floating-box.head {
+  background-color: #252525;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: 0px 0px 0px #111111; }
+
+.floating-box.highlight {
+  background-color: #A1A1A1;
+  height: 2px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  box-shadow: 0px 0px 0px #111111; }
+
+.floating-box.login {
+  position: fixed;
+  left: 35%;
+  top: 30%;
+  width: 25%; }
+
+#login {
+  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+
+.floating-box.transactions {
+  padding-bottom: 20px; }
+
+#transactions {
+  width: 90%;
+  margin-top: 40px;
+  margin-left: 5%;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 3px #111111; }
+
+#transactions tr:nth-child(odd) {
+  background-color: #252525;
+  color: #888888;
+  text-shadow: 1px 1px #111111; }
+
+#transactions tr:nth-child(even) {
+  background-color: #888888;
+  color: #252525;
+  text-shadow: 1px 1px #A1A1A1; }
+
+#transactions td, th {
+  border: 2px solid #000000;
+  text-align: center;
+  padding: 8px; }
+
+.transactions-header {
+  text-weight: bold;
+  color: #00AA22;
+  text-shadow: 2px 2px #111111; }
+
+.floating-box.create {
+  position: fixed;
+  left: 35%;
+  top: 5%;
+  width: 30%; }
+
+.create {
+  align: center;
+  padding-left: 5px;
+  width: 40%;
+  left: 2%; }
+
+#create-form {
+  margin-bottom: 5%; }
+
+#description-box {
+  width: 200%;
+  height: 100px; }
+
+#logout {
+  color: #111111;
+  padding-left: 90%;
+  padding-bottom: 5px; }
+
+.button {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #111111;
+  width: 10%;
+  height: 7%;
+  margin-left: 5%;
+  background-color: #252525;
+  color: #00AA22;
+  text-align: center;
+  cursor: pointer; }
+
+.button p {
+  margin-top: 5px;
+  cursor: pointer; }
+
+.button:active {
+  box-shadow: 2px 2px 2px #111111;
+  background-color: #888888;
+  color: #111111;
+  top: 5px;
+  left: 5px; }
