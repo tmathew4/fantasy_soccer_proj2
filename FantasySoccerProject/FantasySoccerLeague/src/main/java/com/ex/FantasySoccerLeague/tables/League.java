@@ -1,4 +1,4 @@
-package tables;
+package com.ex.FantasySoccerLeague.tables;
 
 
 import javax.persistence.*;
