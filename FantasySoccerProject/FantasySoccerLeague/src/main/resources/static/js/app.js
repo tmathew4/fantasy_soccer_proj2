@@ -46,3 +46,17 @@ app.controller("unsigned_players", function($scope, $location) {
 			$scope.o_players = $response.data;
 		});
 	});
+app.controller("send_login", function($scope, $http) {
+	$scope.login = function() {
+		$scope.user = {
+			"email" : $scope.email,
+			"password" : $scope.password
+		};
+		$http({
+	        method : 'POST',
+	        url : '/login',
+	        contentType: 'application/json',
+	        data : JSON.stringify($scope.user),
+	    });
+	}
+});
