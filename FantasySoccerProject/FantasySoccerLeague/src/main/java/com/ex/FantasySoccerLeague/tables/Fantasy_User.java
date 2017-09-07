@@ -1,11 +1,11 @@
-package tables;
+package com.ex.FantasySoccerLeague.tables;
 
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="Fantasy_user")
-public class User {
+public class Fantasy_User {
 
     private String Email;
     private String Password;
@@ -14,7 +14,7 @@ public class User {
     private Integer user_id;
     private Team team;
 
-    public User(){}
+    public Fantasy_User(){}
 
     @Id
     @GeneratedValue

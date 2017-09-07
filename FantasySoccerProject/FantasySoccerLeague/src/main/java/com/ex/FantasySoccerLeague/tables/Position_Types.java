@@ -1,6 +1,4 @@
-package Services;
-
-import javafx.geometry.Pos;
+package com.ex.FantasySoccerLeague.tables;
 
 public enum Position_Types {
 

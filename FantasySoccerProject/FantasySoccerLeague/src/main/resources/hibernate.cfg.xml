@@ -20,13 +20,13 @@
         <!--<property name="hibernate.cache.use_query_cache">true</property>-->
 
         <!--<property name="hbm2ddl.auto">create</property>-->
-        <mapping class="tables.Game"/>
-        <mapping class="tables.Game_Points"/>
-        <mapping class="tables.League"/>
-        <mapping class="tables.Player"/>
-        <mapping class="tables.Position"/>
-        <mapping class="tables.Team"/>
-        <mapping class="tables.Trade"/>
-        <mapping class="tables.User"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Game"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Game_Points"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.League"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Player"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Position"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Team"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.Trade"/>
+        <mapping class="com.ex.FantasySoccerLeague.tables.User"/>
     </session-factory>
 </hibernate-configuration>

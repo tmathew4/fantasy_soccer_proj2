@@ -1,9 +1,8 @@
-package Util;
+package com.ex.FantasySoccerLeague.Util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import tables.Player;
+import com.ex.FantasySoccerLeague.tables.Player;
 
 public class Driver {
 

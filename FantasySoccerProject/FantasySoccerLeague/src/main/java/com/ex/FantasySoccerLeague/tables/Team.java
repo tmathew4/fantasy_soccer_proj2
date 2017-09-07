@@ -1,4 +1,4 @@
-package tables;
+package com.ex.FantasySoccerLeague.tables;
 
 import javax.persistence.*;
 
@@ -19,7 +19,7 @@ public class Team {
 
     private Integer team_Id;
     private String team_Name;
-    private User user;
+    private Fantasy_User user;
     private Integer Points;
     private League league;
 
@@ -49,9 +49,9 @@ public class Team {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="USER_ID")
-    public User getUser(){return this.user;}
+    public Fantasy_User getUser(){return this.user;}
 
-    public void setUser(User user) {
+    public void setUser(Fantasy_User user) {
         this.user = user;
     }
 
