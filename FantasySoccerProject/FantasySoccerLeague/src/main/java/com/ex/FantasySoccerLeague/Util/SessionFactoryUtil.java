@@ -1,4 +1,4 @@
-package Util;
+package com.ex.FantasySoccerLeague.Util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
