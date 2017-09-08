@@ -1,16 +1,14 @@
 var app = angular.module('main', ["ngRoute"]);
 app.controller("menu", ['$scope', '$location', '$http',
 	function($scope, $location, $http) {
-		$scope.route = function($scope, path) {
+		$scope.route = function(path) {
 		  $location.path(path);
 		};
-//		$scope.my_team = function($http) {
-//			$http.get("/my_team/"+$scope.user.id, function($response) {
-//				return $response.data.id;
-//			})
-//		}
-
-
+		$scope.my_team = function() {
+			$http.get("/my_team/"+$scope.user.id, function($response) {
+				return $response.data.id;
+			})
+		}
 		$scope.login = function() {
 			var user = {
 				"email" : document.getElementById("email").innerHTML,
