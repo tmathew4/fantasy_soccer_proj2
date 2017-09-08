@@ -8,7 +8,7 @@
 		</table>
 	</div>
 	<form id="login" action="/sign_player" method="POST">
-		<select id="type" name="type" ng-controller="unsigned_players">
+		<select id="unsigned_player" name="unsigned_player" ng-controller="unsigned_players">
         	<option ng-repeat="player in o_players" value="{{player.id}}">{{player.fname}} {{player.lname}}</option>
         </select>
         <input value="Submit" type="submit">
