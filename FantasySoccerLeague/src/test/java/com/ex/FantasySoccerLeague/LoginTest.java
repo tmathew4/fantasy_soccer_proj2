@@ -43,6 +43,7 @@ public class LoginTest {
 
     //private Book testBook;
     private Fantasy_User testUser;
+
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
@@ -66,7 +67,7 @@ public class LoginTest {
 
     @Test
     //happy path
-    public void returnsAGoodBook() throws Exception {
+    public void returnsAGoodLogin() throws Exception {
 //        mockMvc.perform(get("/books/book/17"))
 //                .andExpect(status().isOk())
 //                .andExpect(jsonPath("$.isbn", is(testBook.getIsbn())));
