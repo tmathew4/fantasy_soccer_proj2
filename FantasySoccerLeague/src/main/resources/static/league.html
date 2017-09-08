@@ -1,11 +1,11 @@
 <div class="floating-box" ng-app="reimbursements" ng-controller="reimbursementList">
 	<div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="teamData">Leagues</h2></div>
-	<table id="team">
+	<table id="team" ng-controller="get_teams">
 		<tr>
 			<th class="team-header">League Name</th>
 			<th class="team-header">Rank</th>
 		</tr>
-		<tr ng-repeat="x in players" ng-click="route">
+		<tr ng-repeat="x in l_teams" ng-click="route">
 			<td>{{x.name}}</td>
 			<td>{{x.rank}}</td>
 		</tr>
