@@ -10,10 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -29,9 +26,11 @@ public class FrontController {
         this.applicationServices = applicationServices;
     }
 
+    //RequestParam(value = "json", required = true)
+
     @RequestMapping(path="/login", method = {RequestMethod.POST, RequestMethod.GET},
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getLogin(String json) throws IOException {
+    public String getLogin(@RequestBody String json) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
 
@@ -39,6 +38,9 @@ public class FrontController {
         JsonNode jsonNode2 = node.get("password");
 
         Fantasy_User user = applicationServices.checkLogin(jsonNode1.textValue(), jsonNode2.textValue());
+
+        System.out.println(mapper.writeValueAsString(user));
+
         return mapper.writeValueAsString(user);
     }
 

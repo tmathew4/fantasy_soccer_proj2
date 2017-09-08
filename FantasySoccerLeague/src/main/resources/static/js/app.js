@@ -1,34 +1,40 @@
 var app = angular.module('main', ["ngRoute"]);
-app.controller("menu", ['$scope', '$location', 
-	function($scope, $location) {
-		$scope.route = function(path) {
+app.controller("menu", ['$scope', '$location', '$http',
+	function($scope, $location, $http) {
+		$scope.route = function($scope, path) {
 		  $location.path(path);
 		};
-		$scope.my_team = function() {
-			$http.get("/my_team/"+$scope.user.id, function($response) {
-				return $response.data.id;
-			})
-		}
+//		$scope.my_team = function($http) {
+//			$http.get("/my_team/"+$scope.user.id, function($response) {
+//				return $response.data.id;
+//			})
+//		}
+
+
 		$scope.login = function() {
-			$scope.user = {
+			var user = {
 				"email" : document.getElementById("email").innerHTML,
 				"password" : document.getElementById("password").innerHTML
 			};
-		    $scope.route('/home');
-			$http({
+            $http({
 		        method : 'POST',
 		        url : '/login',
 		        contentType: 'application/json',
-		        data : JSON.stringify($scope.user),
-		    }, function($response) {
+		        data : JSON.stringify(user)
+		    }).then(function($response) {
 		    	app.user = $response.data;
+		    	console.log($response);
+		    	console.log($response.data);
+		    	route("!#/home");
 		    });
 		}
+
+
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "login.html"
+        templateUrl : "login1234.html"
     })
     .when("/home", {
         templateUrl : "home.html"
@@ -50,6 +56,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     })
     .when("/trade", {
         templateUrl : "trade.html"
+    })
+    .when("/players", {
+        templateUrl : "players.html"
+    })
+    .when("/unsigned_players", {
+        templateUrl : "unsigned_players.html"
     });
 }]);
 app.controller("my_players", function($scope, $location) {
@@ -73,7 +85,17 @@ app.controller("get_teams", function($scope, $http) {
 	});
 });
 app.controller("team_data", function($scope, $http) {
-	$http.get("/players/"+$scope.teamid, function($response){
+	$http.get("/team_players/"+$scope.teamid, function($response){
+		$scope.players = $response.data;
+	});
+});
+app.controller("list_players", function($scope, $http) {
+	$http.get("/get_players", function($response){
+		$scope.players = $response.data;
+	});
+});
+app.controller("list_unsigned_players", function($scope, $http) {
+	$http.get("/get_unsigned_players", function($response){
 		$scope.players = $response.data;
 	});
 });

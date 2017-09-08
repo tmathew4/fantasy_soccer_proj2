@@ -16,7 +16,9 @@ public class ApplicationServices {
     Team_Dao DaoT;
 
     public Fantasy_User checkLogin(String email, String password){
+        System.out.println(email + " " + password);
         Fantasy_User user = Dao.findByEmail(email);
+        System.out.println(user.toString());
         if(password.equals(user.getPassword())){
             return user;
         }
