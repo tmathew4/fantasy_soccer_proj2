@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class Game {
 
     private Integer game_Id;
-    private Team teamA;
-    private Team teamB;
+    private Team team1;
+    private Team team2;
     private League league;
     private String Date_Time;
     private Integer Score1;
@@ -21,8 +21,8 @@ public class Game {
     public String toString() {
         return "Game{" +
                 "Id=" + game_Id +
-                ", TeamA=" + teamA +
-                ", TeamB=" + teamB +
+                ", TeamA=" + team1 +
+                ", TeamB=" + team2 +
                 ", League=" + league +
                 ", Date_Time='" + Date_Time + '\'' +
                 ", Score1=" + Score1 +
@@ -42,23 +42,23 @@ public class Game {
     }
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
-    public Team getTeamA() {
-        return this.teamA;
+    @JoinColumn(name="TEAM1_ID", referencedColumnName = "TEAM_ID")
+    public Team getTeam1() {
+        return this.team1;
     }
 
-    public void setTeamA(Team teamA) {
-        this.teamA = teamA;
+    public void setTeam1(Team team1) {
+        this.team1 = team1;
     }
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
-    public Team getTeamB() {
-        return this.teamB;
+    @JoinColumn(name="TEAM2_ID", referencedColumnName = "TEAM_ID")
+    public Team getTeam2() {
+        return this.team2;
     }
 
-    public void setTeamB(Team teamB) {
-        this.teamB = teamB;
+    public void setTeam2(Team team2) {
+        this.team2 = team2;
     }
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
