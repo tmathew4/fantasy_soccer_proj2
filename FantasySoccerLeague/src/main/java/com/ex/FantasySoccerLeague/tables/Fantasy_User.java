@@ -36,7 +36,7 @@ public class Fantasy_User {
         Email = email;
     }
 
-    @Column(name="PASSWORD", nullable = false)
+    @Column(name="User_pASSWORD", nullable = false)
     public String getPassword() {
         return Password;
     }
@@ -61,14 +61,6 @@ public class Fantasy_User {
 
     public void setLName(String LName) {
         this.LName = LName;
-    }
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="TEAM_ID")
-    public Team getTeam(){return this.team;}
-
-    public void setTeam(Team team){
-        this.team = team;
     }
 
     @Override
