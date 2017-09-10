@@ -1,4 +1,5 @@
 var app = angular.module('main', ["ngRoute"]);
+app.show = false;
 app.controller("menu", ['$scope', '$location', '$http',
 	function($scope, $location, $http) {
 		$scope.route = function(path) {
@@ -11,8 +12,8 @@ app.controller("menu", ['$scope', '$location', '$http',
 		}
 		$scope.login = function() {
 			var user = {
-				"email" : document.getElementById("email").innerHTML,
-				"password" : document.getElementById("password").innerHTML
+				"email" : document.getElementById("email").value,
+				"password" : document.getElementById("password").value
 			};
             $http({
 		        method : 'POST',
@@ -23,10 +24,21 @@ app.controller("menu", ['$scope', '$location', '$http',
 		    	app.user = $response.data;
 		    	console.log($response);
 		    	console.log($response.data);
-		    	route("!#/home");
+		    	console.log(app.user);
+		    	if(app.user != null) {
+		    	    $scope.route("/home");
+		    	    //$scope.show_menu();
+		    	    app.show = true;
+		    	}
 		    });
 		}
-
+        $scope.show_menu = function() {
+		    console.log(app.user);
+            var read = new XMLHttpRequest();
+            read.open('GET', 'menu.html', false);
+            read.send();
+            document.getElementById("menu_container").innerHTML = read.responseText;
+        }
 
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
@@ -94,6 +106,16 @@ app.controller("list_players", function($scope, $http) {
 });
 app.controller("list_unsigned_players", function($scope, $http) {
 	$http.get("/get_unsigned_players", function($response){
+		$scope.players = $response.data;
+	});
+});
+app.controller("sign_player", function($scope, $http) {
+	$http.get("/sign_player/" + document.getElementById("unsigned_player").value, function($response){
+		$scope.players = $response.data;
+	});
+});
+app.controller("trade_players", function($scope, $http) {
+	$http.get("/trade_players/" + document.getElementById("my_player").value + "/" + document.getElementById("other_player").value, function($response){
 		$scope.players = $response.data;
 	});
 });
