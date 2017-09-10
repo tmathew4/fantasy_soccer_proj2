@@ -1,0 +1,15 @@
+<div class="floating-box">
+	<div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="teamData">Schedule</h2></div>
+	<table id="team">
+		<tr>
+			<th class="team-header">Date</th>
+			<th class="team-header">Teams</th>
+			<th class="team-header">Scores</th>
+		</tr>
+		<tr ng-repeat="x in players">
+			<td>{{x.number}}</td>
+			<td>{{x.team1}} vs. {{x.team2}}</td>
+			<td>{{x.score1}} to {{x.score2}}</td>
+		</tr>
+	</table>
+</div>
