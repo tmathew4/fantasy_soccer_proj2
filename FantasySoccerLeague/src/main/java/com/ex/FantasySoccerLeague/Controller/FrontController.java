@@ -2,7 +2,6 @@ package com.ex.FantasySoccerLeague.Controller;
 
 import com.ex.FantasySoccerLeague.Services.ApplicationServices;
 import com.ex.FantasySoccerLeague.tables.Fantasy_User;
-import com.ex.FantasySoccerLeague.tables.League;
 import com.ex.FantasySoccerLeague.tables.Team;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -55,7 +54,7 @@ public class FrontController {
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<String> allTeam = applicationServices.viewAllTeam(y);
+        ArrayList<Team> allTeam = applicationServices.viewAllTeam(y);
         String ret;
         ret = mapper.writeValueAsString(allTeam);
         System.out.println(ret);

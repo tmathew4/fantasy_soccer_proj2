@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -38,7 +39,10 @@ public class viewAllTeamTest {
     private MockMvc mockMvc;
 
     private Team testTeam;
-
+    private Team testTeam2;
+    private Team testTeam3;
+    private Team testTeam4;
+    private Team testTeam5;
 
     @Before
     public void setup(){
@@ -47,20 +51,31 @@ public class viewAllTeamTest {
         mockMvc = MockMvcBuilders.standaloneSetup(frontController).build();
 
         testTeam = new Team();
+        testTeam2 = new Team();
+        testTeam3 = new Team();
+        testTeam4 = new Team();
+        testTeam5 = new Team();
+
         testTeam.setName("OneTeamName");
-        testTeam.setName("TwoTeamName");
-        testTeam.setName("ThreeTeamName");
-        testTeam.setName("SomeMoreTeamNames");
-        testTeam.setName("TheLastTeamName");
+        testTeam2.setName("TwoTeamName");
+        testTeam3.setName("ThreeTeamName");
+        testTeam4.setName("SomeMoreTeamNames");
+        testTeam5.setName("TheLastTeamName");
         testTeam.setId(12);
 
-        when(allTeams.viewAllTeam(12)).thenReturn(testTeam);
+        List<Team> team = new ArrayList<>();
+        team.add(testTeam);
+        team.add(testTeam2);
+        team.add(testTeam3);
+        team.add(testTeam4);
+        team.add(testTeam5);
+        when(allTeams.viewAllTeam(12)).thenReturn((ArrayList<Team>) team);
     }
 
     @Test
     public void returnAllTeam() throws Exception {
-        mockMvc.perform(get("/Team/{id}"))
+        mockMvc.perform(get("/Team/12"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.id", is(testTeam.getName())));
+        .andExpect(jsonPath("$[0].name", is(testTeam.getName())));
     }
 }

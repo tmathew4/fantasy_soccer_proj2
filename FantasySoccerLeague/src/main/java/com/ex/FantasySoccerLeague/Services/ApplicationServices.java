@@ -34,15 +34,15 @@ public class ApplicationServices {
         return team;
     }
 
-    public ArrayList<String> viewAllTeam(Integer id){
-       ArrayList<String> names = new ArrayList<>();
+    public ArrayList<Team> viewAllTeam(Integer id){
+       ArrayList<Team> names = new ArrayList<>();
             League league = DaoL.findOne(id);
             Integer nbr = league.getId();
             Team team = DaoT.findOne(id);
             League n = team.getLeague();
 
             if(nbr.equals(n)){
-                names.add(team.getName());
+                names.add(team);
             }
         return names;
     }

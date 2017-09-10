@@ -65,7 +65,7 @@ public class Fantasy_User {
 
     @Override
     public String toString() {
-        return "Owner{" +
+        return "User{" +
                 "id=" + user_id +
                 ", Email='" + Email + '\'' +
                 ", Password='" + Password + '\'' +
