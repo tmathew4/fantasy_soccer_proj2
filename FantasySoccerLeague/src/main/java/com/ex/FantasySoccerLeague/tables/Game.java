@@ -41,7 +41,7 @@ public class Game {
         game_Id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="TEAM1_ID", referencedColumnName = "TEAM_ID")
     public Team getTeam1() {
         return this.team1;
@@ -51,7 +51,7 @@ public class Game {
         this.team1 = team1;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="TEAM2_ID", referencedColumnName = "TEAM_ID")
     public Team getTeam2() {
         return this.team2;
@@ -61,7 +61,7 @@ public class Game {
         this.team2 = team2;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="LEAGUE_ID")
     public League getLeague() {
         return this.league;

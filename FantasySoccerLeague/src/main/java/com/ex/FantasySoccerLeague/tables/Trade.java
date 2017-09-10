@@ -33,7 +33,7 @@ public class Trade {
         Id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="PLAYER1_ID", referencedColumnName = "PLAYER_ID")
     public Player getPlayer1Id() {
         return this.player1Id;
@@ -43,7 +43,7 @@ public class Trade {
         this.player1Id = player1Id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="PLAYER2_ID", referencedColumnName = "PLAYER_ID")
     public Player getPlayer2Id() {
         return this.player2Id;
