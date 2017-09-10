@@ -32,7 +32,7 @@ public class FrontController {
 
     @RequestMapping(path="/login", method = {RequestMethod.POST, RequestMethod.GET},
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getLogin(@RequestBody String json) throws IOException {
+    public String getLogin( String json) throws IOException {
         System.out.println("This is the json object " + json);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
