@@ -8,12 +8,14 @@
 		</table>
 	</div>
 	<form id="login" action="/trade_players" method="POST">
-		<select id="type" name="my_player" ng-controller="my_players">
+		<select id="my_player" name="my_player" ng-controller="my_players">
         	<option ng-repeat="player in m_players" value="{{player.id}}">{{player.fname}} {{player.lname}}</option>
         </select>
-		<select id="type" name="other_player" ng-controller="not_my_players">
+        <br/>
+		<select id="other_player" name="other_player" ng-controller="not_my_players">
         	<option ng-repeat="player in o_players" value="{{player.id}}">{{player.fname}} {{player.lname}}</option>
         </select>
+        <br/>
         <input value="Submit" type="submit">
     </form>
 </div>
