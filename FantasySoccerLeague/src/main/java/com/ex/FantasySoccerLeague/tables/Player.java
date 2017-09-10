@@ -75,7 +75,7 @@ public class Player {
         player_Number = number;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="TEAM_ID")
     public Team getTeam() {
         return this.team;
@@ -139,7 +139,7 @@ public class Player {
         Yellow_Card = yellow_Card;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="POSITION_ID")
     public Position getPosition() {return this.position;}
     public void setPosition(Position position){
