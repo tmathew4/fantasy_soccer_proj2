@@ -2,6 +2,7 @@ package com.ex.FantasySoccerLeague.Services;
 
 import com.ex.FantasySoccerLeague.Dao.Fantasy_UserDao;
 import com.ex.FantasySoccerLeague.Dao.League_Dao;
+import com.ex.FantasySoccerLeague.Dao.Player_Dao;
 import com.ex.FantasySoccerLeague.Dao.Team_Dao;
 import com.ex.FantasySoccerLeague.tables.League;
 import com.ex.FantasySoccerLeague.tables.Team;
@@ -20,6 +21,8 @@ public class ApplicationServices {
     Team_Dao DaoT;
     @Autowired
     League_Dao DaoL;
+    @Autowired
+    Player_Dao player_dao;
 
     public Fantasy_User checkLogin(String email, String password){
         Fantasy_User user = Dao.findByEmail(email);
@@ -47,7 +50,7 @@ public class ApplicationServices {
         return names;
     }
 
-
+    
 
 
 }
