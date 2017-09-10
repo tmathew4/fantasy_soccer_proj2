@@ -64,29 +64,5 @@ public class FrontController {
     }
 
 
-    @RequestMapping(path="/allPlayers", method = RequestMethod.GET,
-            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllPlayers() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findAllPlayers();
-        return mapper.writeValueAsString(players);
-    }
-
-    @RequestMapping(path="/availablePlayers", method = RequestMethod.GET,
-            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAvailablePlayers() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findAvailablePlayers();
-        return mapper.writeValueAsString(players);
-    }
-
-    @RequestMapping(path="/unavailablePlayers", method = RequestMethod.GET,
-            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getUnavailablePlayers() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findUnavailablePlayers();
-        return mapper.writeValueAsString(players);
-    }
-
 
 }
