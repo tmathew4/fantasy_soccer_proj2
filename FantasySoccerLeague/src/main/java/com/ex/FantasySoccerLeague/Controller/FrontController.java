@@ -44,24 +44,16 @@ public class FrontController {
 
     @RequestMapping(path="/Home/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*",produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Team team = applicationServices.myTeam(x);
-        String ret = null;
-        ret = mapper.writeValueAsString(team);
-//        System.out.println(ret);
-        return ret;
+    public List<Player> getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
+        List<Player> players =  applicationServices.myTeam(x);
+        return players;
     }
 
     @RequestMapping(path="/Team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Team> allTeam = applicationServices.viewAllTeam(y);
-        String ret;
-        ret = mapper.writeValueAsString(allTeam);
-        System.out.println(ret);
-        return ret;
+    public List<Team> getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
+        List<Team> team =  applicationServices.viewAllTeam(y);
+        return team;
     }
 
 
