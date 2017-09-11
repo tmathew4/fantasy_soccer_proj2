@@ -38,6 +38,7 @@ public class viewAllTeamTest {
 
     private MockMvc mockMvc;
 
+    private League testLeague;
     private Team testTeam;
     private Team testTeam2;
     private Team testTeam3;
@@ -55,13 +56,14 @@ public class viewAllTeamTest {
         testTeam3 = new Team();
         testTeam4 = new Team();
         testTeam5 = new Team();
+        testLeague = new League();
 
         testTeam.setName("OneTeamName");
         testTeam2.setName("TwoTeamName");
         testTeam3.setName("ThreeTeamName");
         testTeam4.setName("SomeMoreTeamNames");
         testTeam5.setName("TheLastTeamName");
-        testTeam.setId(12);
+        testLeague.setId(12);
 
         List<Team> team = new ArrayList<>();
         team.add(testTeam);
@@ -69,7 +71,7 @@ public class viewAllTeamTest {
         team.add(testTeam3);
         team.add(testTeam4);
         team.add(testTeam5);
-        when(allTeams.viewAllTeam(12)).thenReturn((ArrayList<Team>) team);
+        when(allTeams.viewAllTeam(12)).thenReturn(team);
     }
 
     @Test
