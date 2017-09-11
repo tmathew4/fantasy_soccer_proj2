@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,36 +30,40 @@ public class FrontController {
 
     @RequestMapping(path="/login", method = {RequestMethod.POST, RequestMethod.GET},
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getLogin( String json) throws IOException {
+    public String getLogin(@RequestBody String json, HttpServletRequest req) throws IOException {
         System.out.println("This is the json object " + json);
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
         JsonNode jsonNode1 = node.get("email");
         JsonNode jsonNode2 = node.get("password");
+
         Fantasy_User user = applicationServices.checkLogin(jsonNode1.textValue(), jsonNode2.textValue());
+
+        req.getSession().setAttribute("user", user);
+
         System.out.println(mapper.writeValueAsString(user));
         return mapper.writeValueAsString(user);
     }
 
-
-
-    @RequestMapping(path="/Home/{id}", method = {RequestMethod.GET, RequestMethod.POST},
+    @RequestMapping(path="/team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*",produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Player> getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
+    public String getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Player> players =  applicationServices.myTeam(x);
-        return players;
+        System.out.println(mapper.writeValueAsString(players));
+        return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/Team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
+    @RequestMapping(path="/league/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Team> getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
+    public String getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Team> team =  applicationServices.viewAllTeam(y);
-        return team;
+        return mapper.writeValueAsString(team);
     }
 
-
-
-    @RequestMapping(path="/allPlayers", method = RequestMethod.GET,
+    @RequestMapping(path="/all_players", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAllPlayers() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -66,7 +71,7 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/availablePlayers", method = RequestMethod.GET,
+    @RequestMapping(path="/available_players", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAvailablePlayers() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -74,7 +79,7 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/unavailablePlayers", method = RequestMethod.GET,
+    @RequestMapping(path="/unavailable_players", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getUnavailablePlayers() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
