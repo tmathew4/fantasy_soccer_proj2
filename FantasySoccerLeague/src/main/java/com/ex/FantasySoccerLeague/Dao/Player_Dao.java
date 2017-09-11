@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface Player_Dao extends JpaRepository<Player, Integer> {
 
-    public List<Player> findAllByTeam_IdEquals(Integer i);
+
+    public List<Player> findAllByTeam_Id(Integer i);
     public List<Player> findAllByTeam_IdGreaterThan(Integer i);
     public List<Player> findAllByTeam_IdIsNull();
     public List<Player> findAllByTeam_IdIsNotNull();

@@ -3,13 +3,12 @@ package com.ex.FantasySoccerLeague.tables;
 import javax.persistence.*;
 
 @Entity
-@Table(name="GAME_POINTS")
-public class Game_Points {
-    public Game_Points(){}
+@Table(name="Player_POINTS")
+public class Player_Points {
+    public Player_Points(){}
 
-    private Integer gamePoints_Id;
+    private Integer PlayerPoints_Id;
     private Player player;
-    private Game game;
     private Integer Assists;
     private Integer SOG;
     private Integer Goals;
@@ -19,13 +18,13 @@ public class Game_Points {
 
     @Id
     @GeneratedValue
-    @Column(name="GAME_POINTSID", nullable = false)
+    @Column(name="Player_POINTSID", nullable = false)
     public Integer getId() {
-        return gamePoints_Id;
+        return PlayerPoints_Id;
     }
 
     public void setId(Integer id) {
-        gamePoints_Id = id;
+        PlayerPoints_Id = id;
     }
 
     @OneToOne( cascade = CascadeType.ALL)
@@ -38,15 +37,6 @@ public class Game_Points {
         this.player = player;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="GAME_ID")
-    public Game getGame() {
-        return this.game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
 
     @Column(name="Assists")
     public Integer getAssists() {

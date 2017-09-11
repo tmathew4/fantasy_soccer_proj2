@@ -11,10 +11,12 @@ app.controller("menu", ['$scope', '$location', '$http',
 			})
 		}
 		$scope.login = function() {
+			console.log("inside login function");
 			var user = {
 				"email" : document.getElementById("email").value,
 				"password" : document.getElementById("password").value
 			};
+			console.log(user);
             $http({
 		        method : 'POST',
 		        url : '/login',
@@ -44,10 +46,12 @@ app.controller("menu", ['$scope', '$location', '$http',
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "login1234.html"
+        templateUrl : "login1234.html",
+        controller: 'menu'
     })
     .when("/home", {
-        templateUrl : "home.html"
+		templateUrl : "home.html",
+		controller: 'teamData'
     })
     .when("/league", {
         templateUrl : "league.html"
@@ -68,54 +72,64 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
         templateUrl : "trade.html"
     })
     .when("/players", {
-        templateUrl : "players.html"
+        templateUrl : "players.html",
+        controller: 'list_players'
     })
     .when("/unsigned_players", {
-        templateUrl : "unsigned_players.html"
+        templateUrl : "unsigned_players.html",
+        controller: 'list_unsigned_players'
     });
 }]);
-app.controller("my_players", function($scope, $location) {
-		$http.get("/players", function($response){
-			$scope.m_players = $response.data;
-		});
-	});
-app.controller("not_my_players", function($scope, $location) {
-		$http.get("/other_signed_players", function($response){
-			$scope.o_players = $response.data;
-		});
-	});
-app.controller("unsigned_players", function($scope, $location) {
-		$http.get("/unsigned_players", function($response){
-			$scope.o_players = $response.data;
-		});
-	});
 app.controller("get_teams", function($scope, $http) {
-	$http.get("/teams", function($response){
+	$http.get("/league/1", function($response){
 		$scope.l_teams = $response.data;
 	});
 });
 app.controller("team_data", function($scope, $http) {
-	$http.get("/team_players/"+$scope.teamid, function($response){
+	$http.get("/team/1", function($response){
 		$scope.players = $response.data;
 	});
 });
 app.controller("list_players", function($scope, $http) {
-	$http.get("/get_players", function($response){
-		$scope.players = $response.data;
+	$http.get("all_players").then(function(response){
+		console.log(response.data);
+		$scope.players = response.data;
 	});
 });
 app.controller("list_unsigned_players", function($scope, $http) {
-	$http.get("/get_unsigned_players", function($response){
-		$scope.players = $response.data;
+	$http.get("available_players").then(function(response){
+		console.log(response.data);
+		$scope.players = response.data;
+	});
+});
+
+app.controller("list_signed_players", function($scope, $http) {
+	$http.get("/unavailable_players").then( function(response){
+		$scope.players = response.data;
 	});
 });
 app.controller("sign_player", function($scope, $http) {
-	$http.get("/sign_player/" + document.getElementById("unsigned_player").value, function($response){
-		$scope.players = $response.data;
+	$http.get("/available_players").then(function($response){
+		$scope.o_players = $response.data;
 	});
+	$scope.sign = function() {
+	    var player1 = document.getElementById("unsigned_player").value;
+
+	    $http.get("/sign_player/" + player1 + "/0");
+	}
 });
 app.controller("trade_players", function($scope, $http) {
-	$http.get("/trade_players/" + document.getElementById("my_player").value + "/" + document.getElementById("other_player").value, function($response){
-		$scope.players = $response.data;
+	$http.get("/team/1").then( function($response){
+		$scope.m_players = $response.data;
 	});
+	$http.get("/all_players").then( function($response){
+	    $scope.a_players = $response.data;
+	});
+	$scope.o_players = $scope.a_players - $scope.m_players;
+	$scope.trade = function() {
+	    var player1 = document.getElementById("my_player").value;
+	    var player2 = document.getElementById("other_player").value;
+
+	    $http.get("/trade_player/" + player1 + "/" + player2);
+	}
 });
