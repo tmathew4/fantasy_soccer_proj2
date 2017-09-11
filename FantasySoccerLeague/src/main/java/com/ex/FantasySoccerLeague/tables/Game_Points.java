@@ -28,7 +28,7 @@ public class Game_Points {
         gamePoints_Id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "PLAYER_ID")
     public Player getPlayer() {
         return this.player;
@@ -38,7 +38,7 @@ public class Game_Points {
         this.player = player;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name="GAME_ID")
     public Game getGame() {
         return this.game;

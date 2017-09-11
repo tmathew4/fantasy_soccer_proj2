@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Team_Dao extends JpaRepository<Team, Integer> {
     public Team findByUser(Integer id);
+
+    Team save(Team team);
 }

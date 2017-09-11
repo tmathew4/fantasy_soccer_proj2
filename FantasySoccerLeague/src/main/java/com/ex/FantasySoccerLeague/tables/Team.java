@@ -47,7 +47,7 @@ public class Team {
         team_Name = name;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name="USER_ID")
     public Fantasy_User getUser(){return this.user;}
 
@@ -64,7 +64,7 @@ public class Team {
         Points = points;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name="LEAGUE_ID")
     public League getLeague() {
         return this.league;
