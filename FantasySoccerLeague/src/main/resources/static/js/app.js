@@ -51,13 +51,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     })
     .when("/home", {
 		templateUrl : "home.html",
-		controller: 'teamData'
+		controller: 'team_data'
     })
     .when("/league", {
         templateUrl : "league.html"
     })
     .when("/teams", {
-        templateUrl : "team.html"
+        templateUrl : "team.html",
+        controller: 'team_data'
     })
     .when("/schedule", {
         templateUrl : "schedule.html"
@@ -81,13 +82,15 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     });
 }]);
 app.controller("get_teams", function($scope, $http) {
-	$http.get("/league/1", function($response){
+	$http.get("/league/1").then(function($response){
 		$scope.l_teams = $response.data;
 	});
 });
 app.controller("team_data", function($scope, $http) {
-	$http.get("/team/1", function($response){
-		$scope.players = $response.data;
+	$http.get("/team/1").then(function($response){
+	    console.log("HelloWorld!!!!!");
+	    console.log($response.data);
+		$scope.t_players = $response.data;
 	});
 });
 app.controller("list_players", function($scope, $http) {
@@ -132,4 +135,7 @@ app.controller("trade_players", function($scope, $http) {
 
 	    $http.get("/trade_player/" + player1 + "/" + player2);
 	}
+});
+app.controller("team_name", function($scope, $http) {
+    $scope.name = "HI";
 });
