@@ -2,6 +2,7 @@ package com.ex.FantasySoccerLeague.Controller;
 
 import com.ex.FantasySoccerLeague.Services.ApplicationServices;
 import com.ex.FantasySoccerLeague.tables.Fantasy_User;
+import com.ex.FantasySoccerLeague.tables.League;
 import com.ex.FantasySoccerLeague.tables.Player;
 import com.ex.FantasySoccerLeague.tables.Team;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,11 +36,9 @@ public class FrontController {
         JsonNode node = mapper.readTree(json);
         JsonNode jsonNode1 = node.get("email");
         JsonNode jsonNode2 = node.get("password");
-
-        Fantasy_User user = applicationServices.checkLogin(jsonNode1.textValue(), jsonNode2.textValue());
-
+        String mypassword = applicationServices.hashPassword(jsonNode2.textValue());
+        Fantasy_User user = applicationServices.checkLogin(jsonNode1.textValue(), mypassword);
         req.getSession().setAttribute("user", user);
-
         System.out.println(mapper.writeValueAsString(user));
         return mapper.writeValueAsString(user);
     }
@@ -85,13 +84,23 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
+    @RequestMapping(path="/leagues", method = RequestMethod.GET,
+            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAllLeagues() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<League> leagues= applicationServices.findAllLeagues();
+        return mapper.writeValueAsString(leagues);
+    }
+
     @RequestMapping(path = "/register_user")
     public String registerUser(@RequestBody String json) throws IOException
     {
+        System.out.println(json);
         ObjectMapper mapper = new ObjectMapper(); //Maybe create a instance/class variable since we're using this so much.
         JsonNode node = mapper.readTree(json);
         System.out.println(json);
         Fantasy_User user = mapper.readValue(json, Fantasy_User.class);
+        user.setPassword(applicationServices.hashPassword(user.getPassword()));
         applicationServices.registerUser(user);
         return json; //So dumb.
 
