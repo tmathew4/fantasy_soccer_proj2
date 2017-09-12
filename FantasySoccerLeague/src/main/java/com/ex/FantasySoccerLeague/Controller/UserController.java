@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Random;
 
 @RestController
 public class UserController {
@@ -25,6 +26,9 @@ public class UserController {
 
     @Autowired
     Team_Dao teams;
+
+    @Autowired
+    Player_Dao players;
 
     private ApplicationServices applicationServices;
 
@@ -45,14 +49,25 @@ public class UserController {
     @RequestMapping(path="/get_data/{page}", method = RequestMethod.GET)
     public void getData(@PathVariable("page") Integer page) throws IOException {
         JsonNode node = dr.get(page);
+        Random r = new Random();
+
+        System.out.println(node.toString());
 
         for(int i = 0; i < node.size(); i++) {
             JsonNode curr = node.get(i);
             Player p = new Player();
-            p.setName(curr.get("firstName") + " " + curr.get("lastName"));
-            //p.setNumber(Integer.parseInt(curr.get("id").textValue()));
+            p.setName(curr.get("firstName").textValue() + " " + curr.get("lastName").textValue());
+            p.setNumber(r.nextInt(100));
             p.setPosition(dr.getPosition(curr.get("position").textValue()));
-            p.setPercentage(Integer.parseInt(curr.get("rating").textValue()));
+            p.setPercentage(curr.get("rating").intValue());
+            p.setAssists(0);
+            p.setGoals(0);
+            p.setOwn_Goals(0);
+            p.setRed_Card(0);
+            p.setSOG(0);
+            p.setYellow_Card(0);
+            players.saveAndFlush(p);
+            System.out.println(p.toString());
         }
     }
 

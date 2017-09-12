@@ -90,8 +90,9 @@ public class FrontController {
     public String registerUser(@RequestBody String json) throws IOException
     {
         ObjectMapper mapper = new ObjectMapper(); //Maybe create a instance/class variable since we're using this so much.
+        JsonNode node = mapper.readTree(json);
+        System.out.println(json);
         Fantasy_User user = mapper.readValue(json, Fantasy_User.class);
-        user.setId(-1); //Will not update an existing user.
         applicationServices.registerUser(user);
         return json; //So dumb.
 

@@ -1,10 +1,10 @@
 <div class="floating-box login">
 	<div class="floating-box head"><div class="floating-box highlight"></div><h3>Register</h3></div>
-    <form id="login" action="/create_user" method="POST">
-        <p>First Name: <input type="text" name="fName"/></p>
-        <p>Last Name: <input type="text" name="lName"/></p>
-        <p>Email: <input type="text" name="email"/></p>
-        <p>Password: <input type="password" name="password"/></p>
-        <input value="Register" type="submit" style="margin-bottom: 5%; position: relative; left: 65%;"/>
+    <form id="login" ng-controller="create_user">
+        <p>First Name: <input type="text" id="fname"/></p>
+        <p>Last Name: <input type="text" id="lname"/></p>
+        <p>Email: <input type="text" id="email"/></p>
+        <p>Password: <input type="password" id="password"/></p>
+        <button ng-click="create_user()" style="margin-bottom: 5%; position: relative; left: 65%;">Register</button>
     </form>
 </div>

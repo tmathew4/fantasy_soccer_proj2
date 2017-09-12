@@ -17,7 +17,7 @@ public class Fantasy_User {
     public Fantasy_User(){}
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USER_ID",unique = true, nullable = false)
     public Integer getId() {
         return user_id;
