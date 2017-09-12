@@ -74,7 +74,7 @@ public class myTeamTest {
 
     @Test
     public void returnAMyTeam() throws Exception {
-                mockMvc.perform(get("/Home/12"))
+                mockMvc.perform(get("/team/12"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name", is(testPlayer.getName())));
     }

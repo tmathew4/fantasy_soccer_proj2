@@ -13,15 +13,16 @@
 			<th class="team-header">Own Goals</th>
 			<th class="team-header">Current Score</th>
 		</tr>
-		<tr ng-repeat="x in players">
-			<td>{{x.number}}</td>
+		<tr ng-repeat="x in t_players">
+			<td>{{x.id}}</td>
 			<td>{{x.name}}</td>
-			<td>{{x.position}}</td>
+			<td>{{x.position.name}}</td>
 			<td>{{x.sog}}</td>
 			<td>{{x.assists}}</td>
-			<td>{{x.red_card}}</td>
-			<td>{{x.yellow_card}}</td>
-			<td>{{x.own_goals}}</td>
+			<td>{{x.red_Card}}</td>
+			<td>{{x.yellow_Card}}</td>
+			<td>{{x.own_Goals}}</td>
+			<td>{{x.percentage}}</td>
 			<td>{{}}</td>
 		</tr>
 	</table>
