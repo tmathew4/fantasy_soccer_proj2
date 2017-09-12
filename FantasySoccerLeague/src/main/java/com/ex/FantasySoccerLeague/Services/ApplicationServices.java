@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ex.FantasySoccerLeague.tables.Fantasy_User;
 
-
 import java.util.List;
-
-
 @Service
 public class ApplicationServices {
 
@@ -29,7 +26,8 @@ public class ApplicationServices {
     Player_Dao playerDao;
     @Autowired
     Trade_Dao DaoTr;
-
+    @Autowired
+    League_Dao mLeagueDao;
 
     public Fantasy_User checkLogin(String email, String password){
         System.out.println(email + " " + password);
@@ -49,6 +47,9 @@ public class ApplicationServices {
         return DaoT.findAllByLeagueId(id);
     }
 
+    public void registerUser(Fantasy_User user) {
+        Dao.saveAndFlush(user);
+    }
 
      public List<Player> findAllPlayers(){
         return playerDao.findAll();
@@ -78,4 +79,13 @@ public class ApplicationServices {
         return "Success";
     }
 
+    public Team registerTeam(Integer leagueId, String teamName, Fantasy_User user) {
+        Team team = new Team();
+        team.setId(-1);
+        team.setName(teamName);
+        team.setPoints(0);
+        team.setUser(user);
+        team.setLeague(mLeagueDao.findOne(leagueId));
+        return DaoT.saveAndFlush(team);
+    }
 }

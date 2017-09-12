@@ -22,7 +22,7 @@ public class FrontController {
     private ApplicationServices applicationServices;
 
     @Autowired
-    public void setApplicationServices(ApplicationServices applicationServices){
+    public void setApplicationServices(ApplicationServices applicationServices) {
         this.applicationServices = applicationServices;
     }
 
@@ -32,7 +32,6 @@ public class FrontController {
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getLogin(@RequestBody String json, HttpServletRequest req) throws IOException {
         System.out.println("This is the json object " + json);
-
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
         JsonNode jsonNode1 = node.get("email");
@@ -87,5 +86,28 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
+    @RequestMapping(path = "/register_user")
+    public String registerUser(@RequestBody String json) throws IOException
+    {
+        ObjectMapper mapper = new ObjectMapper(); //Maybe create a instance/class variable since we're using this so much.
+        Fantasy_User user = mapper.readValue(json, Fantasy_User.class);
+        user.setId(-1); //Will not update an existing user.
+        applicationServices.registerUser(user);
+        return json; //So dumb.
 
+        //Alternative
+//        try {
+//            applicationServices.registerUser(user);
+//        } catch(Exception e) {
+//            return "error";
+//        }
+//        return "success";
+    }
+
+    @RequestMapping(path = "/register_team/{league_id}/{team_name}")
+    public void registerTeam(@PathVariable("league_id") Integer leagueId, @PathVariable("team_name") String teamName, HttpServletRequest req) throws IOException
+    {
+        Fantasy_User user = (Fantasy_User) req.getSession().getAttribute("user");
+        applicationServices.registerTeam(leagueId, teamName, user);
+    }
 }
