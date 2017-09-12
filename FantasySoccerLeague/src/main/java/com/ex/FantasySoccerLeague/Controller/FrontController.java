@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController    //spring bean that accepts requests
@@ -98,9 +97,10 @@ public class FrontController {
     {
         System.out.println(json);
         ObjectMapper mapper = new ObjectMapper(); //Maybe create a instance/class variable since we're using this so much.
+        JsonNode node = mapper.readTree(json);
+        System.out.println(json);
         Fantasy_User user = mapper.readValue(json, Fantasy_User.class);
         user.setPassword(applicationServices.hashPassword(user.getPassword()));
-        user.setId(-1); //Will not update an existing user.
         applicationServices.registerUser(user);
         return json; //So dumb.
 

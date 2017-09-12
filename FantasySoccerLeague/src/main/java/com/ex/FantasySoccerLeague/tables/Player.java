@@ -47,7 +47,7 @@ public class Player {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="PLAYER_ID", nullable = false)
     public Integer getId() {
         return player_Id;
