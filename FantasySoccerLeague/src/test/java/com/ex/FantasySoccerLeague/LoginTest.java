@@ -72,7 +72,7 @@ public class LoginTest {
 //                .andExpect(status().isOk())
 //                .andExpect(jsonPath("$.isbn", is(testBook.getIsbn())));
         mockMvc.perform(post("/login")
-                .param("json","{\"email\":\"Vincent.Bolden.12@cnu.edu\", \"password\":\"1044922\"}"))
+                .content("{\"email\":\"Vincent.Bolden.12@cnu.edu\", \"password\":\"1044922\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", is(testUser.getEmail())));
     }

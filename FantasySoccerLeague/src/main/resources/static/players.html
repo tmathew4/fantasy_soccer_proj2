@@ -8,7 +8,7 @@
 			</tr>
 		</table>
 	</div>
-	<table id="players" ng-controller="list_players">
+	<table id="team" ng-controller="list_players">
 		<tr>
 			<th class="team-header">#</th>
 			<th class="team-header">Name</th>
@@ -20,7 +20,7 @@
 			<th class="team-header">Own Goals</th>
 			<th class="team-header">Current Score</th>
 		</tr>
-		<tr ng-repeat="x in players">
+		<tr ng-repeat="x in list_players">
 
 			<td>{{x.id}}</td>
 			<td>{{x.name}}</td>

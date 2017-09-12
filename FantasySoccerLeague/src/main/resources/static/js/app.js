@@ -1,4 +1,5 @@
 var app = angular.module('main', ["ngRoute"]);
+app.show = false;
 app.controller("menu", ['$scope', '$location', '$http',
 	function($scope, $location, $http) {
 		$scope.route = function(path) {
@@ -25,10 +26,21 @@ app.controller("menu", ['$scope', '$location', '$http',
 		    	app.user = $response.data;
 		    	console.log($response);
 		    	console.log($response.data);
-		    	$location.url('/home');
+		    	console.log(app.user);
+		    	if(app.user != null) {
+		    	    $scope.route("/home");
+		    	    //$scope.show_menu();
+		    	    app.show = true;
+		    	}
 		    });
 		}
-
+        $scope.show_menu = function() {
+		    console.log(app.user);
+            var read = new XMLHttpRequest();
+            read.open('GET', 'menu.html', false);
+            read.send();
+            document.getElementById("menu_container").innerHTML = read.responseText;
+        }
 
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
@@ -39,25 +51,29 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     })
     .when("/home", {
 		templateUrl : "home.html",
-		controller: 'teamData'
+		controller: 'team_data'
     })
     .when("/league", {
         templateUrl : "league.html"
     })
     .when("/teams", {
-        templateUrl : "team.html"
+        templateUrl : "team.html",
+        controller: 'team_data'
     })
     .when("/schedule", {
         templateUrl : "schedule.html"
     })
     .when("/create", {
-        templateUrl : "createuser.html"
+        templateUrl : "createuser.html",
+        controller : "create_user"
     })
     .when("/sign", {
-        templateUrl : "sign.html"
+        templateUrl : "sign.html",
+        controller : "sign_player"
     })
     .when("/trade", {
-        templateUrl : "trade.html"
+        templateUrl : "trade.html",
+        controller : "trade_players"
     })
     .when("/players", {
         templateUrl : "players.html",
@@ -68,42 +84,96 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
         controller: 'list_unsigned_players'
     });
 }]);
-app.controller("my_players", function($scope, $location) {
-		$http.get("/players", function($response){
-			$scope.m_players = $response.data;
-		});
-	});
-app.controller("not_my_players", function($scope, $location) {
-		$http.get("/other_signed_players", function($response){
-			$scope.o_players = $response.data;
-		});
-	});
-
 app.controller("get_teams", function($scope, $http) {
-	$http.get("/teams", function($response){
+	$http.get("/league/1").then(function($response){
 		$scope.l_teams = $response.data;
 	});
 });
 app.controller("team_data", function($scope, $http) {
-	$http.get("/team_players/"+$scope.teamid, function($response){
-		$scope.players = $response.data;
+	$http.get("/team/1").then(function($response){
+	    console.log($response.data);
+		$scope.t_players = $response.data;
 	});
 });
 app.controller("list_players", function($scope, $http) {
-	$http.get("http://localhost:8080/allPlayers").then(function(response){
+	$http.get("all_players").then(function(response){
 		console.log(response.data);
-		$scope.players = response.data;
+		$scope.list_players = response.data;
 	});
 });
 app.controller("list_unsigned_players", function($scope, $http) {
-	$http.get("http://localhost:8080/availablePlayers").then(function(response){
+	$http.get("available_players").then(function(response){
 		console.log(response.data);
-		$scope.players = response.data;
+		$scope.unsigned_players = response.data;
 	});
 });
-
-app.controller("list_signed_players", function($scope, $http) {
-	$http.get("/unavailablePlayers").then( function(response){
-		$scope.players = response.data;
+//app.controller("list_signed_players", function($scope, $http) {
+//	$http.get("/unavailable_players").then( function(response){
+//		$scope.players = response.data;
+//	});
+//});
+app.controller("sign_player", function($scope, $http) {
+	$http.get("/available_players").then(function($response){
+	    console.log($response.data);
+		$scope.u_players = $response.data;
 	});
+	$scope.sign = function() {
+	    var player1 = document.getElementById("unsigned_player").value;
+
+	    $http.get("/sign_player/" + player1 + "/1");
+	}
+});
+app.controller("trade_players", function($scope, $http) {
+	$http.get("/team/1").then( function($response){
+	    console.log($response.data);
+		$scope.m_players = $response.data;
+	});
+	$http.get("/unavailable_players").then( function($response){
+	    console.log($response.data);
+	    $scope.a_players = $response.data;
+	    var new_players = $scope.m_players;
+	    $scope.o_players = $scope.a_players.filter(function (item) {
+	                            return new_players.filter( function( item2 ){
+                                                        return item.id == item2.id;
+                                                      }).length == 0;
+//                                   return new_players.indexOf(item) === -1;
+                               });
+	});
+	$scope.trade = function() {
+	    var player1 = document.getElementById("my_player").value;
+	    var player2 = document.getElementById("other_player").value;
+
+	    $http.get("/trade_player/" + player1 + "/" + player2);
+	}
+});
+app.controller("team_name", function($scope, $http) {
+    $scope.name = "HI";
+});
+app.controller("create_user", function($scope, $http) {
+
+		$scope.create_user = function() {
+			console.log("inside create user function");
+			var user = {
+				"email" : document.getElementById("email").value,
+				"password" : document.getElementById("password").value,
+				"fname" : document.getElementById("fname").value,
+				"lname" : document.getElementById("lname").value
+			};
+			console.log(user);
+            $http({
+		        method : 'POST',
+		        url : '/register_user',
+		        contentType: 'application/json',
+		        data : JSON.stringify(user)
+		    }).then(function($response) {
+		    	app.user = $response.data;
+		    	console.log($response);
+		    	console.log($response.data);
+		    	console.log(app.user);
+		    	if(app.user != null) {
+		    	    $scope.route("/home");
+		    	    app.show = true;
+		    	}
+		    });
+		}
 });

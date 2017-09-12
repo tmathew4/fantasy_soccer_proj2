@@ -15,4 +15,5 @@ public interface Player_Dao extends JpaRepository<Player, Integer> {
     public List<Player> findAllByTeam_IdGreaterThan(Integer i);
     public List<Player> findAllByTeam_IdIsNull();
     public List<Player> findAllByTeam_IdIsNotNull();
+    public Player findById(Integer id);
 }
