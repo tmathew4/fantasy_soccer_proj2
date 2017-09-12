@@ -7,15 +7,15 @@
 			</tr>
 		</table>
 	</div>
-	<form id="login" action="/trade_players" method="POST">
-		<select id="my_player" name="my_player" ng-controller="my_players">
-        	<option ng-repeat="player in m_players" value="{{player.id}}">{{player.fname}} {{player.lname}}</option>
+	<form id="login" ng-controller="trade_players">
+		<select id="my_player" name="my_player">
+        	<option ng-repeat="player in m_players" value="{{player.id}}">{{player.name}}</option>
         </select>
         <br/>
-		<select id="other_player" name="other_player" ng-controller="not_my_players">
-        	<option ng-repeat="player in o_players" value="{{player.id}}">{{player.fname}} {{player.lname}}</option>
+		<select id="other_player" name="other_player">
+        	<option ng-repeat="player in o_players" value="{{player.id}}">{{player.name}}</option>
         </select>
         <br/>
-        <input value="Submit" type="submit">
+		<button ng-click="trade()">Submit Trade</button>
     </form>
 </div>
