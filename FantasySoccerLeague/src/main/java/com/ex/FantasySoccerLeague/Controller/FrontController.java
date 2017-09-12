@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController    //spring bean that accepts requests
@@ -29,7 +28,7 @@ public class FrontController {
 
     @RequestMapping(path="/login", method = {RequestMethod.POST, RequestMethod.GET},
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getLogin( String json) throws IOException {
+    public String getLogin(@RequestBody String json) throws IOException {
         System.out.println("This is the json object " + json);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
@@ -46,14 +45,16 @@ public class FrontController {
             consumes = "*/*",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Player> getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
         List<Player> players =  applicationServices.myTeam(x);
+        System.out.println(players);
         return players;
     }
 
     @RequestMapping(path="/Team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Team> getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
+    public String  getAllTeam(@PathVariable("id") Integer y) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Team> team =  applicationServices.viewAllTeam(y);
-        return team;
+        return mapper.writeValueAsString(team);
     }
 
 
