@@ -9,6 +9,9 @@ import com.ex.FantasySoccerLeague.tables.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 @Service
 public class ApplicationServices {
@@ -64,6 +67,10 @@ public class ApplicationServices {
         return playerDao.findAllByTeam_IdIsNotNull();
     }
 
+    public List<League> findAllLeagues(){
+        return DaoL.findAll();
+    }
+
     public Trade tradePlayers(Integer id1, Integer id2) {
         System.out.println("hello");
         Trade t = new Trade();
@@ -88,5 +95,18 @@ public class ApplicationServices {
         team.setUser(user);
         team.setLeague(mLeagueDao.findOne(leagueId));
         return DaoT.saveAndFlush(team);
+    }
+
+    public static String hashPassword(String input) {
+        String md5 = null;
+        if(null == input) return null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(input.getBytes(), 0, input.length());
+            md5 = new BigInteger(1, digest.digest()).toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return md5;
     }
 }
