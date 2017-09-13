@@ -59,7 +59,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/teams", {
         templateUrl : "team.html",
         controller: 'team_data'
-    })
+	})
+	.when("/create_teams", {
+		templateUrl : "createteam.html",
+		controller : 'create_teams'
+	})
     .when("/schedule", {
         templateUrl : "schedule.html"
     })
@@ -121,6 +125,31 @@ app.controller("sign_player", function($scope, $http) {
 	    var player1 = document.getElementById("unsigned_player").value;
 
 	    $http.get("/sign_player/" + player1 + "/1");
+	}
+});
+app.controller("create_teams", function($scope, $http) {
+
+	$scope.create_team = function() {
+		var team = {
+		"leagueId" : document.getElementById("leagueName").value,
+		"teamName" : document.getElementById("teamName").value
+		};
+		console.log(team); 
+		$http({
+			method :'POST',
+			url : '/register_team',
+			contentType : 'application/json',
+			data : stringify.JSON(team)
+		}).then(function(response) {
+			app.team = $response.data;
+			console.log($response);
+			console.log($response.data);
+			console.log(app.user);
+			if(app.user != null) {
+				$scope.route("/home");
+				app.show = true;
+			}
+		});
 	}
 });
 app.controller("trade_players", function($scope, $http) {
