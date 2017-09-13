@@ -70,6 +70,7 @@ public class ApplicationServices {
     public List<League> findAllLeagues(){
         return DaoL.findAll();
     }
+    public List<League> viewAllLeagues(){ return DaoL.findAll(); }
 
     public Trade tradePlayers(Integer id1, Integer id2) {
         System.out.println("hello");

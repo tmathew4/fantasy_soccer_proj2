@@ -25,7 +25,7 @@ public class Player_Stats {
     public Integer getPlayer_Stats_id(){return this.Player_Stats_id;}
     
     public void setPlayer_Stats_id(Integer player_Stats_id){
-        this.Player_Stats_id = Player_Stats_id;
+        this.Player_Stats_id = player_Stats_id;
     }
 
     @Column(name="FirstName")
