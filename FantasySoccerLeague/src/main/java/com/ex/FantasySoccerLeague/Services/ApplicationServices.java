@@ -30,7 +30,8 @@ public class ApplicationServices {
     League_Dao mLeagueDao;
     @Autowired
     Player_Points_Dao mWeeklyPointsDao;
-
+    @Autowired
+    Player_Stats_Dao playerStatsDao;
 
     public Fantasy_User checkLogin(String email, String password){
         System.out.println(email + " " + password);
@@ -94,6 +95,10 @@ public class ApplicationServices {
         team.setUser(user);
         team.setLeague(mLeagueDao.findOne(leagueId));
         return DaoT.saveAndFlush(team);
+    }
+
+    public Player_Stats getPlayerStats(Integer player_id){
+        return playerStatsDao.findOneByPlayerId(playerDao.findOne(player_id));
     }
 
     public static String hashPassword(String input) {

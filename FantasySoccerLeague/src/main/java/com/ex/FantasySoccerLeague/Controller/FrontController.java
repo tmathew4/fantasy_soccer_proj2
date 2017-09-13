@@ -1,10 +1,7 @@
 package com.ex.FantasySoccerLeague.Controller;
 
 import com.ex.FantasySoccerLeague.Services.ApplicationServices;
-import com.ex.FantasySoccerLeague.tables.Fantasy_User;
-import com.ex.FantasySoccerLeague.tables.League;
-import com.ex.FantasySoccerLeague.tables.Player;
-import com.ex.FantasySoccerLeague.tables.Team;
+import com.ex.FantasySoccerLeague.tables.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -120,6 +117,7 @@ public class FrontController {
         applicationServices.registerTeam(leagueId, teamName, user);
     }
 
+
     /**
      * Flushes the weekly points gathered for each player and updates their
      * overall score.
@@ -134,4 +132,15 @@ public class FrontController {
     public void getTeamPoints(@PathVariable("team_id") Integer teamId ) {
         applicationServices.updateTeamPoints(teamId);
     }
+
+
+    @RequestMapping(path="/player_stats/{id}", method = RequestMethod.GET,
+            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getPlayerStats(@PathVariable("id") Integer player_id) throws IOException {
+        Player_Stats stats = applicationServices.getPlayerStats(player_id);
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(stats));
+        return mapper.writeValueAsString(stats);
+    }
 }
+
