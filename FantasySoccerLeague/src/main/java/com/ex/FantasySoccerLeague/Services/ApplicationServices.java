@@ -1,10 +1,6 @@
 package com.ex.FantasySoccerLeague.Services;
 
-import com.ex.FantasySoccerLeague.Dao.Fantasy_UserDao;
-import com.ex.FantasySoccerLeague.Dao.League_Dao;
-import com.ex.FantasySoccerLeague.Dao.Player_Dao;
-import com.ex.FantasySoccerLeague.Dao.Team_Dao;
-import com.ex.FantasySoccerLeague.Dao.Trade_Dao;
+import com.ex.FantasySoccerLeague.Dao.*;
 import com.ex.FantasySoccerLeague.tables.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,6 +28,9 @@ public class ApplicationServices {
     Trade_Dao DaoTr;
     @Autowired
     League_Dao mLeagueDao;
+    @Autowired
+    Player_Points_Dao mWeeklyPointsDao;
+
 
     public Fantasy_User checkLogin(String email, String password){
         System.out.println(email + " " + password);
@@ -156,5 +155,63 @@ public class ApplicationServices {
             }
         }
         return true;
+    }
+
+    private int generate(int min, int max) {
+        return (int)Math.floor(Math.random() * max + min);
+    }
+
+    /**
+     * Generates random weekly points for each player.
+     * Should remove and create a data wipe when app is deployed to live environment.
+     */
+    public void generateWeeklyPoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            player.setGoals(generate(0, 7));
+            player.setAssists(generate(0, 14));
+            player.setOwn_Goals(generate(0, 3));
+            player.setSOG(generate(0, 7));
+            player.setYellow_Cards(generate(0, 3));
+            player.setRed_Cards(generate(0, 2));
+            mWeeklyPointsDao.saveAndFlush(player);
+        }
+    }
+
+    public void updatePoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            int playerId = player.getPlayer().getId();
+
+            Player overallPoints = playerDao.findOne(playerId);
+            overallPoints.setGoals(overallPoints.getGoals() + player.getGoals());
+            overallPoints.setAssists(overallPoints.getAssists() + player.getAssists());
+            overallPoints.setOwn_Goals(overallPoints.getOwn_Goals() + player.getOwn_Goals());
+            overallPoints.setSOG(overallPoints.getSOG() + player.getSOG());
+
+            //getYellowCard and getYellowCards <-- one has an s, the other doesn't
+            overallPoints.setYellow_Card(overallPoints.getYellow_Card() + player.getYellow_Cards());
+            overallPoints.setRed_Card(overallPoints.getRed_Card() + player.getRed_Cards());
+
+            playerDao.saveAndFlush(overallPoints);
+        }
+    }
+
+    public void updateTeamPoints(Integer teamId) {
+        List<Player> team = playerDao.findAllByTeam_Id(teamId);
+        Integer teamTotal = 0;
+        for(Player player : team) {
+            Player_Points points = mWeeklyPointsDao.findByPlayer(player);
+            teamTotal += points.getGoals();
+            teamTotal += points.getAssists();
+            teamTotal += points.getSOG();
+            teamTotal += Math.negateExact(points.getOwn_Goals());
+            teamTotal += Math.negateExact(points.getYellow_Cards());
+            teamTotal += Math.negateExact(points.getRed_Cards());
+        }
+
+        Team updatedTeam = DaoT.findOne(teamId);
+        updatedTeam.setPoints(teamTotal);
+        DaoT.saveAndFlush(updatedTeam);
     }
 }
