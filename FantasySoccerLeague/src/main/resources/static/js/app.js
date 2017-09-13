@@ -129,27 +129,29 @@ app.controller("sign_player", function($scope, $http) {
 });
 app.controller("create_teams", function($scope, $http) {
 
-	$scope.create_team = function() {
+   	$scope.create_team = function() {
 		var team = {
-		"leagueId" : document.getElementById("leagueName").value,
+		"leagueId" : document.getElementById("leagueId").value,
 		"teamName" : document.getElementById("teamName").value
+
+		$http.get("/register_team/" + leagueId + "/" + teamName);
 		};
 		console.log(team); 
-		$http({
-			method :'POST',
-			url : '/register_team',
-			contentType : 'application/json',
-			data : stringify.JSON(team)
-		}).then(function(response) {
-			app.team = $response.data;
-			console.log($response);
-			console.log($response.data);
-			console.log(app.user);
-			if(app.user != null) {
-				$scope.route("/home");
-				app.show = true;
-			}
-		});
+//		$http({
+//			method :'POST',
+//			url : '/register_team',
+//			contentType : 'application/json',
+//			data : stringify.JSON(team)
+//		}).then(function(response) {
+//			app.team = $response.data;
+//			console.log($response);
+//			console.log($response.data);
+//			console.log(app.user);
+//			if(app.user != null) {
+//				$scope.route("/home");
+//				app.show = true;
+//			}
+//		});
 	}
 });
 app.controller("trade_players", function($scope, $http) {

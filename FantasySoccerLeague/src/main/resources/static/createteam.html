@@ -3,7 +3,11 @@
     <h3> Register Team </h3></div>
     <form id="login" ng-controller="create_team">
         <p>Team Name: <input type="text" id="teamName"/></p>
-        <select id="league_Name" name="league_name">
-                <option ng-repeat="leagues in league_name" value="{{league.id}}">{{league_name.name}}</option>
+        <br>
+        <select id="leagueId" name="leagueId">
+                <option ng-repeat="leagues in league_name" value="{{league.id}}">{{league.name}}</option>
             </select>
-        <button ng-click="create_team()" style="margin-bottom: 5%; position: relative; left: 65%;">Create Team</button>
+        <br>
+        <button ng-click="create_team()">Create Team</button>
+    </form>
+</div>
