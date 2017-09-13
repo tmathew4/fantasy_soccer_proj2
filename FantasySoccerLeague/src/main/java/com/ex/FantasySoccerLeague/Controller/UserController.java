@@ -2,10 +2,8 @@ package com.ex.FantasySoccerLeague.Controller;
 
 import com.ex.FantasySoccerLeague.Dao.*;
 import com.ex.FantasySoccerLeague.Services.ApplicationServices;
-import com.ex.FantasySoccerLeague.tables.Player;
+import com.ex.FantasySoccerLeague.tables.*;
 import com.ex.FantasySoccerLeague.tables.Player_Stats;
-import com.ex.FantasySoccerLeague.tables.Team;
-import com.ex.FantasySoccerLeague.tables.Trade;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Random;
 
@@ -38,13 +37,15 @@ public class UserController {
         this.applicationServices = applicationServices;
     }
 
-    @RequestMapping(path="/my_team/{id}", method = RequestMethod.GET)
-    public String getUserTeam(@PathVariable("id") Integer id) throws IOException {
+    @RequestMapping(path="/my_teams", method = RequestMethod.GET)
+    public String getUserTeams(HttpServletRequest req) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-
-        Team t = teams.findByUser(id);
-
-        return mapper.writeValueAsString(t);
+        Fantasy_User user = (Fantasy_User) req.getSession().getAttribute("user");
+//        System.out.println("___________________________________________________________________");
+//        System.out.println(user.toString());
+        String ret = mapper.writeValueAsString(teams.findByUser(user));
+//        System.out.println(ret);
+        return ret;
     }
 
     @RequestMapping(path="/get_data/{page}", method = RequestMethod.GET)

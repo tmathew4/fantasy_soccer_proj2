@@ -98,13 +98,13 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/leagues", method = RequestMethod.GET,
-            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllLeagues() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        List<League> leagues= applicationServices.findAllLeagues();
-        return mapper.writeValueAsString(leagues);
-    }
+//    @RequestMapping(path="/leagues", method = RequestMethod.GET,
+//            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String getAllLeagues() throws IOException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        List<League> leagues= applicationServices.findAllLeagues();
+//        return mapper.writeValueAsString(leagues);
+//    }
 
     @RequestMapping(path = "/register_user")
     public String registerUser(@RequestBody String json) throws IOException

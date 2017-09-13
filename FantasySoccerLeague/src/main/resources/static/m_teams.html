@@ -1,10 +1,10 @@
 <div class="floating-box">
 	<div class="floating-box head"><div class="floating-box highlight"></div><h2>Teams</h2></div>
-	<table id="team" ng-controller="get_teams">
+	<table id="team" ng-controller="m_teams">
 		<tr>
 			<th class="team-header">Team Name</th>
 		</tr>
-		<tr ng-repeat="x in l_teams" ng-click="get_team(x.id)">
+		<tr ng-repeat="x in m_teams" ng-click="load_team(x.id)">
 			<td>{{x.name}}</td>
 		</tr>
 	</table>
