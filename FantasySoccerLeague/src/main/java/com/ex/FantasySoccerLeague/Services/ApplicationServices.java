@@ -1,10 +1,6 @@
 package com.ex.FantasySoccerLeague.Services;
 
-import com.ex.FantasySoccerLeague.Dao.Fantasy_UserDao;
-import com.ex.FantasySoccerLeague.Dao.League_Dao;
-import com.ex.FantasySoccerLeague.Dao.Player_Dao;
-import com.ex.FantasySoccerLeague.Dao.Team_Dao;
-import com.ex.FantasySoccerLeague.Dao.Trade_Dao;
+import com.ex.FantasySoccerLeague.Dao.*;
 import com.ex.FantasySoccerLeague.tables.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +24,8 @@ public class ApplicationServices {
     Trade_Dao DaoTr;
     @Autowired
     League_Dao mLeagueDao;
+    @Autowired
+    Player_Stats_Dao playerStatsDao;
 
     public Fantasy_User checkLogin(String email, String password){
         System.out.println(email + " " + password);
@@ -91,6 +89,10 @@ public class ApplicationServices {
         team.setUser(user);
         team.setLeague(mLeagueDao.findOne(leagueId));
         return DaoT.saveAndFlush(team);
+    }
+
+    public Player_Stats getPlayerStats(Integer player_id){
+        return playerStatsDao.findOneByPlayerId(playerDao.findOne(player_id));
     }
 
     public static String hashPassword(String input) {

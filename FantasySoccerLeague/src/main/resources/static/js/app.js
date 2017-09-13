@@ -54,7 +54,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
 		controller: 'team_data'
     })
     .when("/league", {
-        templateUrl : "league.html"
+		templateUrl : "league.html",
+		controller: 'get_leagues'
     })
     .when("/teams", {
         templateUrl : "team.html",
@@ -82,13 +83,24 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/unsigned_players", {
         templateUrl : "unsigned_players.html",
         controller: 'list_unsigned_players'
+	})
+	.when("/player_stats/:id", {
+        templateUrl : "playerStats.html",
+        controller: 'player_stats'
     });
 }]);
-app.controller("get_teams", function($scope, $http) {
-	$http.get("/league/1").then(function($response){
+
+app.controller("get_leagues", function($scope, $http) {
+	$http.get("/leagues").then(function($response){
 		$scope.l_teams = $response.data;
 	});
 });
+
+// app.controller("get_teams", function($scope, $http) {
+// 	$http.get("/league/1").then(function($response){
+// 		$scope.l_teams = $response.data;
+// 	});
+// });
 app.controller("team_data", function($scope, $http) {
 	$http.get("/team/1").then(function($response){
 	    console.log($response.data);
@@ -107,6 +119,13 @@ app.controller("list_unsigned_players", function($scope, $http) {
 		$scope.unsigned_players = response.data;
 	});
 });
+
+app.controller("player_stats", ['$scope', '$routeParams','$http',function($scope, $routeParams, $http) {
+	$http.get("player_stats/"+$routeParams.id).then(function(response){
+		console.log(response.data);
+		$scope.player_stats = response.data;
+	});
+}]);
 //app.controller("list_signed_players", function($scope, $http) {
 //	$http.get("/unavailable_players").then( function(response){
 //		$scope.players = response.data;
