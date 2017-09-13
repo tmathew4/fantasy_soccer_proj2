@@ -34,7 +34,7 @@ public class Player_Points {
     }
 
     public void setPlayer (Player playerId) {
-        this.player = player;
+        this.player = playerId;
     }
 
 
