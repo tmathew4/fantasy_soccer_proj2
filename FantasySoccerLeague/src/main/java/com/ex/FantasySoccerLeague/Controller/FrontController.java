@@ -117,6 +117,23 @@ public class FrontController {
         applicationServices.registerTeam(leagueId, teamName, user);
     }
 
+
+    /**
+     * Flushes the weekly points gathered for each player and updates their
+     * overall score.
+     */
+    @RequestMapping(path = "/update_points")
+    public void updatePoints() {
+        applicationServices.generateWeeklyPoints();
+        applicationServices.updatePoints();
+    }
+
+    @RequestMapping(path = "/update_team_points/{team_id}")
+    public void getTeamPoints(@PathVariable("team_id") Integer teamId ) {
+        applicationServices.updateTeamPoints(teamId);
+    }
+
+
     @RequestMapping(path="/player_stats/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public String getPlayerStats(@PathVariable("id") Integer player_id) throws IOException {
@@ -126,3 +143,4 @@ public class FrontController {
         return mapper.writeValueAsString(stats);
     }
 }
+

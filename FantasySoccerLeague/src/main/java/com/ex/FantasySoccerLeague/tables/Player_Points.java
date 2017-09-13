@@ -34,7 +34,7 @@ public class Player_Points {
     }
 
     public void setPlayer (Player playerId) {
-        this.player = player;
+        this.player = playerId;
     }
 
 
@@ -93,4 +93,17 @@ public class Player_Points {
         Yellow_Cards = yellow_Cards;
     }
 
+    @Override
+    public String toString() {
+        return "Player_Points{" +
+                "PlayerPoints_Id=" + PlayerPoints_Id +
+                ", player=" + player +
+                ", Assists=" + Assists +
+                ", SOG=" + SOG +
+                ", Goals=" + Goals +
+                ", Own_Goals=" + Own_Goals +
+                ", Red_Cards=" + Red_Cards +
+                ", Yellow_Cards=" + Yellow_Cards +
+                '}';
+    }
 }
