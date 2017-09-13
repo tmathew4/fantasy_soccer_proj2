@@ -6,9 +6,13 @@ import com.ex.FantasySoccerLeague.Dao.Player_Dao;
 import com.ex.FantasySoccerLeague.Dao.Team_Dao;
 import com.ex.FantasySoccerLeague.Dao.Trade_Dao;
 import com.ex.FantasySoccerLeague.tables.*;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -104,5 +108,53 @@ public class ApplicationServices {
             e.printStackTrace();
         }
         return md5;
+    }
+
+    public boolean validateTeam(String json) throws IOException {
+        final int MAX_TEAM_SIZE = 14, FOUR = 4, TWO = 2,
+                DEF = 1, GOAL = 2, ATK = 3, MID = 4;
+
+        int defenders = 0, goalies = 0, attackers = 0, midfielders = 0;
+
+        ObjectMapper mapper = new ObjectMapper();
+//        Player[] players = mapper.readValue(json, Player[].class);
+//        List<Player> players = mapper.readValue(json, new TypeReference<List<Player>>(){});
+        List<Player> team = mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, Player.class));
+        if(team.size() != MAX_TEAM_SIZE)
+            return false;
+        else {
+            for(Player player : team) {
+                int position = player.getPosition().getId();
+                switch(position) {
+                    case DEF:
+                        if(defenders < FOUR)
+                            defenders++;
+                        else
+                            return false;
+                        break;
+                    case GOAL:
+                        if(goalies < TWO)
+                            goalies++;
+                        else
+                            return false;
+                        break;
+                    case ATK:
+                        if(attackers < FOUR)
+                            attackers++;
+                        else
+                            return false;
+                        break;
+                    case MID:
+                        if(midfielders < FOUR)
+                            midfielders++;
+                        else
+                            return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+        }
+        return true;
     }
 }
