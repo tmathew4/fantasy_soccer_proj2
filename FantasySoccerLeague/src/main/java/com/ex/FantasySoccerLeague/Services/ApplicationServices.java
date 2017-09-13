@@ -5,12 +5,9 @@ import com.ex.FantasySoccerLeague.Dao.League_Dao;
 import com.ex.FantasySoccerLeague.Dao.Player_Dao;
 import com.ex.FantasySoccerLeague.Dao.Team_Dao;
 import com.ex.FantasySoccerLeague.Dao.Trade_Dao;
-import com.ex.FantasySoccerLeague.tables.Player;
-import com.ex.FantasySoccerLeague.tables.Team;
-import com.ex.FantasySoccerLeague.tables.Trade;
+import com.ex.FantasySoccerLeague.tables.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ex.FantasySoccerLeague.tables.Fantasy_User;
 
 import java.util.List;
 @Service
@@ -45,6 +42,10 @@ public class ApplicationServices {
 
     public List<Team> viewAllTeam(Integer id){
         return DaoT.findAllByLeagueId(id);
+    }
+
+    public List<League> viewAllLeagues(){
+        return DaoL.findAll();
     }
 
     public void registerUser(Fantasy_User user) {

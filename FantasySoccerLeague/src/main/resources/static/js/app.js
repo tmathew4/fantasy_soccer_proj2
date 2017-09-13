@@ -1,10 +1,9 @@
 var app = angular.module('main', ["ngRoute"]);
 app.show = false;
-app.controller("menu", ['$scope', '$location', '$http',
-	function($scope, $location, $http) {
-		$scope.route = function(path) {
-		  $location.path(path);
-		};
+app.controller("menu", ['$scope', '$location', '$http', function($scope, $location, $http) {
+       $scope.route = function(path) {
+         $location.path(path);
+       };
 		$scope.my_team = function() {
 			$http.get("/my_team/"+$scope.user.id, function($response) {
 				return $response.data.id;
@@ -28,20 +27,12 @@ app.controller("menu", ['$scope', '$location', '$http',
 		    	console.log($response.data);
 		    	console.log(app.user);
 		    	if(app.user != null) {
-		    	    $scope.route("/home");
+		    	    main.route("/home");
 		    	    //$scope.show_menu();
 		    	    app.show = true;
 		    	}
 		    });
 		}
-        $scope.show_menu = function() {
-		    console.log(app.user);
-            var read = new XMLHttpRequest();
-            read.open('GET', 'menu.html', false);
-            read.send();
-            document.getElementById("menu_container").innerHTML = read.responseText;
-        }
-
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     $routeProvider
@@ -53,8 +44,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
 		templateUrl : "home.html",
 		controller: 'team_data'
     })
+    .when("/leagues", {
+        templateUrl : "leagues.html",
+        controller : "get_leagues"
+    })
     .when("/league", {
-        templateUrl : "league.html"
+        templateUrl : "league.html",
+        controller : "get_teams"
     })
     .when("/teams", {
         templateUrl : "team.html",
@@ -84,15 +80,30 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
         controller: 'list_unsigned_players'
     });
 }]);
-app.controller("get_teams", function($scope, $http) {
-	$http.get("/league/1").then(function($response){
+app.controller("get_leagues", ['$scope', '$location', '$http', function($scope, $location, $http) {
+	$http.get("/league_list").then(function($response){
+	    console.log($response.data);
+		$scope.leagues = $response.data;
+	});
+	$scope.get_league = function(id) {
+	    app.league_id = id;
+	    $location.path("/league");
+	}
+}]);
+app.controller("get_teams", ['$scope', '$location', '$http', function($scope, $location, $http) {
+    console.log(app.league_id);
+	$http.get("/league/" + app.league_id).then(function($response){
 		$scope.l_teams = $response.data;
 	});
-});
+	$scope.get_team = function($location, id) {
+	    app.team_id = id;
+	    $location.path("/team");
+	}
+}]);
 app.controller("team_data", function($scope, $http) {
-	$http.get("/team/1").then(function($response){
+	$http.get("/team/" + app.team_id).then(function($response){
 	    console.log($response.data);
-		$scope.t_players = $response.data;
+		app.t_players = $response.data;
 	});
 });
 app.controller("list_players", function($scope, $http) {
@@ -107,11 +118,6 @@ app.controller("list_unsigned_players", function($scope, $http) {
 		$scope.unsigned_players = response.data;
 	});
 });
-//app.controller("list_signed_players", function($scope, $http) {
-//	$http.get("/unavailable_players").then( function(response){
-//		$scope.players = response.data;
-//	});
-//});
 app.controller("sign_player", function($scope, $http) {
 	$http.get("/available_players").then(function($response){
 	    console.log($response.data);
@@ -136,7 +142,6 @@ app.controller("trade_players", function($scope, $http) {
 	                            return new_players.filter( function( item2 ){
                                                         return item.id == item2.id;
                                                       }).length == 0;
-//                                   return new_players.indexOf(item) === -1;
                                });
 	});
 	$scope.trade = function() {
