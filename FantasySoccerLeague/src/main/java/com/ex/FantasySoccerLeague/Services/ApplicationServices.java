@@ -1,14 +1,14 @@
 package com.ex.FantasySoccerLeague.Services;
 
-import com.ex.FantasySoccerLeague.Dao.Fantasy_UserDao;
-import com.ex.FantasySoccerLeague.Dao.League_Dao;
-import com.ex.FantasySoccerLeague.Dao.Player_Dao;
-import com.ex.FantasySoccerLeague.Dao.Team_Dao;
-import com.ex.FantasySoccerLeague.Dao.Trade_Dao;
+import com.ex.FantasySoccerLeague.Dao.*;
 import com.ex.FantasySoccerLeague.tables.*;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -28,6 +28,10 @@ public class ApplicationServices {
     Trade_Dao DaoTr;
     @Autowired
     League_Dao mLeagueDao;
+    @Autowired
+    Player_Points_Dao mWeeklyPointsDao;
+    @Autowired
+    Player_Stats_Dao playerStatsDao;
 
     public Fantasy_User checkLogin(String email, String password){
         System.out.println(email + " " + password);
@@ -94,6 +98,10 @@ public class ApplicationServices {
         return DaoT.saveAndFlush(team);
     }
 
+    public Player_Stats getPlayerStats(Integer player_id){
+        return playerStatsDao.findOneByPlayerId(playerDao.findOne(player_id));
+    }
+
     public static String hashPassword(String input) {
         String md5 = null;
         if(null == input) return null;
@@ -105,5 +113,111 @@ public class ApplicationServices {
             e.printStackTrace();
         }
         return md5;
+    }
+
+    public boolean validateTeam(String json) throws IOException {
+        final int MAX_TEAM_SIZE = 14, FOUR = 4, TWO = 2,
+                DEF = 1, GOAL = 2, ATK = 3, MID = 4;
+
+        int defenders = 0, goalies = 0, attackers = 0, midfielders = 0;
+
+        ObjectMapper mapper = new ObjectMapper();
+//        Player[] players = mapper.readValue(json, Player[].class);
+//        List<Player> players = mapper.readValue(json, new TypeReference<List<Player>>(){});
+        List<Player> team = mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, Player.class));
+        if(team.size() != MAX_TEAM_SIZE)
+            return false;
+        else {
+            for(Player player : team) {
+                int position = player.getPosition().getId();
+                switch(position) {
+                    case DEF:
+                        if(defenders < FOUR)
+                            defenders++;
+                        else
+                            return false;
+                        break;
+                    case GOAL:
+                        if(goalies < TWO)
+                            goalies++;
+                        else
+                            return false;
+                        break;
+                    case ATK:
+                        if(attackers < FOUR)
+                            attackers++;
+                        else
+                            return false;
+                        break;
+                    case MID:
+                        if(midfielders < FOUR)
+                            midfielders++;
+                        else
+                            return false;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private int generate(int min, int max) {
+        return (int)Math.floor(Math.random() * max + min);
+    }
+
+    /**
+     * Generates random weekly points for each player.
+     * Should remove and create a data wipe when app is deployed to live environment.
+     */
+    public void generateWeeklyPoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            player.setGoals(generate(0, 7));
+            player.setAssists(generate(0, 14));
+            player.setOwn_Goals(generate(0, 3));
+            player.setSOG(generate(0, 7));
+            player.setYellow_Cards(generate(0, 3));
+            player.setRed_Cards(generate(0, 2));
+            mWeeklyPointsDao.saveAndFlush(player);
+        }
+    }
+
+    public void updatePoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            int playerId = player.getPlayer().getId();
+
+            Player overallPoints = playerDao.findOne(playerId);
+            overallPoints.setGoals(overallPoints.getGoals() + player.getGoals());
+            overallPoints.setAssists(overallPoints.getAssists() + player.getAssists());
+            overallPoints.setOwn_Goals(overallPoints.getOwn_Goals() + player.getOwn_Goals());
+            overallPoints.setSOG(overallPoints.getSOG() + player.getSOG());
+
+            //getYellowCard and getYellowCards <-- one has an s, the other doesn't
+            overallPoints.setYellow_Card(overallPoints.getYellow_Card() + player.getYellow_Cards());
+            overallPoints.setRed_Card(overallPoints.getRed_Card() + player.getRed_Cards());
+
+            playerDao.saveAndFlush(overallPoints);
+        }
+    }
+
+    public void updateTeamPoints(Integer teamId) {
+        List<Player> team = playerDao.findAllByTeam_Id(teamId);
+        Integer teamTotal = 0;
+        for(Player player : team) {
+            Player_Points points = mWeeklyPointsDao.findByPlayer(player);
+            teamTotal += points.getGoals();
+            teamTotal += points.getAssists();
+            teamTotal += points.getSOG();
+            teamTotal += Math.negateExact(points.getOwn_Goals());
+            teamTotal += Math.negateExact(points.getYellow_Cards());
+            teamTotal += Math.negateExact(points.getRed_Cards());
+        }
+
+        Team updatedTeam = DaoT.findOne(teamId);
+        updatedTeam.setPoints(teamTotal);
+        DaoT.saveAndFlush(updatedTeam);
     }
 }
