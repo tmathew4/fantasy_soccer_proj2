@@ -81,7 +81,7 @@ public class UserController {
                 s.setNationFlag(curr.get("nation").get("imageUrls").get("medium").textValue());
                 s.setHeight(curr.get("height").intValue());
                 s.setWeight(curr.get("weight").intValue());
-                s.setPlayer_id(p);
+                s.setPlayerId(p);
                 s.setPlayer_Stats_id(p.getId());
                 System.out.println(s.toString());
                 player_stats.saveAndFlush(s);

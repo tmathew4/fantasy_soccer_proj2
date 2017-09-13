@@ -72,6 +72,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/unsigned_players", {
         templateUrl : "unsigned_players.html",
         controller: 'list_unsigned_players'
+	})
+	.when("/player_stats/:id", {
+        templateUrl : "playerStats.html",
+        controller: 'player_stats'
     });
 }]);
 app.controller("get_leagues", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
@@ -129,6 +133,12 @@ app.controller("list_unsigned_players", function($scope, $http) {
 		$scope.unsigned_players = response.data;
 	});
 });
+app.controller("player_stats", ['$scope', '$routeParams','$http',function($scope, $routeParams, $http) {
+	$http.get("player_stats/"+$routeParams.id).then(function(response){
+		console.log(response.data);
+		$scope.player_stats = response.data;
+	});
+}]);
 app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, $http, $rootScope) {
 	$http.get("/available_players").then(function($response){
 	    console.log($response.data);

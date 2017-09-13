@@ -6,25 +6,6 @@ import javax.persistence.*;
 @Table(name="Player_Stats")
 public class Player_Stats {
 
-
-    public Player_Stats(){}
-
-    @Override
-    public String toString() {
-        return "Player_Stats{" +
-                "Player_Stats_id=" + Player_Stats_id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", headShot='" + headShot + '\'' +
-                ", nationName='" + nationName + '\'' +
-                ", nationFlag='" + nationFlag + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", player_id=" + player_id +
-                '}';
-    }
-
     private Integer Player_Stats_id;
     private String firstName;
     private String lastName;
@@ -34,8 +15,9 @@ public class Player_Stats {
     private String birthDate;
     private Integer height;
     private Integer weight;
-    private Player player_id;
+    private Player playerId;
 
+    public Player_Stats(){}
 
     @Id
     @Column(name="PLAYER_STATS_ID", nullable = false)
@@ -95,8 +77,25 @@ public class Player_Stats {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Player_id")
-    public Player getPlayer_id(){return this.player_id;}
-    public void setPlayer_id(Player player_id){
-        this.player_id = player_id;
+    public Player getPlayerId(){return this.playerId;}
+    public void setPlayerId(Player player_id){
+        this.playerId = player_id;
     }
+
+    @Override
+    public String toString() {
+        return "Player_Stats{" +
+                "Player_Stats_id=" + Player_Stats_id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", headShot='" + headShot + '\'' +
+                ", nationName='" + nationName + '\'' +
+                ", nationFlag='" + nationFlag + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", player_id=" + playerId +
+                '}';
+    }
+
 }
