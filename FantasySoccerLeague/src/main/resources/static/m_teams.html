@@ -4,7 +4,7 @@
 		<tr>
 			<th class="team-header">Team Name</th>
 		</tr>
-		<tr ng-repeat="x in m_teams" ng-click="load_team(x.id)">
+		<tr ng-repeat="x in m_teams" ng-click="load_team(x.id, x.name)">
 			<td>{{x.name}}</td>
 		</tr>
 	</table>

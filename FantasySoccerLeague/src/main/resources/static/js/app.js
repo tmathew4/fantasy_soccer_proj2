@@ -90,8 +90,9 @@ app.controller("get_teams", ['$scope', '$location', '$http', '$rootScope', funct
 	    console.log($response.data);
 		$scope.l_teams = $response.data;
 	});
-	$scope.get_team = function(id) {
+	$scope.get_team = function(id, name) {
 	    $rootScope.team_id = id;
+        $rootScope.team_name = name;
 	    $rootScope.mine = false;
 	    $location.path("/teams");
 	}
@@ -109,8 +110,9 @@ app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', functio
         console.log($response.data);
         $scope.m_teams = $response.data;
     });
-    $scope.load_team = function(id) {
+    $scope.load_team = function(id, name) {
         $rootScope.team_id = id;
+        $rootScope.team_name = name;
 	    $rootScope.mine = true;
 	    $location.path("/teams");
     };
@@ -160,9 +162,6 @@ app.controller("trade_players", ['$scope','$http', '$location', '$rootScope', fu
 	    $http.get("/trade_player/" + player1 + "/" + player2);
 	}
 }]);
-app.controller("team_name", function($scope, $http) {
-    $scope.name = "HI";
-});
 app.controller("create_user", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
 
 		$scope.create_user = function() {
