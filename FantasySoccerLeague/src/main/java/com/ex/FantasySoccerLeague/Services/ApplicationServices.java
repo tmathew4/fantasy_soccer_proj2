@@ -235,6 +235,12 @@ public class ApplicationServices {
 
             playerDao.saveAndFlush(overallPoints);
         }
+
+        List<Team> teams = DaoT.findAll();
+        for(Team t : teams) {
+            t.setPoints(0);
+            DaoT.saveAndFlush(t);
+        }
     }
 
     public void updateTeamPoints(Integer teamId) {
@@ -242,7 +248,7 @@ public class ApplicationServices {
         Integer teamTotal = 0;
         for(Player player : team) {
             Player_Points points = mWeeklyPointsDao.findByPlayer(player);
-            teamTotal += (4 * points.getGoals()) + player.getPosition().getId();
+            teamTotal += points.getGoals() * (4 + player.getPosition().getId());
             teamTotal += 3 * points.getAssists();
             teamTotal += points.getSOG();
             teamTotal += 2 * Math.negateExact(points.getOwn_Goals());

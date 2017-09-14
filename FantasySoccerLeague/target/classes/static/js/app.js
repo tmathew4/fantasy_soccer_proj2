@@ -135,10 +135,9 @@ app.controller("team_data", ['$scope','$http', '$rootScope', function($scope, $h
 		$scope.t_players = $response.data;
 	});
 	$scope.get_points = function(player) {
-	    var points = (4 * player.goals) + (4 - player.position.id);
+	    var points = player.goals * (4 + player.position.id);
 	    points += player.sog;
 	    points += 3 * player.assists;
-	    points += (4 * player.goals) + player.position.id;
 	    points -= player.yellow_Card;
 	    points -= 2 * player.own_Goals;
 	    points -= 3 * player.red_Card;
