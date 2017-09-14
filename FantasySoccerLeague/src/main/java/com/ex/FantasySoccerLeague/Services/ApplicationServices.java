@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -87,6 +88,13 @@ public class ApplicationServices {
     public String signPlayer(Integer id, Integer team_id) {
         Player p = playerDao.findById(id);
         p.setTeam(DaoT.findOne(team_id));
+        playerDao.saveAndFlush(p);
+        return "Success";
+    }
+
+    public String dropPlayer(Integer id){
+        Player p = playerDao.findById(id);
+        p.setTeam(null);
         playerDao.saveAndFlush(p);
         return "Success";
     }

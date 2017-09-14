@@ -67,7 +67,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/sign", {
         templateUrl : "sign.html",
         controller : "sign_player"
-    })
+	})
+	.when("/drop",{
+		templateUrl : "drop.html",
+		controller : "drop_player"
+	})
     .when("/trade", {
         templateUrl : "trade.html",
         controller : "trade_players"
@@ -128,6 +132,7 @@ app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', functio
 	    $location.path("/teams");
     };
 }]);
+
 app.controller("list_players", function($scope, $http) {
 	$http.get("all_players").then(function(response){
 		console.log(response.data);
@@ -146,7 +151,7 @@ app.controller("player_stats", ['$scope', '$routeParams','$http',function($scope
 		$scope.player_stats = response.data;
 	});
 }]);
-app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, $http, $rootScope) {
+app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, $http, $rootScope){
 	$http.get("/available_players").then(function($response){
 	    console.log($response.data);
 		$scope.u_players = $response.data;
@@ -156,7 +161,19 @@ app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, 
 
 	    $http.get("/sign_player/" + player1 + "/" + $rootScope.team_id);
 	}
+
 }]);
+app.controller("drop_player",['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
+	$http.get("/team/"+ $rootScope.team_id).then(function($response){
+		console.log($response.data); 
+		$scope.my_players = $response.data; 
+	});
+	$scope.drop = function() {
+		var player1 = document.getElementById("assigned_player").value; 
+		$http.get("/delete_player/" + player1 ); 
+    }
+}]);
+
 app.controller("create_team", ['$scope', '$http','$location',
   function($scope, $http, $location) {
   $scope.route = function(path) {
