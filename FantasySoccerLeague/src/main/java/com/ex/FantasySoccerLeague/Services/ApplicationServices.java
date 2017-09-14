@@ -52,6 +52,10 @@ public class ApplicationServices {
         return DaoT.findAllByLeagueId(id);
     }
 
+    public List<League> viewAllLeagues(){
+        return DaoL.findAll();
+    }
+
     public void registerUser(Fantasy_User user) {
         Dao.saveAndFlush(user);
     }
@@ -71,7 +75,6 @@ public class ApplicationServices {
     public List<League> findAllLeagues(){
         return DaoL.findAll();
     }
-    public List<League> viewAllLeagues(){ return DaoL.findAll(); }
 
     public Trade tradePlayers(Integer id1, Integer id2) {
         System.out.println("hello");

@@ -42,6 +42,12 @@ public class FrontController {
         return mapper.writeValueAsString(user);
     }
 
+    @RequestMapping(path="/logout", method = {RequestMethod.POST, RequestMethod.GET},
+            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public void getLogout(HttpServletRequest req) throws IOException {
+        req.getSession().invalidate();
+    }
+
     @RequestMapping(path="/team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*",produces = MediaType.APPLICATION_JSON_VALUE)
     public String getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {

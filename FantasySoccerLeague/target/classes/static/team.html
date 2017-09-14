@@ -1,0 +1,31 @@
+<div class="floating-box">
+	<a ng-show="mine" href="#!/sign">Manage Team</a>
+	<div class="floating-box head"><div class="floating-box highlight"></div><h2>{{team_name}}</h2></div>
+	<table id="team" ng-controller="team_data">
+		<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
+		<tr>
+			<th class="team-header">#</th>
+			<th class="team-header">Name</th>
+			<th class="team-header">Position</th>
+			<th class="team-header">Shots on Goal</th>
+			<th class="team-header">Assists</th>
+			<th class="team-header">Red Cards</th>
+			<th class="team-header">Yellow Cards</th>
+			<th class="team-header">Own Goals</th>
+			<th class="team-header">Current Score</th>
+		</tr>
+		<tr ng-repeat="x in t_players">
+			<td>{{x.number}}</td>
+			<td>{{x.name}}</td>
+			<td>{{x.position.name}}</td>
+			<td>{{x.sog}}</td>
+			<td>{{x.assists}}</td>
+			<td>{{x.red_Card}}</td>
+			<td>{{x.yellow_Card}}</td>
+			<td>{{x.own_Goals}}</td>
+			<td>{{x.percentage}}</td>
+			<td>{{}}</td>
+		</tr>
+	</table>
+	<p>Team Score: {{}}</p>
+</div>
