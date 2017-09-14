@@ -59,7 +59,11 @@ public class ApplicationServices {
         Dao.saveAndFlush(user);
     }
 
-     public List<Player> findAllPlayers(){
+    public List<Player> findAllLeaguePlayers(int id){
+        return playerDao.findAllByLeague_Id(id);
+    }
+
+    public List<Player> findAllPlayers(){
         return playerDao.findAll();
     }
 
@@ -67,8 +71,16 @@ public class ApplicationServices {
         return playerDao.findAllByTeam_IdIsNull();
     }
 
+    public List<Player> findAvailableLeaguePlayers(int id){
+        return playerDao.findAllByLeague_IdAndTeam_IdIsNull(id);
+    }
+
     public List<Player> findUnavailablePlayers() {
         return playerDao.findAllByTeam_IdIsNotNull();
+    }
+
+    public List<Player> findUnavailableLeaguePlayers(int id) {
+        return playerDao.findAllByLeague_IdAndTeam_IdIsNotNull(id);
     }
 
     public List<League> findAllLeagues(){
@@ -211,16 +223,32 @@ public class ApplicationServices {
         Integer teamTotal = 0;
         for(Player player : team) {
             Player_Points points = mWeeklyPointsDao.findByPlayer(player);
-            teamTotal += points.getGoals();
-            teamTotal += points.getAssists();
+            teamTotal += (4 * points.getGoals()) + player.getPosition().getId();
+            teamTotal += 3 * points.getAssists();
             teamTotal += points.getSOG();
-            teamTotal += Math.negateExact(points.getOwn_Goals());
+            teamTotal += 2 * Math.negateExact(points.getOwn_Goals());
             teamTotal += Math.negateExact(points.getYellow_Cards());
-            teamTotal += Math.negateExact(points.getRed_Cards());
+            teamTotal += 3 * Math.negateExact(points.getRed_Cards());
         }
 
         Team updatedTeam = DaoT.findOne(teamId);
         updatedTeam.setPoints(teamTotal);
         DaoT.saveAndFlush(updatedTeam);
+    }
+
+    public void updateAllTeamPoints() {
+        for(Team t: DaoT.findAll()) {
+            updateTeamPoints(t.getId());
+        }
+    }
+
+    public void generatePlayerPoints() {
+        for(Player p : playerDao.findAll()) {
+            if(mWeeklyPointsDao.findByPlayer(p) == null) {
+                Player_Points pp = new Player_Points();
+                pp.setPlayer(p);
+                mWeeklyPointsDao.saveAndFlush(pp);
+            }
+        }
     }
 }

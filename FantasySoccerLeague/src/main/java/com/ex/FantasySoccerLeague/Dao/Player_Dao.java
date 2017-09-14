@@ -11,10 +11,12 @@ import java.util.List;
 public interface Player_Dao extends JpaRepository<Player, Integer> {
 
 
+    public List<Player> findAllByLeague_Id(Integer id);
+    public List<Player> findAllByLeague_IdAndTeam_IdIsNull(Integer id);
     public List<Player> findAllByTeam_Id(Integer i);
-    public List<Player> findAllByTeam_IdGreaterThan(Integer i);
     public List<Player> findAllByTeam_IdIsNull();
     public List<Player> findAllByTeam_IdIsNotNull();
+    public List<Player> findAllByLeague_IdAndTeam_IdIsNotNull(Integer id);
     public Player findById(Integer id);
     public Player findByName(String name);
 }

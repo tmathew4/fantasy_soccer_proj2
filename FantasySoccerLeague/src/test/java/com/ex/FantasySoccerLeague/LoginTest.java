@@ -54,7 +54,7 @@ public class LoginTest {
 
         testUser = new Fantasy_User();
         testUser.setEmail("Vincent.Bolden.12@cnu.edu");
-        testUser.setPassword("1044922");
+        testUser.setPassword("pass");
 //        testBook = new Book();
 //        testBook.setIsbn("34517898-0");
 //        testBook.setAuthor("Charlie Sheen");
@@ -62,7 +62,7 @@ public class LoginTest {
 //        testBook.setPublishDate(LocalDate.of(2017, 4, 1));
 
 //        when(bookService.getBook(17)).thenReturn(testBook);
-        when(login.checkLogin("Vincent.Bolden.12@cnu.edu", "1044922")).thenReturn(testUser);
+        when(login.checkLogin("Vincent.Bolden.12@cnu.edu", "pass")).thenReturn(testUser);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LoginTest {
 //                .andExpect(status().isOk())
 //                .andExpect(jsonPath("$.isbn", is(testBook.getIsbn())));
         mockMvc.perform(post("/login")
-                .content("{\"email\":\"Vincent.Bolden.12@cnu.edu\", \"password\":\"1044922\"}"))
+                .content("{\"email\":\"Vincent.Bolden.12@cnu.edu\", \"password\":\"pass\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", is(testUser.getEmail())));
     }
