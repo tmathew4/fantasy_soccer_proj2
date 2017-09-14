@@ -20,12 +20,11 @@ public class Player_Stats {
     public Player_Stats(){}
 
     @Id
-    @GeneratedValue
-    @Column(name="Player_Stats_ID", nullable = false)
+    @Column(name="PLAYER_STATS_ID", nullable = false)
     public Integer getPlayer_Stats_id(){return this.Player_Stats_id;}
-    
-    public void setPlayer_Stats_id(Integer player_Stats_id){
-        this.Player_Stats_id = Player_Stats_id;
+
+    public void setPlayer_Stats_id(Integer id){
+        this.Player_Stats_id = id;
     }
 
     @Column(name="FirstName")

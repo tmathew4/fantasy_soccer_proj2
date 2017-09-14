@@ -1,0 +1,16 @@
+<div class="floating-box login">
+    <div class="floating-box head"><div class="floating-box highlight"></div>
+    <h3> Register Team </h3></div>
+  <div ng-controller="create_team">  
+    <form id="create">
+        <select id="leagueId" name="leagueId">
+            <option ng-repeat="league in league_names" value="{{league.id}}">{{league.name}}</option>
+        </select>
+        <br>
+        <p>Team Name:</p><input type="text" id="teamName"/><hr>
+        <br>
+
+        <button ng-click="create_team()">Create Team</button>
+    </form>
+  </div>
+</div>

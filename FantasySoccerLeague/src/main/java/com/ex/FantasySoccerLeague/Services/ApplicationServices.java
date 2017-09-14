@@ -51,6 +51,10 @@ public class ApplicationServices {
         return DaoT.findAllByLeagueId(id);
     }
 
+    public List<League> viewAllLeagues(){
+        return DaoL.findAll();
+    }
+
     public void registerUser(Fantasy_User user) {
         Dao.saveAndFlush(user);
     }
