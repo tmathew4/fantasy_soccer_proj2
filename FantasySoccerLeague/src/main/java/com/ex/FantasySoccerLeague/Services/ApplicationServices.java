@@ -92,9 +92,8 @@ public class ApplicationServices {
         return "Success";
     }
 
-    public String dropPlayer(Integer id, Integer team_id){
+    public String dropPlayer(Integer id){
         Player p = playerDao.findById(id);
-        p.setTeam(DaoT.findOne(team_id));
         p.setTeam(null);
         playerDao.saveAndFlush(p);
         return "Success";

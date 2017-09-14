@@ -151,10 +151,10 @@ public class FrontController {
         return mapper.writeValueAsString(stats);
     }
 
-    @RequestMapping(path="/delete_player/{player_id}{team_id}", method = RequestMethod.GET,
+    @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void removePlayer(@PathVariable("player_id") Integer player_id, @PathVariable("team_id") Integer team_id) throws IOException{
-        applicationServices.dropPlayer(player_id, team_id);
+    public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
+        applicationServices.dropPlayer(player_id);
     }
 }
 

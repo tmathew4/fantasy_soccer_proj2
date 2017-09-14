@@ -45,7 +45,6 @@ public class DropPlayerTest {
         testPlayer = new Player();
         testPlayer.setId(12);
 
-        when(login.dropPlayer(12, 24)).thenReturn("Success");
     }
 
     @Test
