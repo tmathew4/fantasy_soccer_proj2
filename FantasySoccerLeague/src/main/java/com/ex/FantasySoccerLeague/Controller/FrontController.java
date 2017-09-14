@@ -40,6 +40,12 @@ public class FrontController {
         return mapper.writeValueAsString(user);
     }
 
+    @RequestMapping(path="/logout", method = {RequestMethod.POST, RequestMethod.GET},
+            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public void getLogout(HttpServletRequest req) throws IOException {
+        req.getSession().invalidate();
+    }
+
     @RequestMapping(path="/team/{id}", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*",produces = MediaType.APPLICATION_JSON_VALUE)
     public String getMyTeam(@PathVariable("id") Integer x) throws JsonProcessingException {
@@ -47,6 +53,14 @@ public class FrontController {
         List<Player> players =  applicationServices.myTeam(x);
         System.out.println(mapper.writeValueAsString(players));
         return mapper.writeValueAsString(players);
+    }
+
+    @RequestMapping(path="/league_list", method = {RequestMethod.GET, RequestMethod.POST},
+            consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAllLeagues() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<League> team =  applicationServices.viewAllLeagues();
+        return mapper.writeValueAsString(team);
     }
 
     @RequestMapping(path="/league/{id}", method = {RequestMethod.GET, RequestMethod.POST},
@@ -81,6 +95,15 @@ public class FrontController {
         return mapper.writeValueAsString(players);
     }
 
+<<<<<<< HEAD
+//    @RequestMapping(path="/leagues", method = RequestMethod.GET,
+//            consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String getAllLeagues() throws IOException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        List<League> leagues= applicationServices.findAllLeagues();
+//        return mapper.writeValueAsString(leagues);
+//    }
+=======
     @RequestMapping(path="/league_list", method = {RequestMethod.GET, RequestMethod.POST},
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAllLeagues() throws JsonProcessingException {
@@ -88,6 +111,7 @@ public class FrontController {
         List<League> team =  applicationServices.viewAllLeagues();
         return mapper.writeValueAsString(team);
     }
+>>>>>>> master
 
     @RequestMapping(path = "/register_user")
     public String registerUser(@RequestBody String json) throws IOException
