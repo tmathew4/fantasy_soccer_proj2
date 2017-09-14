@@ -148,5 +148,18 @@ public class FrontController {
         System.out.println(mapper.writeValueAsString(stats));
         return mapper.writeValueAsString(stats);
     }
+
+    @RequestMapping(path = "/get_topPlayers")
+    public List<Player_Points> getTopPlayers() {
+        List<Player_Points> topPlayers = applicationServices.getTopPlayersFromAllLeagues();
+        System.out.println(topPlayers);
+        return  topPlayers;
+    }
+
+    @RequestMapping(path = "/get_topTeams")
+    public List<Team> getTopTeams(){
+        List<Team> teams = applicationServices.getTopTeamsFromAllLeagues();
+        return teams;
+    }
 }
 

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ApplicationServices {
@@ -222,5 +223,99 @@ public class ApplicationServices {
         Team updatedTeam = DaoT.findOne(teamId);
         updatedTeam.setPoints(teamTotal);
         DaoT.saveAndFlush(updatedTeam);
+    }
+
+    public int calculatePlayerPoint(Player_Points p){
+        int points = 0;
+        points += 4*p.getGoals() + p.getPlayer().getPosition().getId();
+        points += 3*p.getAssists();
+        points += p.getSOG();
+        points += (2*Math.negateExact(p.getOwn_Goals()));
+        points += Math.negateExact(p.getYellow_Cards());
+        points += (3*Math.negateExact(p.getRed_Cards()));
+        return points;
+    }
+
+    public List<Player_Points> getTopPlayersFromAllLeagues(){
+        List<League> leagues = mLeagueDao.findAll();
+        List <List<Player_Points>> topPlayers = new ArrayList<>();
+        List<Player_Points> topPlayersList = new ArrayList<>();
+        for(League a : leagues){
+            topPlayers.add(gettopplayers(a));
+        }
+        for(List<Player_Points> list: topPlayers){
+            for(Player_Points player_points: list){
+                topPlayersList.add(player_points);
+            }
+        }
+        return topPlayersList;
+    }
+
+    public List<Player_Points> gettopplayers(League a){
+        List<Player_Points> players = mWeeklyPointsDao.findAll();
+        List<Player_Points> topPlayer =  new ArrayList<>();
+        int maxPoints1 = 0;
+        int maxPoints2= 0;
+        Player_Points maxPlayer1 = null;
+        Player_Points maxPlayer2 = null;
+        int points;
+        for(Player_Points p : players){
+            if(p.getPlayer().getLeague().equals(a)) {
+                points = calculatePlayerPoint(p);
+                if (maxPoints1 < points) {
+                    maxPoints2 = maxPoints1;
+                    maxPoints1 = points;
+                    maxPlayer2 = maxPlayer1;
+                    maxPlayer1 = p;
+                } else if (maxPoints2 < points) {
+                    maxPoints2 = points;
+                    maxPlayer2 = p;
+                }
+            }
+        }
+        topPlayer.add(maxPlayer1);
+        topPlayer.add(maxPlayer2);
+        return  topPlayer;
+    }
+
+    public List<Team> getTopTeamsFromAllLeagues(){
+        List<League> leagues = mLeagueDao.findAll();
+        List<List<Team>> topTeamsBigArray = new ArrayList<>();
+        List<Team> topTeams = new ArrayList<>();
+        for(League a : leagues){
+            topTeamsBigArray.add(getTopTeams(a));
+        }
+
+        for(List<Team> team: topTeamsBigArray){
+            for (Team myteam: team){
+                topTeams.add(myteam);
+            }
+        }
+        return topTeams;
+    }
+
+    public List<Team> getTopTeams(League a){
+        List<Team> teams = DaoT.findAllByLeagueId(a.getId());
+        List<Team> topTeams = new ArrayList<>();
+        int maxPoints1 = 0;
+        int maxPoints2 = 0;
+        Team team1 = null;
+        Team team2 = null;
+        int points;
+        for(Team team: teams){
+            points = team.getPoints();
+            if(maxPoints1 < points){
+                maxPoints2 = maxPoints1;
+                maxPoints1 = points;
+                team2 = team1;
+                team1 = team;
+            }else if(maxPoints2 < points){
+                maxPoints2 = points;
+                team2 = team;
+            }
+        }
+        topTeams.add(team1);
+        topTeams.add(team2);
+        return topTeams;
     }
 }

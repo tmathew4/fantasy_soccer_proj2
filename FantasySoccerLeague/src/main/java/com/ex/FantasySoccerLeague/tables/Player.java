@@ -19,6 +19,7 @@ public class Player {
     private Integer Percentage;
     private Team team;
     private Position position;
+    private League league;
 
     public Integer getPercentage() {
         return Percentage;
@@ -146,5 +147,14 @@ public class Player {
         this.position = position;
     }
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="LEAGUE_ID")
+    public League getLeague() {
+        return league;
+    }
 
+    public void setLeague(League league) {
+        this.league = league;
+    }
 }
+
