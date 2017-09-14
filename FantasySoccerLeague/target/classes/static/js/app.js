@@ -52,6 +52,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/teams", {
         templateUrl : "team.html",
         controller: 'team_data'
+	})
+	.when("/create_team", {
+		templateUrl : "createteam.html",
+		controller : "create_team"
+	})
+    .when("/schedule", {
+        templateUrl : "schedule.html"
     })
     .when("/create", {
         templateUrl : "createuser.html",
@@ -148,6 +155,29 @@ app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, 
 	    var player1 = document.getElementById("unsigned_player").value;
 
 	    $http.get("/sign_player/" + player1 + "/" + $rootScope.team_id);
+	}
+}]);
+app.controller("create_team", ['$scope', '$http','$location',
+  function($scope, $http, $location) {
+  $scope.route = function(path) {
+  		  $location.path(path);
+  		};
+		  $http.get("/league_list").then(function($response){
+		   console.log($response.data);
+		   $scope.league_names = $response.data;
+		   });
+   	$scope.create_team = function() {
+		let myLeagueId =  document.getElementById("leagueId").value;
+		let myTeamName = document.getElementById("teamName").value;
+		console.log(myLeagueId);
+		console.log(myTeamName); 
+		$http({
+			method :'GET',
+			url : "/register_team/" + myLeagueId + "/" + myTeamName,
+			contentType : 'application/json'
+		}).then(function() {
+				$scope.route("/home");
+		});
 	}
 }]);
 app.controller("trade_players", ['$scope','$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope) {
