@@ -2,7 +2,6 @@
 	<a href="#!/sign">Manage Team</a>
 	<div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="team_name">{{name}}</h2></div>
 	<table id="team" ng-controller="team_data">
-		<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
 		<tr>
 			<th class="team-header">#</th>
 			<th class="team-header">Name</th>
@@ -26,6 +25,7 @@
 			<td>{{x.percentage}}</td>
 			<td>{{}}</td>
 		</tr>
+		<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
 	</table>
 	<p>Team Score: {{}}</p>
 </div>

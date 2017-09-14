@@ -110,7 +110,7 @@ app.controller("team_data", function($scope, $http) {
 	    console.log($response.data);
 		$scope.t_players = $response.data;
 	});
-}]);
+});
 app.controller("list_players", function($scope, $http) {
 	$http.get("all_players").then(function(response){
 		console.log(response.data);
