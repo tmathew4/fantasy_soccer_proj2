@@ -15,32 +15,32 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/target/classes/static/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+            <state relative-caret-position="-975">
+              <caret line="137" column="66" lean-forward="true" selection-start-line="137" selection-start-column="66" selection-end-line="137" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FrontController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="148" column="51" lean-forward="true" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
-              <folding>
-                <element signature="e#6452#6453#0" expanded="true" />
-                <element signature="e#6509#6510#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationServices.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplicationServices.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="221" column="63" lean-forward="false" selection-start-line="221" selection-start-column="63" selection-end-line="221" selection-end-column="63" />
+            <state relative-caret-position="67">
+              <caret line="220" column="31" lean-forward="true" selection-start-line="220" selection-start-column="31" selection-end-line="220" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrontController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="156" column="42" lean-forward="true" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+              <folding>
+                <element signature="e#6875#6876#0" expanded="true" />
+                <element signature="e#6924#6925#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +48,8 @@
       <file leaf-file-name="team.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/target/classes/static/team.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="268">
+              <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -81,6 +81,8 @@
       <find>get_le</find>
       <find>avai</find>
       <find>ava</find>
+      <find>poin</find>
+      <find>rootScope.team</find>
     </findStrings>
     <replaceStrings>
       <replace>playerDao</replace>
@@ -135,16 +137,16 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/p_league.html" />
         <option value="$PROJECT_DIR$/target/classes/static/p_league.html" />
         <option value="$PROJECT_DIR$/target/classes/static/index.html" />
-        <option value="$PROJECT_DIR$/target/classes/static/team.html" />
         <option value="$PROJECT_DIR$/target/classes/static/league.html" />
         <option value="$PROJECT_DIR$/target/classes/static/m_teams.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Dao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/app.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/playerStats.html" />
         <option value="$PROJECT_DIR$/target/classes/static/playerStats.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/team.html" />
         <option value="$PROJECT_DIR$/target/classes/static/js/app.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java" />
       </list>
     </option>
   </component>
@@ -334,8 +336,8 @@
       <recent name="com.ex.FantasySoccerLeague" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/target/classes" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/target/classes" />
       <recent name="$PROJECT_DIR$/target/classes/static/js" />
       <recent name="$PROJECT_DIR$/target/classes/static" />
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
@@ -622,7 +624,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38390094" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38390094" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -961,14 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="180" column="7" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="180" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/playerStats.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -987,36 +981,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/static/team.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="31" />
+        <state relative-caret-position="268">
+          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="180" column="7" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="180" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/static/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="125" column="24" lean-forward="false" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+        <state relative-caret-position="-975">
+          <caret line="137" column="66" lean-forward="true" selection-start-line="137" selection-start-column="66" selection-end-line="137" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="220" column="31" lean-forward="true" selection-start-line="220" selection-start-column="31" selection-end-line="220" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="148" column="51" lean-forward="true" selection-start-line="148" selection-start-column="51" selection-end-line="148" selection-end-column="51" />
+        <state relative-caret-position="262">
+          <caret line="156" column="42" lean-forward="true" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
           <folding>
-            <element signature="e#6452#6453#0" expanded="true" />
-            <element signature="e#6509#6510#0" expanded="true" />
+            <element signature="e#6875#6876#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="221" column="63" lean-forward="false" selection-start-line="221" selection-start-column="63" selection-end-line="221" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>

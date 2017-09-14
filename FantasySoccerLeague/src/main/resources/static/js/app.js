@@ -123,19 +123,20 @@ app.controller("get_teams", ['$scope', '$location', '$http', '$rootScope', funct
         $rootScope.team_id = id;
         $rootScope.team_name = name;
         $rootScope.league_id = league;
-        $rootScope.points = points;
+        $rootScope.team_points = points;
 	    $rootScope.mine = false;
 	    $location.path("/teams");
 	}
 }]);
 app.controller("team_data", ['$scope','$http', '$rootScope', function($scope, $http, $rootScope) {
-    console.log($rootScope.team_id);
+    console.log($rootScope.team_points);
 	$http.get("/team/" + $rootScope.team_id).then(function($response){
 	    console.log($response.data);
 		$scope.t_players = $response.data;
 	});
 	$scope.get_points = function(player) {
-	    var points = player.sog;
+	    var points = (4 * player.goals) + (4 - player.position.id);
+	    points += player.sog;
 	    points += 3 * player.assists;
 	    points += (4 * player.goals) + player.position.id;
 	    points -= player.yellow_Card;
@@ -153,7 +154,7 @@ app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', functio
         $rootScope.team_id = id;
         $rootScope.team_name = name;
         $rootScope.league_id = league;
-        $rootScope.points = points;
+        $rootScope.team_points = points;
 	    $rootScope.mine = true;
 	    $location.path("/teams");
     };

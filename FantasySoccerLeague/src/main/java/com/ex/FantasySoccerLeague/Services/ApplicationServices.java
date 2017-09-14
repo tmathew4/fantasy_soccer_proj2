@@ -218,6 +218,25 @@ public class ApplicationServices {
         }
     }
 
+    public void resetPoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            int playerId = player.getPlayer().getId();
+
+            Player overallPoints = playerDao.findOne(playerId);
+            overallPoints.setGoals(0);
+            overallPoints.setAssists(0);
+            overallPoints.setOwn_Goals(0);
+            overallPoints.setSOG(0);
+
+            //getYellowCard and getYellowCards <-- one has an s, the other doesn't
+            overallPoints.setYellow_Card(0);
+            overallPoints.setRed_Card(0);
+
+            playerDao.saveAndFlush(overallPoints);
+        }
+    }
+
     public void updateTeamPoints(Integer teamId) {
         List<Player> team = playerDao.findAllByTeam_Id(teamId);
         Integer teamTotal = 0;
@@ -232,7 +251,7 @@ public class ApplicationServices {
         }
 
         Team updatedTeam = DaoT.findOne(teamId);
-        updatedTeam.setPoints(teamTotal);
+        updatedTeam.setPoints(updatedTeam.getPoints() + teamTotal);
         DaoT.saveAndFlush(updatedTeam);
     }
 
