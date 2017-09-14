@@ -52,8 +52,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/teams", {
         templateUrl : "team.html",
         controller: 'team_data'
-<<<<<<< HEAD
-=======
 	})
 	.when("/create_team", {
 		templateUrl : "createteam.html",
@@ -61,7 +59,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
 	})
     .when("/schedule", {
         templateUrl : "schedule.html"
->>>>>>> master
     })
     .when("/create", {
         templateUrl : "createuser.html",
@@ -119,7 +116,6 @@ app.controller("team_data", ['$scope','$http', '$rootScope', function($scope, $h
 		$scope.t_players = $response.data;
 	});
 }]);
-<<<<<<< HEAD
 app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
     $http.get("/my_teams").then(function($response) {
         console.log($response.data);
@@ -132,8 +128,6 @@ app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', functio
 	    $location.path("/teams");
     };
 }]);
-=======
->>>>>>> master
 app.controller("list_players", function($scope, $http) {
 	$http.get("all_players").then(function(response){
 		console.log(response.data);
@@ -162,12 +156,7 @@ app.controller("sign_player", ['$scope','$http', '$rootScope', function($scope, 
 
 	    $http.get("/sign_player/" + player1 + "/" + $rootScope.team_id);
 	}
-<<<<<<< HEAD
 }]);
-app.controller("trade_players", ['$scope','$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope) {
-	$http.get("/team/" + $rootScope.team_id).then( function($response){
-=======
-});
 app.controller("create_team", ['$scope', '$http','$location',
   function($scope, $http, $location) {
   $scope.route = function(path) {
@@ -191,9 +180,8 @@ app.controller("create_team", ['$scope', '$http','$location',
 		});
 	}
 }]);
-app.controller("trade_players", function($scope, $http) {
-	$http.get("/team/1").then( function($response){
->>>>>>> master
+app.controller("trade_players", ['$scope','$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope) {
+	$http.get("/team/" + $rootScope.team_id).then( function($response){
 	    console.log($response.data);
 		$scope.m_players = $response.data;
 	});

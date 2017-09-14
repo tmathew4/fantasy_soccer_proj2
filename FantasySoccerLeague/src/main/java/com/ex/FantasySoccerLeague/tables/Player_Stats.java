@@ -22,14 +22,9 @@ public class Player_Stats {
     @Id
     @Column(name="PLAYER_STATS_ID", nullable = false)
     public Integer getPlayer_Stats_id(){return this.Player_Stats_id;}
-    
-<<<<<<< HEAD
+
     public void setPlayer_Stats_id(Integer id){
         this.Player_Stats_id = id;
-=======
-    public void setPlayer_Stats_id(Integer player_Stats_id){
-        this.Player_Stats_id = player_Stats_id;
->>>>>>> master
     }
 
     @Column(name="FirstName")
