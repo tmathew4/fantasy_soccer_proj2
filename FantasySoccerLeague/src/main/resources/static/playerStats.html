@@ -64,7 +64,12 @@
             </tr>
             <tr>
                 <th class="team-header">Team:</th>
-                <td>{{player_stats.playerId.team.teamId}}</td>
+                <td>
+                    <button ng-show="player_stats.playerId.team == null" type = "button">Add to team</button>
+                    <div ng-hide="player_stats.playerId.team == null">{{player_stats.playerId.team.id}}</div>
+                </td>
+                <!-- <td ng-hide="player_stats.playerId.team.teamId == null">{{player_stats.playerId.team.teamId}}</td> -->
+                <!-- <td <button ng-show="player_stats.playerId.team.teamId == null"></button> </td> -->
             </tr>
         </table>
     </div>
