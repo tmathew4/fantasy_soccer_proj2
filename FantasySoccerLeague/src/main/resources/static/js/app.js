@@ -75,7 +75,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     .when("/sign", {
         templateUrl : "sign.html",
         controller : "sign_player"
-    })
+	})
+	.when("/drop",{
+		templateUrl : "drop.html",
+		controller : "drop_player"
+	})
     .when("/trade", {
         templateUrl : "trade.html",
         controller : "trade_players"
@@ -144,6 +148,16 @@ app.controller("sign_player", function($scope, $http) {
 	    var player1 = document.getElementById("unsigned_player").value;
 
 	    $http.get("/sign_player/" + player1 + "/1");
+	}
+});
+app.controller("drop_player", function($scope, $http){
+	$http.get("/team").then(function($response){
+		console.log($response.data); 
+		$scope.my_players = $response.data; 
+	});
+	$scope.drop = function() {
+		var player1 = document.getElementById("team_data").value; 
+		$http.get("/drop_player/" + player1); 
 	}
 });
 app.controller("create_team", ['$scope', '$http','$location',
