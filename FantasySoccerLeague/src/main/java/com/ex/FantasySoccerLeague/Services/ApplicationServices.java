@@ -340,7 +340,7 @@ public class ApplicationServices {
         return topTeams;
     }
 
-    public List<Team> getTopTeams(League a){
+    public List<Team> getTopTeams(League a) {
         System.out.println("--------------------------------");
         List<Team> teams = DaoT.findAllByLeagueId(a.getId());
         System.out.println(teams);
@@ -350,14 +350,14 @@ public class ApplicationServices {
         Team team1 = null;
         Team team2 = null;
         int points = 0;
-        for(Team team: teams){
+        for (Team team : teams) {
             points = team.getPoints();
-            if(maxPoints1 <= points){
+            if (maxPoints1 <= points) {
                 maxPoints2 = maxPoints1;
                 maxPoints1 = points;
                 team2 = team1;
                 team1 = team;
-            }else if(maxPoints2 <= points){
+            } else if (maxPoints2 <= points) {
                 maxPoints2 = points;
                 team2 = team;
             }
@@ -365,6 +365,7 @@ public class ApplicationServices {
         topTeams.add(team1);
         topTeams.add(team2);
         return topTeams;
+    }
 
     public void updateAllTeamPoints() {
         for(Team t: DaoT.findAll()) {
