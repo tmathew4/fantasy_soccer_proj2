@@ -60,7 +60,11 @@ public class ApplicationServices {
         Dao.saveAndFlush(user);
     }
 
-     public List<Player> findAllPlayers(){
+    public List<Player> findAllLeaguePlayers(int id){
+        return playerDao.findAllByLeague_Id(id);
+    }
+
+    public List<Player> findAllPlayers(){
         return playerDao.findAll();
     }
 
@@ -68,8 +72,16 @@ public class ApplicationServices {
         return playerDao.findAllByTeam_IdIsNull();
     }
 
+    public List<Player> findAvailableLeaguePlayers(int id){
+        return playerDao.findAllByLeague_IdAndTeam_IdIsNull(id);
+    }
+
     public List<Player> findUnavailablePlayers() {
         return playerDao.findAllByTeam_IdIsNotNull();
+    }
+
+    public List<Player> findUnavailableLeaguePlayers(int id) {
+        return playerDao.findAllByLeague_IdAndTeam_IdIsNotNull(id);
     }
 
     public List<League> findAllLeagues(){
@@ -214,21 +226,62 @@ public class ApplicationServices {
         }
     }
 
+    public void resetPoints() {
+        List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
+        for(Player_Points player : weeklyPoints) {
+            int playerId = player.getPlayer().getId();
+
+            Player overallPoints = playerDao.findOne(playerId);
+            overallPoints.setGoals(0);
+            overallPoints.setAssists(0);
+            overallPoints.setOwn_Goals(0);
+            overallPoints.setSOG(0);
+
+            //getYellowCard and getYellowCards <-- one has an s, the other doesn't
+            overallPoints.setYellow_Card(0);
+            overallPoints.setRed_Card(0);
+
+            playerDao.saveAndFlush(overallPoints);
+        }
+
+        List<Team> teams = DaoT.findAll();
+        for(Team t : teams) {
+            t.setPoints(0);
+            DaoT.saveAndFlush(t);
+        }
+    }
+
     public void updateTeamPoints(Integer teamId) {
         List<Player> team = playerDao.findAllByTeam_Id(teamId);
         Integer teamTotal = 0;
         for(Player player : team) {
             Player_Points points = mWeeklyPointsDao.findByPlayer(player);
-            teamTotal += points.getGoals();
-            teamTotal += points.getAssists();
+            teamTotal += points.getGoals() * (4 + player.getPosition().getId());
+            teamTotal += 3 * points.getAssists();
             teamTotal += points.getSOG();
-            teamTotal += Math.negateExact(points.getOwn_Goals());
+            teamTotal += 2 * Math.negateExact(points.getOwn_Goals());
             teamTotal += Math.negateExact(points.getYellow_Cards());
-            teamTotal += Math.negateExact(points.getRed_Cards());
+            teamTotal += 3 * Math.negateExact(points.getRed_Cards());
         }
 
         Team updatedTeam = DaoT.findOne(teamId);
-        updatedTeam.setPoints(teamTotal);
+        updatedTeam.setPoints(updatedTeam.getPoints() + teamTotal);
         DaoT.saveAndFlush(updatedTeam);
+    }
+
+    public void updateAllTeamPoints() {
+        for(Team t: DaoT.findAll()) {
+            updateTeamPoints(t.getId());
+        }
+    }
+
+    public void generatePlayerPoints() {
+        for(Player p : playerDao.findAll()) {
+            if(mWeeklyPointsDao.findByPlayer(p) == null) {
+                Player_Points pp = new Player_Points();
+                pp.setPlayer(p);
+                mWeeklyPointsDao.saveAndFlush(pp);
+            }
+        }
     }
 }

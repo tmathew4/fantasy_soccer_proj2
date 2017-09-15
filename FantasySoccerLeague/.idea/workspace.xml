@@ -12,29 +12,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FrontController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/target/classes/static/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="168">
+              <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
+=======
             <state relative-caret-position="348">
               <caret line="153" column="52" lean-forward="false" selection-start-line="153" selection-start-column="52" selection-end-line="153" selection-end-column="52" />
+>>>>>>> master
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player_Stats.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player_Stats.java">
+      <file leaf-file-name="ApplicationServices.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="191">
+              <caret line="250" column="44" lean-forward="true" selection-start-line="250" selection-start-column="43" selection-end-line="250" selection-end-column="44" />
+              <folding />
+=======
             <state relative-caret-position="425">
               <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding>
                 <element signature="e#649#650#0" expanded="true" />
                 <element signature="e#690#691#0" expanded="true" />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="FrontController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="156" column="42" lean-forward="false" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+              <folding>
+                <element signature="e#6875#6876#0" expanded="true" />
+                <element signature="e#6924#6925#0" expanded="true" />
+=======
       <file leaf-file-name="DropPlayerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/DropPlayerTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,16 +74,25 @@
               <folding>
                 <element signature="e#2033#2034#0" expanded="true" />
                 <element signature="e#2070#2071#0" expanded="true" />
+>>>>>>> master
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="team.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/classes/static/team.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="32" />
+=======
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1422">
               <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+>>>>>>> master
               <folding />
             </state>
           </provider>
@@ -86,6 +116,16 @@
       <find>login</find>
       <find>position</find>
       <find>league_list</find>
+      <find>Head</find>
+      <find>create_team</find>
+      <find>team_data</find>
+      <find>view</find>
+      <find>aval</find>
+      <find>get_le</find>
+      <find>avai</find>
+      <find>ava</find>
+      <find>poin</find>
+      <find>rootScope.team</find>
     </findStrings>
     <replaceStrings>
       <replace>playerDao</replace>
@@ -99,9 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/target/classes/static/login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/login1234.html" />
         <option value="$PROJECT_DIR$/target/classes/static/login1234.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Fantasy_UserDao.java" />
         <option value="$PROJECT_DIR$/target/classes/static/unsigned_players.html" />
@@ -111,40 +148,62 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/menu.html" />
         <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/TradeTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/SignTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/trade.html" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LoginTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/myTeamTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/sign.html" />
         <option value="$PROJECT_DIR$/target/classes/static/trade.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/createuser.html" />
         <option value="$PROJECT_DIR$/target/classes/static/createuser.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Fantasy_User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player.java" />
         <option value="$PROJECT_DIR$/target/classes/static/sign.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Stats_Dao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Dao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/players.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/unsigned_players.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/leagues.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/league.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/DataRetriever.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/team.html" />
         <option value="$PROJECT_DIR$/target/classes/static/leagues.html" />
-        <option value="$PROJECT_DIR$/target/classes/static/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Team_Dao.java" />
         <option value="$PROJECT_DIR$/target/classes/static/my_teams.html" />
+<<<<<<< HEAD
+=======
         <option value="$PROJECT_DIR$/target/classes/static/team.html" />
         <option value="$PROJECT_DIR$/target/classes/static/js/app.js" />
         <option value="$PROJECT_DIR$/target/classes/static/m_teams.html" />
         <option value="$PROJECT_DIR$/target/classes/static/league.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/UserController.java" />
+>>>>>>> master
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player_Stats.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/players.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/sign.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/trade.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/trades.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/trades.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/m_teams.html" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LeagueTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LoginTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Trade_Dao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/team.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/league.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/p_league.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/p_league.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/index.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/league.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/m_teams.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Dao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/app.js" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/main/resources/static/playerStats.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/playerStats.html" />
+        <option value="$PROJECT_DIR$/target/classes/static/team.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java" />
+        <option value="$PROJECT_DIR$/target/classes/static/js/app.js" />
+=======
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/DropPlayerTest.java" />
+>>>>>>> master
       </list>
     </option>
   </component>
@@ -156,9 +215,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="84" />
-    <option name="width" value="668" />
-    <option name="height" value="733" />
+    <option name="x" value="-1" />
+    <option name="width" value="684" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -175,9 +234,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+<<<<<<< HEAD
+      <pane id="Scope" />
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+>>>>>>> master
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,11 +336,64 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FantasySoccerLeague" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FantasySoccerLeague" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+=======
+>>>>>>> master
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
       <pane id="Scope" />
+>>>>>>> master
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,9 +407,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/target/classes" />
-      <recent name="$PROJECT_DIR$/target/classes/static" />
       <recent name="$PROJECT_DIR$/target/classes/static/js" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/js" />
+      <recent name="$PROJECT_DIR$/target/classes/static" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,7 +444,7 @@
       <module name="FantasySoccerLeague" />
       <envs />
     </configuration>
-    <configuration name="LoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LeagueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.ex.FantasySoccerLeague.*" />
@@ -337,7 +455,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.ex.FantasySoccerLeague" />
-      <option name="MAIN_CLASS_NAME" value="com.ex.FantasySoccerLeague.LoginTest" />
+      <option name="MAIN_CLASS_NAME" value="com.ex.FantasySoccerLeague.LeagueTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -351,7 +469,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="TradeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.ex.FantasySoccerLeague.*" />
@@ -362,7 +480,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.ex.FantasySoccerLeague" />
-      <option name="MAIN_CLASS_NAME" value="com.ex.FantasySoccerLeague.TradeTest" />
+      <option name="MAIN_CLASS_NAME" value="com.ex.FantasySoccerLeague.LoginTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -503,18 +621,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.FantasySoccerLeagueApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TradeTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.myTeamTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.LoginTest" />
-      <item index="4" class="java.lang.String" itemvalue="Application.UserController" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.myTeamTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.UserController" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.LeagueTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.LoginTest" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.FantasySoccerLeagueApplication" />
-        <item index="1" class="java.lang.String" itemvalue="Application.UserController" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.myTeamTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TradeTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.LoginTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.LoginTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.LeagueTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.UserController" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.myTeamTest" />
       </list>
     </recent_temporary>
   </component>
@@ -535,20 +653,20 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TradeTest - 2017.09.09 at 11h 11m 13s.xml">
-      <configuration name="TradeTest" configurationId="JUnit" />
+    <history-entry file="LeagueTest - 2017.09.14 at 08h 53m 53s.xml">
+      <configuration name="LeagueTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TradeTest - 2017.09.09 at 11h 16m 33s.xml">
-      <configuration name="TradeTest" configurationId="JUnit" />
+    <history-entry file="LeagueTest - 2017.09.14 at 08h 56m 43s.xml">
+      <configuration name="LeagueTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TradeTest - 2017.09.09 at 11h 20m 27s.xml">
-      <configuration name="TradeTest" configurationId="JUnit" />
+    <history-entry file="LeagueTest - 2017.09.14 at 09h 09m 51s.xml">
+      <configuration name="LeagueTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TradeTest - 2017.09.10 at 13h 41m 12s.xml">
-      <configuration name="TradeTest" configurationId="JUnit" />
+    <history-entry file="LoginTest - 2017.09.14 at 09h 12m 59s.xml">
+      <configuration name="LoginTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TradeTest - 2017.09.10 at 14h 05m 01s.xml">
-      <configuration name="TradeTest" configurationId="JUnit" />
+    <history-entry file="LoginTest - 2017.09.14 at 09h 18m 54s.xml">
+      <configuration name="LoginTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TradeTest - 2017.09.10 at 15h 53m 01s.xml">
       <configuration name="TradeTest" configurationId="JUnit" />
@@ -567,7 +685,11 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-1" y="0" width="1368" height="743" extended-state="6" />
+=======
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+>>>>>>> master
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -578,7 +700,11 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38390094" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> master
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -611,140 +737,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/SignTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="53" column="46" lean-forward="false" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Game_Points.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Fantasy_UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LoginTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="60" column="54" lean-forward="false" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/TradeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="56" column="60" lean-forward="false" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/ViewPlayersTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/viewAllTeamTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-239">
-          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/myTeamTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="76" column="42" lean-forward="false" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/sign.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/trade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/trade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="83" lean-forward="false" selection-start-line="15" selection-start-column="83" selection-end-line="15" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/createuser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Fantasy_User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/sign.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/unsigned_players.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Position_Dao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -753,6 +746,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Position.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/menu.html">
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-32">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
@@ -768,38 +764,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/js/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/league.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/createuser.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="47" lean-forward="false" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/leagues.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="49" lean-forward="false" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -809,18 +777,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#392#393#0" expanded="false" />
-            <element signature="e#464#465#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/leagues.html" />
-    <entry file="file://$PROJECT_DIR$/target/classes/static/index.html">
+    <entry file="file://$PROJECT_DIR$/target/classes/static/leagues.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state relative-caret-position="60">
+          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -828,13 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="50" column="31" lean-forward="false" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -852,28 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="80" lean-forward="false" selection-start-line="2" selection-start-column="80" selection-end-line="2" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="92" column="39" lean-forward="false" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/static/m_teams.html" />
-    <entry file="file://$PROJECT_DIR$/target/classes/static/league.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="68" lean-forward="false" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Stats_Dao.java~HEAD" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Stats_Dao.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -883,14 +817,287 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player_Stats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="83" column="17" lean-forward="false" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+        <state relative-caret-position="151">
+          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding>
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#690#691#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/test.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/unsigned_players.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/trade.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="94" lean-forward="false" selection-start-line="6" selection-start-column="94" selection-end-line="6" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/trades.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="20" column="107" lean-forward="false" selection-start-line="20" selection-start-column="107" selection-end-line="20" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/trades.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LeagueTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="74" column="44" lean-forward="false" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/League.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ex/FantasySoccerLeague/LoginTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="76" column="73" lean-forward="true" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Trade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Trade_Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/m_teams.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="111" lean-forward="false" selection-start-line="10" selection-start-column="111" selection-end-line="10" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/players.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/league.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/leagues.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="158" column="1" lean-forward="true" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/p_league.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/target/classes/static/leagues.html" />
+>>>>>>> master
+    <entry file="file://$PROJECT_DIR$/target/classes/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/p_league.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/league.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="91" lean-forward="false" selection-start-line="7" selection-start-column="91" selection-end-line="7" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/m_teams.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="79" lean-forward="false" selection-start-line="6" selection-start-column="79" selection-end-line="6" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Dao/Player_Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="52" lean-forward="false" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="e#5563#5570#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/sign.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/playerStats.html">
+=======
+    <entry file="file://$PROJECT_DIR$/target/classes/static/m_teams.html" />
+    <entry file="file://$PROJECT_DIR$/target/classes/static/league.html">
+>>>>>>> master
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="76" column="32" lean-forward="false" selection-start-line="70" selection-start-column="19" selection-end-line="76" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/playerStats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="70" column="36" lean-forward="false" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Controller/FrontController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="156" column="42" lean-forward="false" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+          <folding>
+            <element signature="e#6875#6876#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="180" column="7" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="180" selection-end-column="4" />
+          <folding />
+=======
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/tables/Player_Stats.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -899,6 +1106,7 @@
             <element signature="e#649#650#0" expanded="true" />
             <element signature="e#690#691#0" expanded="true" />
           </folding>
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -912,6 +1120,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/FantasySoccerLeague/Services/ApplicationServices.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="191">
+          <caret line="250" column="44" lean-forward="true" selection-start-line="250" selection-start-column="43" selection-end-line="250" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/static/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
+=======
         <state relative-caret-position="209">
           <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
           <folding>
@@ -933,6 +1153,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
           <caret line="51" column="53" lean-forward="false" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
+>>>>>>> master
           <folding />
         </state>
       </provider>

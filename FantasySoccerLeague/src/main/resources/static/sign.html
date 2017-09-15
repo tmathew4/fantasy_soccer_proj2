@@ -3,13 +3,14 @@
 		<div class="floating-box highlight"></div>
 		<table id="smallmenu" ng-controller="menu">
 			<tr>
-				<th ng-click="route('/sign')" id="home" class="menu-item">Sign Player</th>
-				<th ng-click="route('/trade')" id="league" class="menu-item">Trade Players</th>
-				<th ng-click="route('/drop')" id="home" class="menu-item">Drop Player</th>
+                <th ng-click="route('/sign')" id="draft" class="menu-item">Draft Player</th>
+                <th ng-click="route('/trades')" id="m_trades" class="menu-item">Check Trades</th>
+                <th ng-click="route('/trade')" id="trade" class="menu-item">Trade Players</th>
 			</tr>
 		</table>
 	</div>
 	<form id="login">
+		<h3>Draft: </h3>
 		<select id="unsigned_player" name="unsigned_player" ng-controller="sign_player">
         	<option ng-repeat="player in u_players" value="{{player.id}}">{{player.name}}</option>
         </select>

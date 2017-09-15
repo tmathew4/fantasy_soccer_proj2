@@ -4,8 +4,9 @@
 		<tr>
 			<th class="team-header">Team Name</th>
 		</tr>
-		<tr ng-repeat="x in m_teams" ng-click="load_team(x.id, x.name)">
+		<tr ng-repeat="x in m_teams" ng-click="load_team(x.id, x.name, x.league.id, x.points)">
 			<td>{{x.name}}</td>
 		</tr>
 	</table>
+	<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
 </div>

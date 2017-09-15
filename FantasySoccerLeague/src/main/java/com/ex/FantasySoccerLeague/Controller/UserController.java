@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @RestController
@@ -30,6 +32,12 @@ public class UserController {
     @Autowired
     Player_Stats_Dao player_stats;
 
+    @Autowired
+    Trade_Dao trades;
+
+    @Autowired
+    League_Dao leagues;
+
     private ApplicationServices applicationServices;
 
     @Autowired
@@ -41,10 +49,7 @@ public class UserController {
     public String getUserTeams(HttpServletRequest req) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Fantasy_User user = (Fantasy_User) req.getSession().getAttribute("user");
-//        System.out.println("___________________________________________________________________");
-//        System.out.println(user.toString());
         String ret = mapper.writeValueAsString(teams.findByUser(user));
-//        System.out.println(ret);
         return ret;
     }
 
@@ -100,4 +105,91 @@ public class UserController {
         applicationServices.signPlayer(id, team_id);
         return 1;
     }
+
+    @RequestMapping(path="/delete_trade/{id}", method = RequestMethod.GET)
+    public void deleteTrade(@PathVariable("id") Integer id) throws IOException {
+        Trade trade = trades.findOne(id);
+        trades.delete(trade);
+        trades.flush();
+    }
+
+    @RequestMapping(path="/temp", method = RequestMethod.GET)
+    public void temp() throws IOException {
+        int i = 0;
+        for(Player p: players.findAll()) {
+            p.setLeague(leagues.findOne(i+1));
+            i = (i + 1) % 3;
+            players.saveAndFlush(p);
+        }
+    }
+
+    @RequestMapping(path="/finalize_trade/{id}", method = RequestMethod.GET)
+    public void finalizeTrade(@PathVariable("id") Integer id) throws IOException {
+        Trade trade = trades.findOne(id);
+
+        Player p1 = trade.getPlayer1Id();
+        Player p2 = trade.getPlayer2Id();
+
+        Team t = p1.getTeam();
+        p1.setTeam(p2.getTeam());
+        p2.setTeam(t);
+
+        players.saveAndFlush(p1);
+        players.saveAndFlush(p2);
+
+        trades.delete(trade);
+        trades.flush();
+    }
+
+    @RequestMapping(path="/get_trades", method = RequestMethod.GET)
+    public String getTrades(HttpServletRequest req) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Fantasy_User user = (Fantasy_User) req.getSession().getAttribute("user");
+
+        List<Trade> u_trades = new ArrayList<Trade>();
+
+        List<Team> u_teams = teams.findByUser(user);
+
+        for(Team t: u_teams) {
+            List<Player> u_players = players.findAllByTeam_Id(t.getId());
+
+            for(Player p: u_players) {
+                List<Trade> m_trades = trades.findByPlayer2Id(p);
+
+                for(Trade trade : m_trades)
+                    u_trades.add(trade);
+            }
+
+        }
+
+        String ret = mapper.writeValueAsString(u_trades);
+        System.out.println(ret);
+        return ret;
+    }
+
+//    @RequestMapping(path="/top_players", method = RequestMethod.GET)
+//    public String getPoints() throws IOException {
+//        List<Player> ps = players.findAll();
+//        ArrayList<Player> top = new ArrayList<Player>();
+//        int first = 0;
+//        int second = 0;
+//        for(Player p : ps) {
+//            int points = calculatePlayerPoints(p);
+//            if(top.isEmpty() || top.size() == 1)
+//                top.add(p);
+//            else if(points > first) {
+//                top.remove(1);
+//                top.add(0, p);
+//                second = first;
+//                first = calculatePlayerPoints(p);
+//            } else if(points > second) {
+//                top.remove(1);
+//                top.add(1, p);
+//                second = calculatePlayerPoints(p);
+//            }
+//        }
+//        ObjectMapper mapper = new ObjectMapper();
+//        String ret = mapper.writeValueAsString(top);
+//        return ret;
+//    }
 }
