@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @RestController    //spring bean that accepts requests
 public class FrontController {
@@ -165,6 +167,12 @@ public class FrontController {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(stats));
         return mapper.writeValueAsString(stats);
+    }
+
+    @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
+            consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
+        applicationServices.dropPlayer(player_id);
     }
 }
 
