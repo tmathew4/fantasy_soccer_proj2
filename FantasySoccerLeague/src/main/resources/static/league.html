@@ -3,9 +3,11 @@
 	<table id="team" ng-controller="get_teams">
 		<tr>
 			<th class="team-header">Team Name</th>
+			<th class="team-header">Week's Points</th>
 		</tr>
-		<tr ng-repeat="x in l_teams" ng-click="get_team(x.id, x.name)">
+		<tr ng-repeat="x in l_teams" ng-click="get_team(x.id, x.name, x.league.id, x.points)">
 			<td>{{x.name}}</td>
+			<td>{{x.points}}</td>
 		</tr>
 	</table>
 </div>
