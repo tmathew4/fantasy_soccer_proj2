@@ -181,9 +181,9 @@ public class FrontController {
     public String getTopTeams() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         List<Team> teams = applicationServices.getTopTeamsFromAllLeagues();
-        System.out.println( mapper.writeValueAsString(teams));
+        System.out.println(mapper.writeValueAsString(teams));
         return mapper.writeValueAsString(teams);
-
+    }
     @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
     public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
