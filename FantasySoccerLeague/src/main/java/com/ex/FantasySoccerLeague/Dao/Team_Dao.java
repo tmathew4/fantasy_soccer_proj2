@@ -12,5 +12,6 @@ import java.util.List;
 public interface Team_Dao extends JpaRepository<Team, Integer> {
     List<Team> findByUser(Fantasy_User user);
     List<Team> findAllByLeagueId(Integer id);
+    Team findAllByLeagueIdAndUser(Integer id, Fantasy_User user);
     Team save(Team team);
 }
