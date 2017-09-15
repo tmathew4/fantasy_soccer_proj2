@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @RestController    //spring bean that accepts requests
 public class FrontController {
@@ -63,27 +65,27 @@ public class FrontController {
         return mapper.writeValueAsString(team);
     }
 
-    @RequestMapping(path="/all_players", method = RequestMethod.GET,
+    @RequestMapping(path="/all_players/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllPlayers() throws IOException {
+    public String getAllPlayers(@PathVariable("id") Integer id) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findAllPlayers();
+        List<Player> players= applicationServices.findAllLeaguePlayers(id);
         return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/available_players", method = RequestMethod.GET,
+    @RequestMapping(path="/available_players/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAvailablePlayers() throws IOException {
+    public String getAvailablePlayers(@PathVariable("id") Integer id) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findAvailablePlayers();
+        List<Player> players= applicationServices.findAvailableLeaguePlayers(id);
         return mapper.writeValueAsString(players);
     }
 
-    @RequestMapping(path="/unavailable_players", method = RequestMethod.GET,
+    @RequestMapping(path="/unavailable_players/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getUnavailablePlayers() throws IOException {
+    public String getUnavailablePlayers(@PathVariable("id") Integer id) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Player> players= applicationServices.findUnavailablePlayers();
+        List<Player> players= applicationServices.findUnavailableLeaguePlayers(id);
         return mapper.writeValueAsString(players);
     }
 
@@ -139,6 +141,24 @@ public class FrontController {
         applicationServices.updateTeamPoints(teamId);
     }
 
+    @RequestMapping(path = "/update_team_points")
+    public void getTeamPoints() {
+        applicationServices.updateAllTeamPoints();
+    }
+
+    @RequestMapping(path = "/update_everything")
+    public void updateEverything() {
+        applicationServices.generatePlayerPoints();
+        applicationServices.generateWeeklyPoints();
+        applicationServices.updatePoints();
+        applicationServices.updateAllTeamPoints();
+    }
+
+    @RequestMapping(path = "/reset")
+    public void resetEverything() {
+        applicationServices.resetPoints();
+    }
+
 
     @RequestMapping(path="/player_stats/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -148,6 +168,7 @@ public class FrontController {
         System.out.println(mapper.writeValueAsString(stats));
         return mapper.writeValueAsString(stats);
     }
+
 
     @RequestMapping(path = "/get_topPlayers")
     public String getTopPlayers() throws JsonProcessingException {
@@ -162,6 +183,12 @@ public class FrontController {
         List<Team> teams = applicationServices.getTopTeamsFromAllLeagues();
         System.out.println( mapper.writeValueAsString(teams));
         return mapper.writeValueAsString(teams);
+
+    @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
+            consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
+        applicationServices.dropPlayer(player_id);
+
     }
 }
 

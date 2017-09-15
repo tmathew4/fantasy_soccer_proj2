@@ -1,75 +1,81 @@
-<div class="floating-box">
-    <a href="#!/sign">Manage Team</a>
-    <div class="floating-box head"><div class="floating-box highlight"></div><h2 ng-controller="team_name">{{name}}</h2></div>
-    <table id="team" ng-controller="player_stats">
-        <tr>
-            <th class="team-header"></th>
-            <td>><img src="{{player_stats.headShot}}"></td>
-        </tr>
-        <tr>
-            <th class="team-header">FirstName:</th>
-            <td>{{player_stats.firstName}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">LastName:</th>
-            <td>{{player_stats.lastName}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Date Of Birth:</th>
-            <td>{{player_stats.birthDate}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Height:</th>
-            <td>{{player_stats.height}}cm</td>
-        </tr>
-        <tr>
-           <th class="team-header">Weight:</th>
-           <td>{{player_stats.weight}}kg</td>
-        </tr>
-        <tr>
-            <th class="team-header">Nationality:</th>
-            <td>{{player_stats.nationName}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Flag:</th>
-            <td><img src="{{player_stats.nationFlag}}"></td>
-        </tr>
-        <tr>
-            <th class="team-header">Position:</th>
-            <td>{{player_stats.playerId.position.name}}%</td>
-        </tr>
-        <tr>
-            <th class="team-header">Performance:</th>
-            <td>{{player_stats.playerId.percentage}}%</td>
-        </tr>
-        <tr>
-            <th class="team-header">Goals:</th>
-            <td>{{player_stats.playerId.goals}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">SOG:</th>
-            <td>{{player_stats.playerId.sog}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Assists:</th>
-            <td>{{player_stats.playerId.assists}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Red Cards:</th>
-            <td>{{player_stats.playerId.red_Card}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Yellow Cards:</th>
-            <td>{{player_stats.playerId.yellow_Card}}</td>
-        </tr>
-        <tr>
-            <th class="team-header">Team:</th>
-            <td>
-                <button ng-show="player_stats.playerId.team == null" type = "button">Add to team</button>
-                <div ng-hide="player_stats.playerId.team == null">{{player_stats.playerId.team.id}}</div>
-            </td>
-            <!-- <td ng-hide="player_stats.playerId.team.teamId == null">{{player_stats.playerId.team.teamId}}</td> -->
-            <!-- <td <button ng-show="player_stats.playerId.team.teamId == null"></button> </td> -->
-        </tr>
-    </table>
-</div>
+<div class="floating-box" ng-controller="player_stats">
+        <div class="floating-box head"><div class="floating-box highlight"></div><h2>{{u_player_stats.firstName}} {{u_player_stats.lastName}}</h2></div>
+        <table id="team">
+            <tr>
+                <th class="team-header"></th>
+                <td><img src="{{u_player_stats.headShot}}"></td>
+            </tr>
+            <tr>
+                <th class="team-header">FirstName:</th>
+                <td>{{u_player_stats.firstName}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">LastName:</th>
+                <td>{{u_player_stats.lastName}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Date Of Birth:</th>
+                <td>{{u_player_stats.birthDate}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Height:</th>
+                <td>{{u_player_stats.height}}cm</td>
+            </tr>
+            <tr>
+               <th class="team-header">Weight:</th>
+               <td>{{u_player_stats.weight}}kg</td>
+            </tr>
+            <tr>
+                <th class="team-header">Nationality:</th>
+                <td>{{u_player_stats.nationName}} <img src="{{u_player_stats.nationFlag}}"/></td>
+            </tr>
+            <tr>
+                <th class="team-header">League:</th>
+                <td>{{u_player_stats.playerId.league.name}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Team:</th>
+                <td>{{u_player_stats.playerId.team.name}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Position:</th>
+                <td>{{u_player_stats.playerId.position.name}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Performance:</th>
+                <td>{{u_player_stats.playerId.percentage}}%</td>
+            </tr>
+            <tr>
+                <th class="team-header">Goals:</th>
+                <td>{{u_player_stats.playerId.goals}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">SOG:</th>
+                <td>{{u_player_stats.playerId.sog}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Assists:</th>
+                <td>{{u_player_stats.playerId.assists}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Red Cards:</th>
+                <td>{{u_player_stats.playerId.red_Card}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Yellow Cards:</th>
+                <td>{{u_player_stats.playerId.yellow_Card}}</td>
+            </tr>
+            <tr>
+                <th class="team-header">Drafted:</th>
+                <td>
+                    <div ng-show="u_player_stats.playerId.team == null">
+                        <select id="my_team">
+                            <option ng-repeat="x in s_teams" value="{{x.id}}">{{x.name}}</option>
+                        </select>
+                        <button ng-click="sign(u_player_stats.playerId)">Add to team</button>
+                    </div>
+                    <div ng-hide="u_player_stats.playerId.team == null">Drafted<!--{{player_stats.playerId.team.id}}--></div>
+                </td>
+            </tr>
+        </table>
+    </div>
