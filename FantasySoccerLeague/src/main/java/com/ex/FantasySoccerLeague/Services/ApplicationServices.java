@@ -227,7 +227,7 @@ public class ApplicationServices {
 
     public int calculatePlayerPoint(Player_Points p){
         int points = 0;
-        points += 4*p.getGoals() + p.getPlayer().getPosition().getId();
+        points += p.getGoals()* (4+p.getPlayer().getPosition().getId());
         points += 3*p.getAssists();
         points += p.getSOG();
         points += (2*Math.negateExact(p.getOwn_Goals()));
@@ -262,12 +262,12 @@ public class ApplicationServices {
         for(Player_Points p : players){
             if(p.getPlayer().getLeague().equals(a)) {
                 points = calculatePlayerPoint(p);
-                if (maxPoints1 < points) {
+                if (maxPoints1 <= points) {
                     maxPoints2 = maxPoints1;
                     maxPoints1 = points;
                     maxPlayer2 = maxPlayer1;
                     maxPlayer1 = p;
-                } else if (maxPoints2 < points) {
+                } else if (maxPoints2 <= points) {
                     maxPoints2 = points;
                     maxPlayer2 = p;
                 }
@@ -295,21 +295,23 @@ public class ApplicationServices {
     }
 
     public List<Team> getTopTeams(League a){
+        System.out.println("--------------------------------");
         List<Team> teams = DaoT.findAllByLeagueId(a.getId());
+        System.out.println(teams);
         List<Team> topTeams = new ArrayList<>();
         int maxPoints1 = 0;
         int maxPoints2 = 0;
         Team team1 = null;
         Team team2 = null;
-        int points;
+        int points = 0;
         for(Team team: teams){
             points = team.getPoints();
-            if(maxPoints1 < points){
+            if(maxPoints1 <= points){
                 maxPoints2 = maxPoints1;
                 maxPoints1 = points;
                 team2 = team1;
                 team1 = team;
-            }else if(maxPoints2 < points){
+            }else if(maxPoints2 <= points){
                 maxPoints2 = points;
                 team2 = team;
             }

@@ -150,16 +150,18 @@ public class FrontController {
     }
 
     @RequestMapping(path = "/get_topPlayers")
-    public List<Player_Points> getTopPlayers() {
+    public String getTopPlayers() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Player_Points> topPlayers = applicationServices.getTopPlayersFromAllLeagues();
-        System.out.println(topPlayers);
-        return  topPlayers;
+        return  mapper.writeValueAsString(topPlayers);
     }
 
     @RequestMapping(path = "/get_topTeams")
-    public List<Team> getTopTeams(){
+    public String getTopTeams() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
         List<Team> teams = applicationServices.getTopTeamsFromAllLeagues();
-        return teams;
+        System.out.println( mapper.writeValueAsString(teams));
+        return mapper.writeValueAsString(teams);
     }
 }
 
