@@ -38,7 +38,7 @@
                 <td>
                     <div ng-show="u_player_stats.playerId.team == null">
                         <input type="hidden" id="my_team" value="{{s_team.id}}"/>
-                        <button ng-click="sign(u_player_stats.playerId)">Draft</button><p> Into {{s_team.name}}</p>
+                        <button ng-click="sign(u_player_stats.playerId)">Draft</button> Into {{s_team.name}}
                     </div>
                     <div ng-hide="u_player_stats.playerId.team == null">{{u_player_stats.playerId.team.name}}</div>
                 </td>

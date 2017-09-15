@@ -26,15 +26,17 @@ app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($
 		    	}
 		    });
 		}
-        $scope.get_points = function(player) {
-            var points = player.goals * (4 + player.position.id);
-            points += player.sog;
-            points += 3 * player.assists;
-            points -= player.yellow_Card;
-            points -= 2 * player.own_Goals;
-            points -= 3 * player.red_Card;
-            return points;
-        }
+		$rootScope.get_points = function(player) {
+			var points = player.goals * (4 + player.position.id);
+			points += player.sog;
+			points += 3 * player.assists;
+			points -= player.yellow_Card;
+			points -= 2 * player.own_Goals;
+			points -= 3 * player.red_Card;
+			console.log(points);
+			return points;
+		}
+
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     $routeProvider
@@ -44,7 +46,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     })
     .when("/home", {
 		templateUrl : "home.html",
-		controller: 'team_data'
+		controller: 'home_controller'
     })
     .when("/leagues", {
         templateUrl : "leagues.html",
@@ -106,6 +108,21 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
         controller: 'player_stats'
     });
 }]);
+
+app.controller("home_controller", function($scope, $http) {
+	$http.get("/get_topTeams").then(function(response){
+		console.log(response.data);
+		$scope.topteams = response.data;
+		$scope.teamRank = 0;
+	});
+	$http.get("/get_topPlayers").then(function(response){
+		console.log(response.data);
+		$scope.topplayers = response.data;
+		$scope.peopleRank = 0;
+	});
+
+
+});
 app.controller("get_leagues", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
 	$http.get("/league_list").then(function($response){
 	    console.log($response.data);
@@ -142,7 +159,6 @@ app.controller("get_teams", ['$scope', '$location', '$http', '$rootScope', funct
 	}
 }]);
 app.controller("team_data", ['$scope','$http', '$rootScope', function($scope, $http, $rootScope) {
-    console.log($rootScope.team_points);
 	$http.get("/team/" + $rootScope.team_id).then(function($response){
 	    console.log($response.data);
 		$scope.t_players = $response.data;
@@ -178,14 +194,20 @@ app.controller("player_stats", ['$scope', '$routeParams','$http', "$location", "
 	$http.get("player_stats/"+$routeParams.id).then(function(response){
 		console.log(response.data);
 		$scope.u_player_stats = response.data;
+		$scope.player_id = response.data.playerId.id;
 	});
 	$http.get("/my_league/" + $rootScope.league_id).then(function($response){
 	    console.log($response.data);
 		$scope.s_team = $response.data;
+		$rootScope.team_id = $response.data.id;
+        $rootScope.team_name = $response.data.name;
+        $rootScope.league_id = $response.data.league.id;
+        $rootScope.team_points = $response.data.points;
+	    $rootScope.mine = true;
 	});
 	$scope.sign = function(player_id) {
-	    $rootScope.team_id = document.getElementById("my_team").value;
-	    $http.get("/sign_player/" + player_id + "/" + $rootScope.team_id);
+	    //$rootScope.team_id = document.getElementById("my_team").value;
+	    $http.get("/sign_player/" + $scope.player_id + "/" + $rootScope.team_id);
 	    $location.path("/teams")
 	}
 }]);
