@@ -174,5 +174,13 @@ public class FrontController {
     public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
         applicationServices.dropPlayer(player_id);
     }
+
+    @RequestMapping(path="/my_league/{id}", method = {RequestMethod.GET, RequestMethod.POST},
+            consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getTeamInLeague(@PathVariable("id") Integer y, HttpServletRequest req) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Team team =  applicationServices.viewMyTeamInLeague(y, (Fantasy_User) req.getSession().getAttribute("user"));
+        return mapper.writeValueAsString(team);
+    }
 }
 

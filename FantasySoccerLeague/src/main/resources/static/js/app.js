@@ -26,6 +26,15 @@ app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($
 		    	}
 		    });
 		}
+        $scope.get_points = function(player) {
+            var points = player.goals * (4 + player.position.id);
+            points += player.sog;
+            points += 3 * player.assists;
+            points -= player.yellow_Card;
+            points -= 2 * player.own_Goals;
+            points -= 3 * player.red_Card;
+            return points;
+        }
 	}]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider) {
     $routeProvider
@@ -138,15 +147,6 @@ app.controller("team_data", ['$scope','$http', '$rootScope', function($scope, $h
 	    console.log($response.data);
 		$scope.t_players = $response.data;
 	});
-	$scope.get_points = function(player) {
-	    var points = player.goals * (4 + player.position.id);
-	    points += player.sog;
-	    points += 3 * player.assists;
-	    points -= player.yellow_Card;
-	    points -= 2 * player.own_Goals;
-	    points -= 3 * player.red_Card;
-	    return points;
-	}
 }]);
 app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
     $http.get("/my_teams").then(function($response) {
@@ -179,13 +179,13 @@ app.controller("player_stats", ['$scope', '$routeParams','$http', "$location", "
 		console.log(response.data);
 		$scope.u_player_stats = response.data;
 	});
-	$http.get("/league/" + $rootScope.league_id).then(function($response){
+	$http.get("/my_league/" + $rootScope.league_id).then(function($response){
 	    console.log($response.data);
 		$scope.s_team = $response.data;
 	});
 	$scope.sign = function(player_id) {
-	    var team_id = document.getElementById("my_team");
-	    $http.get("/sign_player/" + player_id + "/" + team_id);
+	    $rootScope.team_id = document.getElementById("my_team").value;
+	    $http.get("/sign_player/" + player_id + "/" + $rootScope.team_id);
 	    $location.path("/teams")
 	}
 }]);

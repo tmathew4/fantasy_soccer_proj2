@@ -70,7 +70,7 @@
                 <td>
                     <div ng-show="u_player_stats.playerId.team == null">
                         <select id="my_team">
-                            <option ng-repeat="x in s_teams" value="{{x.id}}">{{x.name}}</option>
+                            <option ng-repeat="x in s_team" value="{{x.id}}">{{x.name}}</option>
                         </select>
                         <button ng-click="sign(u_player_stats.playerId)">Add to team</button>
                     </div>
