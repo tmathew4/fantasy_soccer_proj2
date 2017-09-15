@@ -72,14 +72,14 @@ body {
   background-color: #9F9F9F; }
 
 #team tr:nth-child(odd) {
-  background-color: #000000;
-  color: #007722;
+  background-color: #252525;
+  color: #CFCFCF;
   text-shadow: 1px 1px #111111; }
 
 #team tr:nth-child(even) {
-  background-color: #007722;
-  color: #000000;
-  text-shadow: 1px 1px #CFCFCF; }
+  background-color: #CFCFCF;
+  color: #111111;
+  text-shadow: 1px 1px #FFFFFF; }
 
 .team-header {
   color: #00AA22;

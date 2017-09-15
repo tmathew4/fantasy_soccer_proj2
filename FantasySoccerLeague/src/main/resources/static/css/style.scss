@@ -97,15 +97,15 @@ body {
 }
 
 #team tr:nth-child(odd) {
-    background-color: $primary-col3;
-    color:$primary-col1;
+    background-color: #252525;
+    color:$highlight;
     text-shadow: 1px 1px $shadow;
 }
 
 #team tr:nth-child(even) {
-    background-color: $primary-col1;
-    color: $primary-col3;
-    text-shadow: 1px 1px $highlight;
+    background-color: $highlight;
+    color: $shadow;
+    text-shadow: 1px 1px #FFFFFF;
 }
 
 .team-header{

@@ -15,7 +15,7 @@
 			<th class="team-header">rating</th>
 			<th class="team-header">Current Score</th>
 		</tr>
-		<tr ng-repeat="x in t_players">
+		<tr ng-repeat="x in t_players" ng-click="route('/player_stats/' + x.id)">
 			<td>{{x.number}}</td>
 			<td>{{x.name}}</td>
 			<td>{{x.position.name}}</td>
