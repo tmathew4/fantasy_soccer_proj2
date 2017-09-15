@@ -3,7 +3,7 @@
         <table id="team">
             <tr>
                 <th class="team-header"></th>
-                <td>><img src="{{u_player_stats.headShot}}"></td>
+                <td><img src="{{u_player_stats.headShot}}"></td>
             </tr>
             <tr>
                 <th class="team-header">FirstName:</th>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <th class="team-header">Nationality:</th>
-                <td>{{u_player_stats.nationName}} <img src="{{u_player_stats.nationFlag}}"></td>
+                <td>{{u_player_stats.nationName}} <img src="{{u_player_stats.nationFlag}}"/></td>
             </tr>
             <tr>
                 <th class="team-header">League:</th>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <th class="team-header">Position:</th>
-                <td>{{u_player_stats.playerId.position.name}}%</td>
+                <td>{{u_player_stats.playerId.position.name}}</td>
             </tr>
             <tr>
                 <th class="team-header">Performance:</th>
@@ -68,13 +68,13 @@
             <tr>
                 <th class="team-header">Drafted:</th>
                 <td>
-                    <!--<div ng-show="player_stats.playerId.team == null">-->
-                        <!--<select id="my_team">-->
-                            <!--<option ng-repeat="x in s_teams" value="{{x.id}}">{{x.name}}</option>-->
-                        <!--</select>-->
-                        <!--<button ng-click="sign(player_stats.playerId)">Add to team</button>-->
-                    <!--</div>-->
-                    <!--<div ng-hide="player_stats.playerId.team == null">Drafted&lt;!&ndash;{{player_stats.playerId.team.id}}&ndash;&gt;</div>-->
+                    <div ng-show="u_player_stats.playerId.team == null">
+                        <select id="my_team">
+                            <option ng-repeat="x in s_teams" value="{{x.id}}">{{x.name}}</option>
+                        </select>
+                        <button ng-click="sign(u_player_stats.playerId)">Add to team</button>
+                    </div>
+                    <div ng-hide="u_player_stats.playerId.team == null">Drafted<!--{{player_stats.playerId.team.id}}--></div>
                 </td>
             </tr>
         </table>
