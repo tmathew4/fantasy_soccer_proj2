@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
 </head>
-<body ng-app="main" id="menu-container" layout="column">
+<body ng-app="main" id="menu-container" layout="column" style="background:linear-gradient(45%,red,yellow">
 <img src="img/title2.png" height="50" style="position: absolute;">
 <div layout="row">
     <div flex></div>
-    <md-button id="logout" ng-click="$scope.user = 0" href="index.html#!/">Logout</md-button>
+    <md-button class="md-raised" id="logout" ng-click="$scope.user = 0" href="index.html#!/">Logout</md-button>
 </div>
 <md-toolbar id="menu" ng-controller="menu" layout="row">
     <md-button flex ng-click="route('/home')" id="home" class="menu-item">Home</md-button>

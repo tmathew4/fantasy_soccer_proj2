@@ -1,4 +1,4 @@
-var app = angular.module('main', ["ngRoute", "ngMaterial"]);
+var app = angular.module('main', ["ngRoute", "ngMaterial", "ngMessages"]);
 app.show = false;
 app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
         $rootScope.route = function(path) {
