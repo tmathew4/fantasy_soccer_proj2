@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
 </head>
-<body ng-app="main" id="menu-container" layout="column" style="background:linear-gradient(45%,red,yellow">
+<body ng-app="main" id="menu-container" layout="column">
 <img src="img/title2.png" height="50" style="position: absolute;">
 <div layout="row">
     <div flex></div>
@@ -18,6 +18,7 @@
     <md-button flex ng-click="route('/m_teams')" id="teams" class="menu-item">My Teams</md-button>
     <md-button flex ng-click="route('/p_league')" id="players" class="menu-item">All Players</md-button>
 </md-toolbar>
+<md-progress-linear md-mode="indeterminate"></md-progress-linear>
 <div ng-view>
 </div>
 
