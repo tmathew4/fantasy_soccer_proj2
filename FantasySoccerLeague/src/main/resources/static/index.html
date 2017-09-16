@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Fantasy Soccer</title>
-	    <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
-	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
-	</head>
-	<body>
-		<div ng-app="main">
-			<div id="menu_container">
-				<img src="img/title2.png" height="65" width="200" style="position: absolute; left: 2px; top: 2px;"><a id="logout" ng-click="$scope.user = 0" href="index.html#!/">Logout</a>
-				<table id="menu" ng-controller="menu">
+<head>
+    <meta charset="UTF-8">
+    <title>Fantasy Soccer</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+</head>
+<body ng-app="main" id="menu-container" layout="column">
+<img src="img/title2.png" height="50" style="position: absolute;">
+<div layout="row">
+    <div flex></div>
+    <md-button id="logout" ng-click="$scope.user = 0" href="index.html#!/">Logout</md-button>
+</div>
+<md-toolbar id="menu" ng-controller="menu" layout="row">
+    <md-button flex ng-click="route('/home')" id="home" class="menu-item">Home</md-button>
+    <md-button flex ng-click="route('/leagues')" id="league" class="menu-item">League</md-button>
+    <md-button flex ng-click="route('/m_teams')" id="teams" class="menu-item">My Teams</md-button>
+    <md-button flex ng-click="route('/p_league')" id="players" class="menu-item">All Players</md-button>
+</md-toolbar>
+<div ng-view>
+</div>
 
-					<tr>
-						<th ng-click="route('/home')" id="home" class="menu-item">Home</th>
-						<th ng-click="route('/leagues')" id="league" class="menu-item">League</th>
-						<th ng-click="route('/m_teams')" id="teams" class="menu-item">My Teams</th>
-						<th ng-click="route('/p_league')" id="players" class="menu-item">All Players</th>
-					</tr>
-				</table>
-			</div>
-			<div ng-view>
-		    </div>
-	    </div>
-
-	    <script src="js/app.js"></script>
-	</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="js/app.js"></script>
+</body>
 </html>

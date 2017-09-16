@@ -1,4 +1,4 @@
-var app = angular.module('main', ["ngRoute"]);
+var app = angular.module('main', ["ngRoute", "ngMaterial"]);
 app.show = false;
 app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
         $rootScope.route = function(path) {
@@ -174,7 +174,7 @@ app.controller("list_unsigned_players", ['$scope', '$http', '$rootScope', functi
 		$scope.unsigned_players = response.data;
 	});
 }]);
-app.controller("player_stats", ['$scope', '$routeParams','$http', "$location",function($scope, $routeParams, $http, $location) {
+app.controller("player_stats", ['$scope', '$routeParams','$http', "$location", "$rootScope", function($scope, $routeParams, $http, $location, $rootScope) {
 	$http.get("player_stats/"+$routeParams.id).then(function(response){
 		console.log(response.data);
 		$scope.u_player_stats = response.data;
