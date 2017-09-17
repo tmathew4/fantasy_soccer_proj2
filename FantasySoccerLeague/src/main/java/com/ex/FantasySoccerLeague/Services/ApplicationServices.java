@@ -53,6 +53,10 @@ public class ApplicationServices {
         return DaoT.findAllByLeagueId(id);
     }
 
+    public Team viewMyTeamInLeague(Integer id, Fantasy_User user){
+        return DaoT.findAllByLeagueIdAndUser(id, user);
+    }
+
     public List<League> viewAllLeagues(){
         return DaoL.findAll();
     }

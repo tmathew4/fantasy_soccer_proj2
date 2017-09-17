@@ -1,6 +1,6 @@
 <div class="floating-box">
 
-	<div class="floating-box head"><div class="floating-box highlight"></div><h2>{{team_name}} </h2><a ng-show="mine" href="#!/sign">Manage Team</a></div>
+	<div class="floating-box head"><div class="floating-box highlight"></div><h2>{{team_name}} </h2></div>
 	<table id="team" ng-controller="team_data">
 		<tr>
 			<th class="team-header">#</th>
@@ -12,7 +12,7 @@
 			<th class="team-header">Red Cards</th>
 			<th class="team-header">Yellow Cards</th>
 			<th class="team-header">Own Goals</th>
-			<th class="team-header">rating</th>
+			<th class="team-header">Rating</th>
 			<th class="team-header">Current Score</th>
 		</tr>
 		<tr ng-repeat="x in t_players" ng-click="route('/player_stats/' + x.id)">
@@ -28,7 +28,10 @@
 			<td>{{x.percentage}}%</td>
 			<td>{{get_points(x)}}</td>
 		</tr>
-		<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
+		<!--<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>-->
 	</table>
-	<p>Team Score: {{team_points}}</p>
+	<div style="margin-left: 85%;">
+		<button ng-show="mine" ng-click="route('/sign')">Manage Team</button>
+		<p>Team Score: {{team_points}}</p>
+	</div>
 </div>
