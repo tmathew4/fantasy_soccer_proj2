@@ -150,12 +150,12 @@ public class ApplicationServices {
     public String dropPlayer(Integer id){
         Player p = playerDao.findById(id);
 
-        Team t = p.getTeam();
+//        Team t = p.getTeam();
         p.setTeam(null);
         playerDao.saveAndFlush(p);
 
-        t.setMoney(t.getMoney() + (p.getCost()/2));
-        DaoT.saveAndFlush(t);
+//        t.setMoney(t.getMoney() + (p.getCost()/2));
+//        DaoT.saveAndFlush(t);
         return "Success";
     }
 
