@@ -302,7 +302,8 @@ public class ApplicationServices {
     }
 
     public List<Player_Points> gettopplayers(League a){
-        List<Player_Points> players = mWeeklyPointsDao.findAll();
+        List<Player_Points> players = mWeeklyPointsDao.findByPlayerIn(playerDao.findAllByLeague_Id(a.getId()));
+        System.out.println(players);
         List<Player_Points> topPlayer =  new ArrayList<>();
         int maxPoints1 = 0;
         int maxPoints2= 0;
@@ -310,7 +311,6 @@ public class ApplicationServices {
         Player_Points maxPlayer2 = null;
         int points;
         for(Player_Points p : players){
-            if(p.getPlayer().getLeague().equals(a)) {
                 points = calculatePlayerPoint(p);
                 if (maxPoints1 <= points) {
                     maxPoints2 = maxPoints1;
@@ -321,7 +321,6 @@ public class ApplicationServices {
                     maxPoints2 = points;
                     maxPlayer2 = p;
                 }
-            }
         }
         topPlayer.add(maxPlayer1);
         topPlayer.add(maxPlayer2);
