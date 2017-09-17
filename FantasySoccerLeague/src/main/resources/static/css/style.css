@@ -1,20 +1,26 @@
 body {
-  background-color: #007722; }
+  background-color: rgba(0, 119, 34, 0.69);
+  background: url("/img/soccer2.jpeg") no-repeat 50% 50% fixed;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .floating-box {
-  background-color: #9F9F9F;
+  background-color: rgba(159, 159, 159, 0.69);
   border-radius: 5px;
   box-shadow: 10px 10px 5px #111111; }
 
 .floating-box p, h5, h4, h3, h2, h1 {
-  color: #000000;
+  color: rgba(0, 0, 0, 0.69);
   font-weight: bold;
   text-shadow: 1px 1px #111111;
   margin-bottom: 1%;
   margin-left: 2%; }
 
 .floating-box.head {
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.69);
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   box-shadow: 0px 0px 0px #111111; }
@@ -45,17 +51,17 @@ body {
 
 #menu, #team {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 45px;
   border-collapse: collapse;
   box-shadow: 5px 5px 3px #111111;
-  background-color: #000000; }
+  background-color: rgba(0, 0, 0, 0.69); }
 
 #smallmenu {
   width: 100%;
   color: #00AA22;
   border-collapse: collapse;
   box-shadow: 0px 5px 1px #111111;
-  background-color: #000000; }
+  background-color: rgba(0, 0, 0, 0.69); }
 
 #menu, team, small_menu th {
   color: #00AA22;
@@ -66,20 +72,18 @@ body {
   padding: 8px; }
 
 #menu th:hover {
-  background-color: #9F9F9F; }
+  background-color: rgba(159, 159, 159, 0.69); }
 
 #smallmenu th:hover {
-  background-color: #9F9F9F; }
+  background-color: rgba(159, 159, 159, 0.69); }
 
 #team tr:nth-child(odd) {
-  background-color: #252525;
-  color: #CFCFCF;
-  text-shadow: 1px 1px #111111; }
+  background-color: rgba(37, 37, 37, 0.69);
+  color: #CFCFCF; }
 
 #team tr:nth-child(even) {
-  background-color: #CFCFCF;
-  color: #111111;
-  text-shadow: 1px 1px #FFFFFF; }
+  background-color: rgba(207, 207, 207, 0.69);
+  color: #111111; }
 
 .team-header {
   color: #00AA22;
@@ -119,8 +123,8 @@ body {
   width: 10%;
   height: 7%;
   margin-left: 5%;
-  background-color: #000000;
-  color: #000000;
+  background-color: rgba(0, 0, 0, 0.69);
+  color: rgba(0, 0, 0, 0.69);
   text-align: center;
   cursor: pointer; }
 
@@ -130,7 +134,7 @@ body {
 
 .button:active {
   box-shadow: 2px 2px 2px #111111;
-  background-color: #007722;
+  background-color: rgba(0, 119, 34, 0.69);
   color: #111111;
   top: 5px;
   left: 5px; }

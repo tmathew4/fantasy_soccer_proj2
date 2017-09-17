@@ -169,11 +169,12 @@ app.controller("m_teams", ['$scope', '$location', '$http', '$rootScope', functio
         console.log($response.data);
         $scope.m_teams = $response.data;
     });
-    $scope.load_team = function(id, name, league, points) {
+    $scope.load_team = function(id, name, league, points, money) {
         $rootScope.team_id = id;
         $rootScope.team_name = name;
         $rootScope.league_id = league;
         $rootScope.team_points = points;
+        $rootScope.team_money = money;
 	    $rootScope.mine = true;
 	    $location.path("/teams");
     };
@@ -203,6 +204,7 @@ app.controller("player_stats", ['$scope', '$routeParams','$http', "$location", "
         $rootScope.team_name = $response.data.name;
         $rootScope.league_id = $response.data.league.id;
         $rootScope.team_points = $response.data.points;
+        $rootScope.team_money = $response.data.money;
 	    $rootScope.mine = true;
 	});
 	$scope.sign = function(player_id) {
@@ -231,7 +233,8 @@ app.controller("drop_player",['$scope', '$http', '$rootScope', function($scope, 
 	});
 	$scope.drop = function() {
 		var player1 = document.getElementById("assigned_player").value; 
-		$http.get("/delete_player/" + player1 ); 
+		$http.get("/delete_player/" + player1 );
+		$rootScope.route("/teams")
     }
 }]);
 
@@ -276,9 +279,10 @@ app.controller("trade_players", ['$scope','$http', '$location', '$rootScope', fu
 	$scope.trade = function() {
 	    var player1 = document.getElementById("my_player").value;
 	    var player2 = document.getElementById("other_player").value;
+	    var offer = document.getElementById("offer").value;
 
-	    $http.get("/trade_player/" + player1 + "/" + player2);
-	    $location.path("/teams")
+	    $http.get("/trade_player/" + player1 + "/" + player2 + "/" + offer);
+	    $location.path("/teams");
 	}
 }]);
 app.controller("create_user", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {

@@ -1,23 +1,15 @@
-$primary-col1: rgba(00, 119, 34, 0.69);
-$primary-col2: rgba(159, 159, 159, 0.69);
-$primary-col3: rgba(0, 0, 0, 0.69);
+$primary-col1: #007722;
+$primary-col2: #9F9F9F;
+$primary-col3: #000000;
 
 $highlight: #CFCFCF;
 $shadow: #111111;
-
-$highlight-tra: rgba(207, 207, 207, 0.69);
 
 $text-color-g: #00AA22;
 $text-color-b: $primary-col3;
 
 body {
 	background-color: $primary-col1;
-    background: url("/img/soccer2.jpeg") no-repeat 50% 50% fixed;
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .floating-box {
@@ -73,7 +65,7 @@ body {
 
 #menu, #team {
 	width: 100%;
-	margin-top: 45px;
+	margin-top: 40px;
     border-collapse: collapse;
 	box-shadow: 5px 5px 3px $shadow;
 	background-color: $primary-col3;
@@ -105,15 +97,15 @@ body {
 }
 
 #team tr:nth-child(odd) {
-    background-color: rgba(37, 37, 37, 0.69);
-    color: $highlight;
-    //text-shadow: 1px 1px $shadow;
+    background-color: #252525;
+    color:$highlight;
+    text-shadow: 1px 1px $shadow;
 }
 
 #team tr:nth-child(even) {
-    background-color: $highlight-tra;
+    background-color: $highlight;
     color: $shadow;
-    //text-shadow: 1px 1px #FFFFFF;
+    text-shadow: 1px 1px #FFFFFF;
 }
 
 .team-header{

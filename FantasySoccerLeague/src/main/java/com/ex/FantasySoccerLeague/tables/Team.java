@@ -12,7 +12,8 @@ public class Team {
                 "Id=" + team_Id +
                 ", Name='" + team_Name + '\'' +
                 ", Owner=" + user +
-                ", points=" + Points +
+                ", Points=" + Points +
+                ", Money=" + money +
                 ", League=" + league +
                 '}';
     }

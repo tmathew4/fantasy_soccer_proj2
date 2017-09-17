@@ -154,11 +154,21 @@ public class FrontController {
         applicationServices.updateAllTeamPoints();
     }
 
-    @RequestMapping(path = "/reset")
-    public void resetEverything() {
+    @RequestMapping(path = "/reset_points")
+    public void resetPoints() {
         applicationServices.resetPoints();
     }
 
+    @RequestMapping(path = "/reset_teams")
+    public void resetTeams() {
+        applicationServices.resetTeams();
+    }
+
+    @RequestMapping(path = "/reset_everything")
+    public void resetEverything() {
+        applicationServices.resetPoints();
+        applicationServices.resetTeams();
+    }
 
     @RequestMapping(path="/player_stats/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
