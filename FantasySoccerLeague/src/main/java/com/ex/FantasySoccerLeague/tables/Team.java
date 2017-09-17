@@ -22,7 +22,7 @@ public class Team {
     private Fantasy_User user;
     private Integer Points;
     private League league;
-
+    private Integer money;
 
     public Team(){}
 
@@ -74,5 +74,12 @@ public class Team {
         this.league = league;
     }
 
+    @Column(name="MONEY", length = 10)
+    public Integer getMoney() {
+        return money;
+    }
 
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
 }

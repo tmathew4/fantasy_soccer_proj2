@@ -187,8 +187,10 @@ public class FrontController {
     @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
     public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
+        applicationServices.returnMoneyToTeam(player_id);
         applicationServices.dropPlayer(player_id);
 
     }
+
 }
 

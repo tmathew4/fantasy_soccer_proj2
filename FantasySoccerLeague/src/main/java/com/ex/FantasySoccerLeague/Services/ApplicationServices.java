@@ -187,7 +187,7 @@ public class ApplicationServices {
         return true;
     }
 
-    private int generate(int min, int max) {
+    public int generate(int min, int max) {
         return (int)Math.floor(Math.random() * max + min);
     }
 
@@ -383,4 +383,20 @@ public class ApplicationServices {
         }
 
     }
+
+
+
+
+    int randomWithRange(int min, int max){
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
+    }
+
+    public void returnMoneyToTeam(int player_id){
+        Player p = playerDao.findById(player_id);
+        Team team = DaoT.findOne(p.getTeam().getId());
+        team.setMoney(team.getMoney()+(p.getCost()/2));
+        DaoT.saveAndFlush(team);
+    }
+
 }
