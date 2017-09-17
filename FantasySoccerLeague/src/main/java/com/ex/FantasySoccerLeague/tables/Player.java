@@ -45,6 +45,7 @@ public class Player {
                 ", Red_Card=" + Red_Card +
                 ", Yellow_Card=" + Yellow_Card +
                 ", Percentage=" + Percentage +
+                ", Cost=" + cost +
                 '}';
     }
 

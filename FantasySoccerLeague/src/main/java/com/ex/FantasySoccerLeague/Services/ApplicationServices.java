@@ -2,6 +2,7 @@ package com.ex.FantasySoccerLeague.Services;
 
 import com.ex.FantasySoccerLeague.Dao.*;
 import com.ex.FantasySoccerLeague.tables.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -93,26 +94,68 @@ public class ApplicationServices {
         return DaoL.findAll();
     }
 
-    public Trade tradePlayers(Integer id1, Integer id2) {
+    public Trade tradePlayers(Integer id1, Integer id2, Integer offer) {
         System.out.println("hello");
+
+        Player p = playerDao.findById(id1);
+        if(p.getTeam().getMoney() < offer)
+            return null;
+
         Trade t = new Trade();
-        t.setPlayer1Id(playerDao.findById(id1));
+        t.setPlayer1Id(p);
         t.setPlayer2Id(playerDao.findById(id2));
         DaoTr.saveAndFlush(t);
         return t;
     }
 
-    public String signPlayer(Integer id, Integer team_id) {
+    public String signPlayer(Integer id, Integer team_id) throws JsonProcessingException, IOException{
         Player p = playerDao.findById(id);
-        p.setTeam(DaoT.findOne(team_id));
+
+        Team t = DaoT.findOne(team_id);
+        if(t.getMoney() < p.getCost())
+            return "Failure";
+
+        ArrayList<Player> team = (ArrayList) playerDao.findAllByTeam_Id(team_id);
+        team.add(p);
+
+        ObjectMapper mapper = new ObjectMapper();
+        if(!validateTeam(mapper.writeValueAsString(team)))
+            return "Failure";
+
+        p.setTeam(t);
         playerDao.saveAndFlush(p);
+        t.setMoney(t.getMoney() - p.getCost());
+        DaoT.saveAndFlush(t);
         return "Success";
+    }
+
+    public boolean validateTrade(Player p1, Player p2) throws JsonProcessingException, IOException{
+        ObjectMapper mapper = new ObjectMapper();
+
+        ArrayList<Player> team = (ArrayList) playerDao.findAllByTeam_Id(p1.getTeam().getId());
+        team.remove(p1);
+        team.add(p2);
+        if(!validateTeam(mapper.writeValueAsString(team)))
+            return false;
+
+        team = (ArrayList) playerDao.findAllByTeam_Id(p2.getTeam().getId());
+        team.remove(p2);
+        team.add(p1);
+        if(!validateTeam(mapper.writeValueAsString(team)))
+            return false;
+
+        return true;
     }
 
     public String dropPlayer(Integer id){
         Player p = playerDao.findById(id);
+
+        Team t = p.getTeam();
         p.setTeam(null);
         playerDao.saveAndFlush(p);
+
+        t.setMoney(t.getMoney() + (p.getCost()/2));
+        DaoT.saveAndFlush(t);
         return "Success";
     }
 
@@ -123,6 +166,7 @@ public class ApplicationServices {
         team.setPoints(0);
         team.setUser(user);
         team.setLeague(mLeagueDao.findOne(leagueId));
+        team.setMoney(100);
         return DaoT.saveAndFlush(team);
     }
 
@@ -145,7 +189,7 @@ public class ApplicationServices {
 
     public boolean validateTeam(String json) throws IOException {
         final int MAX_TEAM_SIZE = 14, FOUR = 4, TWO = 2,
-                DEF = 1, GOAL = 2, ATK = 3, MID = 4;
+                DEF = 2, GOAL = 1, ATK = 4, MID = 3;
 
         int defenders = 0, goalies = 0, attackers = 0, midfielders = 0;
 
@@ -153,7 +197,7 @@ public class ApplicationServices {
 //        Player[] players = mapper.readValue(json, Player[].class);
 //        List<Player> players = mapper.readValue(json, new TypeReference<List<Player>>(){});
         List<Player> team = mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, Player.class));
-        if(team.size() != MAX_TEAM_SIZE)
+        if(team.size() > MAX_TEAM_SIZE)
             return false;
         else {
             for(Player player : team) {
@@ -202,12 +246,13 @@ public class ApplicationServices {
     public void generateWeeklyPoints() {
         List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
         for(Player_Points player : weeklyPoints) {
-            player.setGoals(generate(0, 7));
-            player.setAssists(generate(0, 14));
-            player.setOwn_Goals(generate(0, 3));
-            player.setSOG(generate(0, 7));
-            player.setYellow_Cards(generate(0, 3));
-            player.setRed_Cards(generate(0, 2));
+            System.out.println(player);
+            player.setGoals(generate(0, 3));
+            player.setAssists(generate(0, 7));
+            player.setOwn_Goals(generate(0, 1));
+            player.setSOG(generate(0, 14));
+            player.setYellow_Cards(generate(0, 2));
+            player.setRed_Cards(generate(0, 1));
             mWeeklyPointsDao.saveAndFlush(player);
         }
     }
@@ -216,6 +261,8 @@ public class ApplicationServices {
         List<Player_Points> weeklyPoints = mWeeklyPointsDao.findAll();
         for(Player_Points player : weeklyPoints) {
             int playerId = player.getPlayer().getId();
+
+            System.out.println(player.getPlayer());
 
             Player overallPoints = playerDao.findOne(playerId);
             overallPoints.setGoals(overallPoints.getGoals() + player.getGoals());
@@ -256,9 +303,24 @@ public class ApplicationServices {
         }
     }
 
+    public void resetTeams() {
+        List<Player> players = playerDao.findAll();
+        for(Player p : players) {
+            p.setTeam(null);
+            playerDao.saveAndFlush(p);
+        }
+
+        List<Team> teams = DaoT.findAll();
+        for(Team t : teams) {
+            t.setMoney(100);
+            DaoT.saveAndFlush(t);
+        }
+    }
+
     public void updateTeamPoints(Integer teamId) {
         List<Player> team = playerDao.findAllByTeam_Id(teamId);
         Integer teamTotal = 0;
+        System.out.println(team);
         for(Player player : team) {
             Player_Points points = mWeeklyPointsDao.findByPlayer(player);
             teamTotal += points.getGoals() * (4 + player.getPosition().getId());
@@ -271,6 +333,7 @@ public class ApplicationServices {
 
         Team updatedTeam = DaoT.findOne(teamId);
         updatedTeam.setPoints(updatedTeam.getPoints() + teamTotal);
+        updatedTeam.setMoney(updatedTeam.getMoney() + (int)(teamTotal/20));
         DaoT.saveAndFlush(updatedTeam);
     }
 
@@ -386,9 +449,6 @@ public class ApplicationServices {
         }
 
     }
-
-
-
 
     int randomWithRange(int min, int max){
         int range = (max - min) + 1;

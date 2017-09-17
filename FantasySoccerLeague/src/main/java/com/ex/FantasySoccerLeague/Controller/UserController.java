@@ -95,8 +95,8 @@ public class UserController {
     }
 
     @RequestMapping(path="/trade_player/{id1}/{id2}", method = RequestMethod.GET)
-    public int tradePlayer(@PathVariable("id1") Integer id1, @PathVariable("id2") Integer id2) throws IOException {
-        applicationServices.tradePlayers(id1, id2);
+    public int tradePlayer(@PathVariable("id1") Integer id1, @PathVariable("id2") Integer id2, @PathVariable("offer") Integer offer) throws IOException {
+        applicationServices.tradePlayers(id1, id2, offer);
         return 0;
     }
 
@@ -131,11 +131,17 @@ public class UserController {
         Player p2 = trade.getPlayer2Id();
 
         Team t = p1.getTeam();
+        if(applicationServices.validateTrade(p1, p2) || t.getMoney() <= trade.getOffer())
+            return;
+
         p1.setTeam(p2.getTeam());
         p2.setTeam(t);
 
         players.saveAndFlush(p1);
         players.saveAndFlush(p2);
+
+        t.setMoney(t.getMoney() + trade.getOffer());
+        teams.saveAndFlush(t);
 
         trades.delete(trade);
         trades.flush();

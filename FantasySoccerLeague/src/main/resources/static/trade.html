@@ -9,7 +9,7 @@
 			</tr>
 		</table>
 	</div>
-	<form id="login" ng-controller="trade_players">
+	<form id="login">
 		<h3>Trade: </h3>
 		<select id="my_player" name="my_player">
         	<option ng-repeat="player in m_players" value="{{player.id}}">{{player.name}}</option>
@@ -18,7 +18,9 @@
 		<select id="other_player" name="other_player">
         	<option ng-repeat="player in o_players" value="{{player.id}}">{{player.name}}</option>
         </select>
-        <br/>
+		<br/>
+		Offer: <input type="number" id="offer" min="0" max="100"/>
+		<br/>
 		<button ng-click="trade()">Submit Trade</button>
     </form>
 </div>
