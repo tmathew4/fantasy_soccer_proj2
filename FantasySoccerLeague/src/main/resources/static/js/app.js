@@ -301,3 +301,8 @@ app.controller("get_trades", ['$scope','$http', '$location', '$rootScope', funct
 	    $location.path("/teams");
 	}
 }]);
+app.controller('toolbar', function($scope) {
+    $scope.toolbar = {
+        isOpen : false
+    }
+});

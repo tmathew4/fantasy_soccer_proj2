@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+}
+thead tr, tfoot tr {
+    padding: .5em 0;
+}
+tbody tr:hover {
+    background: #0059ff;
+    cursor: pointer;
+    transition: all 0s;
+}
+tbody tr {
+    border: 1px solid gray;
+    transition: all 1s;
+}

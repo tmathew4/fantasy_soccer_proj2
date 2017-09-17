@@ -1,34 +1,47 @@
-<div class="floating-box">
-
-	<div class="floating-box head"><div class="floating-box highlight"></div><h2>{{team_name}} </h2><a ng-show="mine" href="#!/sign">Manage Team</a></div>
-	<table id="team" ng-controller="team_data">
+<div layout="column">
+	<div>
+		<md-toolbar layout-align="center center">
+			<h3>{{team_name}}</h3>
+		</md-toolbar>
+		<md-button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</md-button>
+		<md-button ng-show="mine" href="#!/sign">Manage Team</md-button>
+	</div>
+	<table id="team" ng-controller="team_data" style="width:100%">
+		<thead>
 		<tr>
-			<th class="team-header">#</th>
-			<th class="team-header">Name</th>
-			<th class="team-header">Position</th>
-			<th class="team-header">Goals</th>
-			<th class="team-header">Shots on Goal</th>
-			<th class="team-header">Assists</th>
-			<th class="team-header">Red Cards</th>
-			<th class="team-header">Yellow Cards</th>
-			<th class="team-header">Own Goals</th>
-			<th class="team-header">rating</th>
-			<th class="team-header">Current Score</th>
+			<th style="text-align:left" class="team-header">#</th>
+			<th style="text-align:left" class="team-header">Name</th>
+			<th style="text-align:left" class="team-header">Position</th>
+			<th style="text-align:left" class="team-header">Goals</th>
+			<th style="text-align:left" class="team-header">Shots on Goal</th>
+			<th style="text-align:left" class="team-header">Assists</th>
+			<th style="text-align:left" class="team-header">Yellow Cards</th>
+			<th style="text-align:left" class="team-header">Red Cards</th>
+			<th style="text-align:left" class="team-header">Own Goals</th>
+			<th style="text-align:left" class="team-header">Rating</th>
+			<th style="text-align:left" class="team-header">Current Score</th>
 		</tr>
+		</thead>
+		<tbody>
 		<tr ng-repeat="x in t_players" ng-click="route('/player_stats/' + x.id)">
-			<td>{{x.number}}</td>
-			<td>{{x.name}}</td>
-			<td>{{x.position.name}}</td>
-			<td>{{x.goals}}</td>
-			<td>{{x.sog}}</td>
-			<td>{{x.assists}}</td>
-			<td>{{x.red_Card}}</td>
-			<td>{{x.yellow_Card}}</td>
-			<td>{{x.own_Goals}}</td>
-			<td>{{x.percentage}}%</td>
-			<td>{{get_points(x)}}</td>
+			<td >{{x.number}}</td>
+			<td  style="white-space:nowrap">{{x.name}}</td>
+			<td  style="white-space:nowrap">{{x.position.name}}</td>
+			<td >{{x.goals}}</td>
+			<td >{{x.sog}}</td>
+			<td >{{x.assists}}</td>
+			<td >{{x.red_Card}}</td>
+			<td >{{x.yellow_Card}}</td>
+			<td >{{x.own_Goals}}</td>
+			<td >{{x.percentage}}%</td>
+			<td >{{get_points(x)}}</td>
 		</tr>
-		<div><button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</button></div>
+		</tbody>
+		<tfoot>
+		<tr>
+			<th colspan="10" style="text-align:right">Team Score: </th>
+			<td>{{team_points}}</td>
+		</tr>
+		</tfoot>
 	</table>
-	<p>Team Score: {{team_points}}</p>
 </div>
