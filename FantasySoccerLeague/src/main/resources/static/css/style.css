@@ -1,5 +1,6 @@
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 thead tr, tfoot tr {
     padding: .5em 0;

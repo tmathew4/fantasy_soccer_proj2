@@ -3,8 +3,8 @@
 		<md-toolbar layout-align="center center">
 			<h3>{{team_name}}</h3>
 		</md-toolbar>
-		<md-button ng-click="route('/create_team')" id="create_team" class="menu-item">Create Team</md-button>
-		<md-button ng-show="mine" href="#!/sign">Manage Team</md-button>
+		<md-button ng-click="route('/create_team')" id="create_team" class="menu-item md-raised md-primary">Create Team</md-button>
+		<md-button ng-show="mine" href="#!/sign" class="md-raised md-primary">Manage Team</md-button>
 	</div>
 	<table id="team" ng-controller="team_data" style="width:100%">
 		<thead>
