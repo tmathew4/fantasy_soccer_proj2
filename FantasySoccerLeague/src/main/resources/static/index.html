@@ -3,14 +3,14 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <title>Fantasy Soccer</title>
-	    <link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 	</head>
 	<body>
 		<div ng-app="main">
-			<div id="menu_container">
-				<img src="img/title2.png" height="65" width="200" style="position: absolute; left: 2px; top: 2px;"><a id="logout" ng-click="$scope.user = 0" href="index.html#!/">Logout</a>
+			<div id="menu_container" ng-show="user != null">
+				<img src="img/title3.png" height="65" width="200" style="position: absolute; left: 2%; top: 5px;"><a id="logout" ng-click="logout()" href="index.html#!/">Logout</a>
 				<table id="menu" ng-controller="menu">
 
 					<tr>

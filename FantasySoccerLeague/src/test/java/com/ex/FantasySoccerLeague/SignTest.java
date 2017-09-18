@@ -45,7 +45,11 @@ public class SignTest {
         testPlayer = new Player();
         testPlayer.setId(1);
 
-        when(login.signPlayer(1, 24)).thenReturn("Success");
+        try {
+            when(login.signPlayer(1, 24)).thenReturn("Success");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

@@ -54,7 +54,7 @@ public class TradeTest {
         testTrade.setPlayer2Id(p1);
         testTrade.setPlayer2Id(p2);
 
-        when(login.tradePlayers(1, 24)).thenReturn(testTrade);
+        when(login.tradePlayers(1, 24, 100000)).thenReturn(testTrade);
     }
 
     @Test
