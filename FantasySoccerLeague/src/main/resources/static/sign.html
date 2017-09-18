@@ -12,7 +12,7 @@
 	</div>
 	<form id="login">
 		<h3>Draft: </h3>
-		<select id="unsigned_player" name="unsigned_player" ng-controller="sign_player">
+		<select id="unsigned_player" name="unsigned_player">
         	<option ng-repeat="player in u_players" value="{{player.id}}">{{player.name}}</option>
         </select>
 		<button ng-click="sign()">Draft</button>

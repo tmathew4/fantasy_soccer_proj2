@@ -20,6 +20,7 @@ public class Player {
     private Team team;
     private Position position;
     private League league;
+    private Integer cost;
 
     public Integer getPercentage() {
         return Percentage;
@@ -44,6 +45,7 @@ public class Player {
                 ", Red_Card=" + Red_Card +
                 ", Yellow_Card=" + Yellow_Card +
                 ", Percentage=" + Percentage +
+                ", Cost=" + cost +
                 '}';
     }
 
@@ -156,4 +158,14 @@ public class Player {
     public void setLeague(League league) {
         this.league = league;
     }
+
+    @Column(name="COST")
+    public Integer getCost() {
+        return cost;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
+    }
 }
+

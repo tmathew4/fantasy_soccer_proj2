@@ -10,6 +10,7 @@ public class Trade {
     private Integer Id;
     private Player player1Id;
     private Player player2Id;
+    private Integer offer;
 
     public Trade() {}
 
@@ -52,4 +53,12 @@ public class Trade {
         this.player2Id = player2Id;
     }
 
+    @Column(name="OFFER")
+    public Integer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Integer offer) {
+        this.offer = offer;
+    }
 }

@@ -154,11 +154,21 @@ public class FrontController {
         applicationServices.updateAllTeamPoints();
     }
 
-    @RequestMapping(path = "/reset")
-    public void resetEverything() {
+    @RequestMapping(path = "/reset_points")
+    public void resetPoints() {
         applicationServices.resetPoints();
     }
 
+    @RequestMapping(path = "/reset_teams")
+    public void resetTeams() {
+        applicationServices.resetTeams();
+    }
+
+    @RequestMapping(path = "/reset_everything")
+    public void resetEverything() {
+        applicationServices.resetPoints();
+        applicationServices.resetTeams();
+    }
 
     @RequestMapping(path="/player_stats/{id}", method = RequestMethod.GET,
             consumes = "*/*" ,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -169,10 +179,36 @@ public class FrontController {
         return mapper.writeValueAsString(stats);
     }
 
+
+    @RequestMapping(path = "/get_topPlayers")
+    public String getTopPlayers() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<Player_Points> topPlayers = applicationServices.getTopPlayersFromAllLeagues();
+        return  mapper.writeValueAsString(topPlayers);
+    }
+
+    @RequestMapping(path = "/get_topTeams")
+    public String getTopTeams() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<Team> teams = applicationServices.getTopTeamsFromAllLeagues();
+        System.out.println(mapper.writeValueAsString(teams));
+        return mapper.writeValueAsString(teams);
+    }
+
     @RequestMapping(path="/delete_player/{player_id}", method = RequestMethod.GET,
             consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
     public void removePlayer(@PathVariable("player_id") Integer player_id) throws IOException{
+        applicationServices.returnMoneyToTeam(player_id);
         applicationServices.dropPlayer(player_id);
+
+    }
+
+    @RequestMapping(path="/my_league/{id}", method = {RequestMethod.GET, RequestMethod.POST},
+            consumes = "*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getTeamInLeague(@PathVariable("id") Integer y, HttpServletRequest req) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Team team =  applicationServices.viewMyTeamInLeague(y, (Fantasy_User) req.getSession().getAttribute("user"));
+        return mapper.writeValueAsString(team);
     }
 }
 

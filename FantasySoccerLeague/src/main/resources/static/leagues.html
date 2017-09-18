@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 <div layout="column">
     <md-toolbar layout-align="center center">
         <h2>Leagues</h2>
     </md-toolbar>
     <table id="team" ng-controller="get_leagues">
         <tbody>
+=======
+<div class="floating-box">
+    <div class="floating-box head"><div class="floating-box highlight"></div><h2>Leagues</h2></div>
+    <table id="team">
+        <tr>
+            <th class="team-header">League Name</th>
+        </tr>
+>>>>>>> c06e08649a08e07bfa0fa886a27bccb18071275a
         <tr ng-repeat="x in leagues" ng-click="get_league(x.id)">
             <td>{{x.name}}</td>
         </tr>

@@ -1,4 +1,4 @@
-<div class="floating-box" ng-controller="player_stats">
+<div class="floating-box">
         <div class="floating-box head"><div class="floating-box highlight"></div><h2>{{u_player_stats.firstName}} {{u_player_stats.lastName}}</h2></div>
         <table id="team">
             <tr>
@@ -35,7 +35,13 @@
             </tr>
             <tr>
                 <th class="team-header">Team:</th>
-                <td>{{u_player_stats.playerId.team.name}}</td>
+                <td>
+                    <div ng-show="u_player_stats.playerId.team == null">
+                        <input type="hidden" id="my_team" value="{{s_team.id}}"/>
+                        <button ng-click="sign(u_player_stats.playerId)">Draft</button> Into {{s_team.name}} For ${{u_player_stats.playerId.cost}} mil
+                    </div>
+                    <div ng-hide="u_player_stats.playerId.team == null">{{u_player_stats.playerId.team.name}}</div>
+                </td>
             </tr>
             <tr>
                 <th class="team-header">Position:</th>
@@ -64,18 +70,6 @@
             <tr>
                 <th class="team-header">Yellow Cards:</th>
                 <td>{{u_player_stats.playerId.yellow_Card}}</td>
-            </tr>
-            <tr>
-                <th class="team-header">Drafted:</th>
-                <td>
-                    <div ng-show="u_player_stats.playerId.team == null">
-                        <select id="my_team">
-                            <option ng-repeat="x in s_teams" value="{{x.id}}">{{x.name}}</option>
-                        </select>
-                        <button ng-click="sign(u_player_stats.playerId)">Add to team</button>
-                    </div>
-                    <div ng-hide="u_player_stats.playerId.team == null">Drafted<!--{{player_stats.playerId.team.id}}--></div>
-                </td>
             </tr>
         </table>
     </div>

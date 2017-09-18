@@ -11,7 +11,7 @@
 		</table>
  </div>
         <form id="login">
-            <select id="assigned_player" name="assigned_player" ng-controller="drop_player">
+            <select id="assigned_player" name="assigned_player">
                 <option ng-repeat="player in my_players" value="{{player.id}}">{{player.name}}</option>
             </select>
             <button ng-click="drop()">Drop</button>
