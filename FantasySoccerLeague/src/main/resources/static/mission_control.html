@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Not Your Father's Mission Control</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/mission_control.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+<body bgcolor="#222233">
+<div ng-app="main">
+    <div ng-controller="nuke" style="color: #AAAAAA">
+        <div ng-click="reset_everything()" class="red button">
+            <h1>&#9760</h1>
+        </div>
+        NUKE IT FROM ORBIT
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div ng-click="reset_teams()" class="yellow button">
+            <h1>&#9762</h1>
+        </div>
+        DELETE Player's Teams
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div ng-click="reset_points()" class="yellow button">
+            <h1>&#9763</h1>
+        </div>
+        DELETE Team and Player's Points
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div ng-click="update()" class="green button">
+            <!--<h1>&#36</h1>-->
+            <h1>&#9774</h1>
+            <!--<h1>&#9829</h1>-->
+        </div>
+        UPDATE Team and Player's Points
+    </div>
+</div>
+<script src="js/mission_control.js"></script>
+</body>
+</html>

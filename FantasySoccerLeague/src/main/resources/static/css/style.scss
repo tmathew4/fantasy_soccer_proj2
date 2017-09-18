@@ -1,0 +1,180 @@
+$primary-col1: rgba(00, 119, 34, 0.69);
+$primary-col2: rgba(159, 159, 159, 0.69);
+$primary-col3: rgba(0, 0, 0, 0.69);
+
+$highlight: #CFCFCF;
+$shadow: #111111;
+
+$highlight-tra: rgba(207, 207, 207, 0.69);
+
+$text-color-g: #00AA22;
+$text-color-b: $primary-col3;
+
+body {
+	background-color: $primary-col1;
+    background: url("/img/soccer2.jpeg") no-repeat 50% 50% fixed;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.floating-box {
+	background-color: $primary-col2;
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px $shadow;
+}
+
+.floating-box p, h5, h4, h3, h2, h1{
+	color: $text-color-b;
+	font-weight: bold;
+	text-shadow: 1px 1px $shadow;
+	margin-bottom: 1%;
+	margin-left: 2%;
+}
+
+.floating-box.head {
+	background-color: $primary-col3;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	box-shadow: 0px 0px 0px $shadow;
+}
+
+.floating-box.head h3, h2 {
+  color: $text-color-g; 
+ }
+
+
+.floating-box.highlight {
+	background-color: $highlight;
+	height: 2px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	box-shadow: 0px 0px 0px $shadow;
+}
+
+.floating-box.login {
+	position: fixed;
+	left: 35%;
+	top: 30%;
+	width: 25%;
+}
+
+#login {
+	margin: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.floating-box.transactions {
+	padding-bottom: 20px;
+}
+
+#menu, #team {
+	width: 100%;
+	margin-top: 45px;
+    border-collapse: collapse;
+	box-shadow: 5px 5px 3px $shadow;
+	background-color: $primary-col3;
+}
+
+#smallmenu {
+	width: 100%;
+	color: $text-color-g;
+    border-collapse: collapse;
+	box-shadow: 0px 5px 1px $shadow;
+	background-color: $primary-col3;
+}
+
+#menu, team, small_menu th{
+	color: $text-color-g;
+    border: 2px solid $shadow;
+    text-align: center;
+	text-weight: bold;
+    text-shadow: 2px 2px $shadow;
+    padding: 8px;
+}
+
+#menu th:hover{
+	background-color: $primary-col2;
+}
+
+#smallmenu th:hover{
+	background-color: $primary-col2;
+}
+
+#team tr:nth-child(odd) {
+    background-color: rgba(37, 37, 37, 0.69);
+    color: $highlight;
+    //text-shadow: 1px 1px $shadow;
+}
+
+#team tr:nth-child(even) {
+    background-color: $highlight-tra;
+    color: $shadow;
+    //text-shadow: 1px 1px #FFFFFF;
+}
+
+.team-header{
+	color: $text-color-g;
+    border: 2px solid $shadow;
+    text-align: center;
+	text-weight: bold;
+    text-shadow: 2px 2px $shadow;
+    padding: 8px;
+}
+
+.floating-box.create {
+	position: fixed;
+	left: 35%;
+	top: 5%;
+	width: 30%;
+}
+
+.create {
+	align: center;
+  	padding-left: 5px;
+	width: 40%;  
+	left: 2%;
+}
+
+#create-form {
+	margin-bottom: 5%;
+}
+
+#description-box {
+	width: 200%;
+	height: 100px;
+}
+
+#logout {
+	color: $shadow;
+	padding-left: 90%;
+	padding-bottom: 5px;
+}
+
+.button {
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px $shadow;
+	width: 10%;
+	height: 7%;
+	margin-left: 5%;
+	background-color: $primary-col3;
+	color: $text-color-b;
+	text-align: center;
+	cursor: pointer;
+}
+
+.button p{
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.button:active {
+	box-shadow: 2px 2px 2px $shadow;
+	background-color: $primary-col1;
+	color: $shadow;
+	top: 5px;
+	left: 5px;
+}

@@ -1,0 +1,13 @@
+<div class="floating-box">
+	<div class="floating-box head"><div class="floating-box highlight"></div><h2>Teams</h2></div>
+	<table id="team" >
+		<tr>
+			<th class="team-header">Team Name</th>
+			<th class="team-header">Week's Points</th>
+		</tr>
+		<tr ng-repeat="x in l_teams" ng-click="get_team(x.id, x.name, x.league.id, x.points)">
+			<td>{{x.name}}</td>
+			<td>{{x.points}}</td>
+		</tr>
+	</table>
+</div>
