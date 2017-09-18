@@ -1,6 +1,12 @@
 var app = angular.module('main', ["ngRoute"]);
 app.show = false;
 app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
+        $http.get("/get_user").then(function(response) {
+            $rootScope.user = response.data;
+            if($rootScope.user == null) {
+                $rootScope.route("/");
+            }
+        });
         $rootScope.route = function(path) {
             $location.path(path);
         }
@@ -25,6 +31,11 @@ app.controller("menu", ['$scope', '$location', '$http', '$rootScope', function($
 		    	    $location.path("/home");
 		    	}
 		    });
+		}
+		$rootScope.logout = function() {
+		    $http.get("/logout");
+		    $rootScope.user = null;
+		    $rootScope.route("/");
 		}
 		$rootScope.get_points = function(player) {
 			var points = player.goals * (4 + player.position.id);
@@ -120,8 +131,6 @@ app.controller("home_controller", function($scope, $http) {
 		$scope.topplayers = response.data;
 		$scope.peopleRank = 0;
 	});
-
-
 });
 app.controller("get_leagues", ['$scope', '$location', '$http', '$rootScope', function($scope, $location, $http, $rootScope) {
 	$http.get("/league_list").then(function($response){
