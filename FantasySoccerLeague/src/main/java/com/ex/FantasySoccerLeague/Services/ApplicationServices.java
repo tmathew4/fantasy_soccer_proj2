@@ -315,6 +315,9 @@ public class ApplicationServices {
             t.setMoney(100);
             DaoT.saveAndFlush(t);
         }
+
+        DaoTr.deleteAll();
+        DaoTr.flush();
     }
 
     public void updateTeamPoints(Integer teamId) {

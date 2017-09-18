@@ -9,8 +9,9 @@
 	</head>
 	<body>
 		<div ng-app="main">
-			<div id="menu_container" ng-show="user != null">
-				<img src="img/title3.png" height="65" width="200" style="position: absolute; left: 2%; top: 5px;"><a id="logout" ng-click="logout()" href="index.html#!/">Logout</a>
+			<img src="img/title3.png" height="65" width="200" style="position: absolute; left: 2%; top: 5px;">
+			<div id="menu_container" ng-show="user != 0">
+				<a id="logout" ng-click="logout()" href="index.html#!/">Logout</a>
 				<table id="menu" ng-controller="menu">
 
 					<tr>
