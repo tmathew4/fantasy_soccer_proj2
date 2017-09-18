@@ -45,6 +45,15 @@ public class UserController {
         this.applicationServices = applicationServices;
     }
 
+    @RequestMapping(path="/get_user", method = RequestMethod.GET)
+    public String getUser(HttpServletRequest req) throws IOException {
+        Fantasy_User user = (Fantasy_User) req.getSession().getAttribute("user");
+        ObjectMapper mapper = new ObjectMapper();
+        if(user != null)
+            return mapper.writeValueAsString(user);
+        return null;
+    }
+
     @RequestMapping(path="/my_teams", method = RequestMethod.GET)
     public String getUserTeams(HttpServletRequest req) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
